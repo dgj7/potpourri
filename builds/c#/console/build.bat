@@ -48,7 +48,7 @@ if not exist %output_directory% (
 
 :: execute the build.
 echo compiling...
-%compiler% %target% %libraries% %output% %source_files% > NUL 2>&1
+%compiler% /nologo %target% %libraries% %output% %source_files%
 
 :: print a message indicating build success/failure.
 if exist %output_directory%\%output_file_name% (
