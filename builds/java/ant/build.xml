@@ -1,4 +1,4 @@
-<project name="Sample" basedir="." default="clean-run">
+<project name="Sample" basedir="." default="clean-build">
 	<property name="main-class" value="com.dg.sample.Main"/>
 	<property name="root.dir" location="."/>
 	<property name="src.dir" location="${root.dir}/src/main"/>
@@ -120,7 +120,5 @@
 	</target>
 	
 	<!-- groupings of targets for specific usages -->
-	<target name="clean-test" depends="clean,junit"/>
 	<target name="clean-build" depends="clean,jar"/>
-	<target name="clean-run" depends="clean,run"/>
 </project>
