@@ -1,0 +1,103 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.dg.jmge</groupId>
+	<artifactId>jmuse</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	
+		<!-- JOGL -->
+		<jogl.version>2.3.2</jogl.version>
+
+		<!-- standard stuff -->
+		<log4jversion>1.2.17</log4jversion>
+		<junitversion>4.12</junitversion>
+
+		<!-- build -->
+		<mainclass>com.dg.jmge.client.DesktopClient</mainclass>
+		<assemblyphase>package</assemblyphase>
+		<compilersourceversion>1.8</compilersourceversion>
+		<compilertargetversion>1.8</compilertargetversion>
+		<maven-compiler-plugin-version>3.1</maven-compiler-plugin-version>
+		<surefireversion>2.16</surefireversion>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<artifactId>gluegen-rt-main</artifactId>
+			<groupId>org.jogamp.gluegen</groupId>
+			<version>${jogl.version}</version>
+		</dependency>
+		<dependency>
+			<artifactId>jogl-all-main</artifactId>
+			<groupId>org.jogamp.jogl</groupId>
+			<version>${jogl.version}</version>
+		</dependency>
+		<dependency>
+			<artifactId>jocl-main</artifactId>
+			<groupId>org.jogamp.jocl</groupId>
+			<version>${jogl.version}</version>
+		</dependency>
+		<dependency>
+			<artifactId>joal-main</artifactId>
+			<groupId>org.jogamp.joal</groupId>
+			<version>${jogl.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${junitversion}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>${log4jversion}</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+	<plugins>
+		<plugin>
+			<artifactId>maven-assembly-plugin</artifactId>
+			<configuration>
+				<archive>
+					<manifest>
+						<mainClass>${mainclass}</mainClass>
+					</manifest>
+				</archive>
+				<descriptors>
+					<descriptor>src/main/resources/assembly.xml</descriptor>
+				</descriptors>
+			</configuration>
+			<executions>
+				<execution>
+					<id>make-assembly</id>
+					<phase>${assemblyphase}</phase>
+					<goals>
+						<goal>single</goal>
+					</goals>
+				</execution>
+			</executions>
+		</plugin>
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-compiler-plugin</artifactId>
+			<configuration>
+				<source>${compilersourceversion}</source>
+				<target>${compilertargetversion}</target>
+			</configuration>
+			<version>${maven-compiler-plugin-version}</version>
+		</plugin>
+		<plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-surefire-plugin</artifactId>
+			<version>${surefireversion}</version>
+			<configuration>
+				<enableAssertions>true</enableAssertions>
+			</configuration>
+		</plugin>
+	</plugins>
+	</build>
+</project>
