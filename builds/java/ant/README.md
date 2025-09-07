@@ -5,9 +5,9 @@ Doesn't use `Ivy` or any other dependency management; this is an old-style `Ant`
 
 ## Usage
 * [rebuild.sh](rebuild.sh): rebuild the application
-* [start.sh](/start.sh): start the application
+* [start.sh](start.sh): start the application
 
 ## See Also
-* [build.xml](/build.xml): _the main build file_
+* [build.xml](build.xml): _the main build file_
 
 ---
