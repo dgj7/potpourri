@@ -1,0 +1,13 @@
+[package]
+name = "store"
+version = "0.0.9"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+rocket = {version = "0.5.0", features = ["json"]}
+serde = "1.0.97"
+gluesql = "0.15.0"
+gluesql-shared-memory-storage = "0.15.0"
+chrono = "0.4.38"
