@@ -10,13 +10,13 @@ typedef struct {
 
 typedef struct {
     char * name;
-    void (*test)(cut_run_t);
+    void (*test)(cut_run_t *);
 } cut_test_t;
 
-extern void register_test(void (*f)(cut_run_t), char * name);
+extern void register_test(void (*f)(cut_run_t *), char * name);
 
 extern int run_tests();
 
-extern void assert_eq(bool assertion, cut_run_t run);
+extern void assert_eq(bool assertion, cut_run_t * run);
 
 #endif

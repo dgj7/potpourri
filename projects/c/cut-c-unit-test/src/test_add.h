@@ -3,6 +3,9 @@
 
 #include "cut.h"
 
-void test_add(cut_run_t run);
+void test1(cut_run_t * run);
+void test2(cut_run_t * run);
+void test3(cut_run_t * run);
+void test4(cut_run_t * run);
 
 #endif
