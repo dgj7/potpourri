@@ -2,13 +2,23 @@
 CC = gcc
 CFLAGS = -Wall -g
 
-# variables
+# build variables
 BUILDDIR := target
 PROGRAM  := $(BUILDDIR)/main.exe
 LIBSRC   := $(filter-out src/main.c, $(shell find src -name "*.c"))
 MAINSRC  := $(shell find src -name "*.c")
 TEST     := $(BUILDDIR)/test.exe
 TESTSRC  := $(LIBSRC) $(shell find test -name "*.c")
+
+# versioning
+MAJOR    := 1
+MINOR    := 0
+PATCH    := 0
+GITHASH  := $(shell git rev-parse HEAD)		# short: git rev-parse --short HEAD
+VERSION  := $(MAJOR).$(MINOR).$(PATCH)
+
+# things that aren't files
+.PHONY: build test clean print
 
 # 'build' target
 build: $(PROGRAM)
@@ -18,13 +28,13 @@ test: $(TEST)
 
 # build and run the test program; exits if any tests fail
 $(TEST): $(TESTSRC)
-	@echo -n compiling tests $^ $@ ...
+	@echo -n compiling tests: $^ $@ ...
 	@$(CC) $(CFLAGS) -o $@ $^ && echo done!
 	@$(TEST)
 
 # build the main program
 $(PROGRAM): $(MAINSRC)
-	@echo -n compiling $^ $@ ...
+	@echo -n compiling main: $^ $@ ...
 	@$(CC) $(CFLAGS) -o $@ $^ && echo done!
 
 # 'clean' target
@@ -42,3 +52,8 @@ print:
 	@echo LIBSRC: $(LIBSRC)
 	@echo TEST: $(TEST)
 	@echo TESTSRC: $(TESTSRC)
+	@echo MAJOR: $(MAJOR)
+	@echo MINOR: $(MINOR)
+	@echo PATCH: $(PATCH)
+	@echo GITHASH: $(GITHASH)
+	@echo VERSION: $(VERSION)
