@@ -3,12 +3,12 @@ CC = gcc
 CFLAGS = -Wall -g
 
 # build variables
-BUILDDIR := target
-PROGRAM  := $(BUILDDIR)/main.exe
 LIBSRC   := $(filter-out src/main.c, $(shell find src -name "*.c"))
 MAINSRC  := $(shell find src -name "*.c")
-TEST     := $(BUILDDIR)/test.exe
 TESTSRC  := $(LIBSRC) $(shell find test -name "*.c")
+BUILDDIR := target
+PROGRAM  := $(BUILDDIR)/main.exe
+TEST     := $(BUILDDIR)/test.exe
 
 # versioning
 MAJOR    := 1
@@ -17,7 +17,7 @@ PATCH    := 0
 GITHASH  := $(shell git rev-parse HEAD)		# short: git rev-parse --short HEAD
 VERSION  := $(MAJOR).$(MINOR).$(PATCH)
 
-# things that aren't files
+# tasks that aren't files
 .PHONY: build test clean print
 
 # 'build' task
