@@ -1,3 +1,3 @@
 #!/bin/bash
 
-./target/cut.exe
+./target/main.exe

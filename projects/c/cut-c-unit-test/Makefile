@@ -4,7 +4,7 @@ CFLAGS = -Wall -g
 
 # targets
 BUILDDIR = target
-PROGRAM = $(BUILDDIR)/cut.exe
+PROGRAM = $(BUILDDIR)/main.exe
 MAINSRC := $(shell find src -name "*.c")
 
 build: $(PROGRAM)
