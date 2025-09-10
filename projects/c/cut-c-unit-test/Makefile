@@ -1,19 +1,19 @@
+# compile
 CC = gcc
 CFLAGS = -Wall -g
+
+# targets
 BUILDDIR = target
-OBJDIR = $(BUILDDIR)/obj
-TARGET = $(BUILDDIR)/cut.exe
-SOURCES := $(shell find src -name "*.c")
-OBJECTS := $(SOURCES:%.c=$(OBJDIR)/%.o)
+PROGRAM = $(BUILDDIR)/cut.exe
+MAINSRC := $(shell find src -name "*.c")
 
-build: $(TARGET)
+build: $(PROGRAM)
 
-$(TARGET): $(SOURCES)
-	@echo compiling $^...
-	@$(CC) $(CFLAGS) -o $@ $^
+$(PROGRAM): $(MAINSRC)
+	@echo -n compiling $^ $@ ...
+	@$(CC) $(CFLAGS) -o $@ $^ && echo done!
 
 clean:
 	@echo -n cleaning...
-	@rm -rf $(OBJDIR)
-	@rm -rf $(TARGET)
+	@rm -rf $(PROGRAM)
 	@echo done!
