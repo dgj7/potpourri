@@ -1,13 +1,12 @@
 #include <stdio.h>
 
-#include "cut.h"
-#include "test_add.h"
+#include "add.h"
 
 int main() {
-    register_test(test1, "test1");
-    register_test(test2, "test2");
-    register_test(test3, "test3");
-    register_test(test4, "test4");
+    int leftAddend = 2;
+    int rightAddend = 3;
 
-    return run_tests();
+    printf("add: %i+%i=%i", leftAddend, rightAddend, add(leftAddend, rightAddend));
+
+    return 0;
 }

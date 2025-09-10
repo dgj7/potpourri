@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 #include "test_add.h"
-#include "add.h"
+#include "../src/add.h"
 #include "cut.h"
 
 /* both succeed */
