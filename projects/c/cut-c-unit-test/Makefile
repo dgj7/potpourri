@@ -20,10 +20,10 @@ VERSION  := $(MAJOR).$(MINOR).$(PATCH)
 # things that aren't files
 .PHONY: build test clean print
 
-# 'build' target
+# 'build' task
 build: $(PROGRAM)
 
-# 'test' target
+# 'test' task
 test: $(TEST)
 
 # build and run the test program; exits if any tests fail
@@ -37,14 +37,14 @@ $(PROGRAM): $(MAINSRC)
 	@echo -n compiling main: $^ $@ ...
 	@$(CC) $(CFLAGS) -o $@ $^ && echo done!
 
-# 'clean' target
+# 'clean' task
 clean:
 	@echo -n cleaning...
 	@rm -rf $(PROGRAM)
 	@rm -rf $(TEST)
 	@echo done!
 
-# 'print' target; meant for debugging/understanding
+# 'print' task; meant for debugging/understanding
 print:
 	@echo BUILDDIR: $(BUILDDIR)
 	@echo PROGRAM: $(PROGRAM)
