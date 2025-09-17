@@ -37,18 +37,18 @@ $(TEST): $(TESTSRC)
 
 # build object files
 $(LIBOBJS): $(LIBSRC)
-	@echo -n compiling objects ...
+	@echo -n compiling: $@ ...
 	@$(CC) $(CFLAGS) -c $< -o $@ && echo done!
 
 # build the library
 $(LIBRARY): $(LIBOBJS)
-	@echo -n compiling library: $@ $^ ...
+	@echo -n compiling: $@ [$^] ...
 	@ar rcs $@ $^ && echo done!
 
 # build the demos
 $(DEMOPROGS): $(DEMOSRC)
-	@echo compiling example $@ $^ ...
-	@$(CC) -o $@ -I $(LIBSRCDIR) $^ -L$(BUILDDIR) -l$(LIBNAME)
+	@echo compiling: $@ [examples/$(notdir $(basename $@)).c] ...
+	@$(CC) -o $@ -I $(LIBSRCDIR) examples/$(notdir $(basename $@)).c -L$(BUILDDIR) -l$(LIBNAME)
 
 # 'clean' task
 clean:
@@ -56,6 +56,7 @@ clean:
 	@rm -rf $(LIBRARY)
 	@rm -rf $(TEST)
 	@rm -rf $(LIBOBJS)
+	@rm -rf $(DEMOPROGS)
 	@echo done!
 	@echo -n creating target directory ...
 	@mkdir -p target && echo done!
