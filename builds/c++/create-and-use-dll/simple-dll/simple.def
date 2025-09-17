@@ -1,0 +1,4 @@
+;place the names of functions that are in the dll in this assembly
+
+EXPORTS
+	square
