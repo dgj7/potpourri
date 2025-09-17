@@ -1,0 +1,4 @@
+bin/
+obj/
+build/library-class-lib.make
+build/Makefile
