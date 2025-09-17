@@ -1,0 +1,2 @@
+PATH=C:\Borland\BCC55\Bin;%PATH%
+DOSKEY /INSERT
