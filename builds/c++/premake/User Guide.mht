@@ -1,0 +1,4354 @@
+From: "Saved by Windows Internet Explorer 8"
+Subject: User Guide
+Date: Tue, 14 Dec 2010 01:00:22 -0500
+MIME-Version: 1.0
+Content-Type: multipart/related;
+	type="text/html";
+	boundary="----=_NextPart_000_0000_01CB9B2A.48F86080"
+X-MimeOLE: Produced By Microsoft MimeOLE V6.1.7600.16385
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_0000_01CB9B2A.48F86080
+Content-Type: text/html;
+	charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://industriousone.com/book/export/html/63
+
+=EF=BB=BF<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" =
+"http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<HTML lang=3Den xml:lang=3D"en" =
+xmlns=3D"http://www.w3.org/1999/xhtml"><HEAD><TITLE>User Guide</TITLE>
+<META content=3D"text/html; charset=3Dutf-8" =
+http-equiv=3DContent-Type><LINK=20
+rel=3Dstylesheet type=3Dtext/css =
+href=3D"http://industriousone.com/misc/print.css">
+<META name=3DGENERATOR content=3D"MSHTML 8.00.7600.16385"></HEAD>
+<BODY>
+<DIV id=3Dnode-63 class=3Dsection-1>
+<H1 class=3Dbook-heading>User Guide</H1>
+<P>The official Premake documentation.=C2=A9 2002-2010 Jason Perkins and =
+the Premake=20
+project.</P>
+<P>This user guide reflects the current state of the software fairly =
+closely,=20
+but may lag in places, or get a little ahead of the official releases in =
+others.=20
+When in doubt, feel free to post a question <A=20
+href=3D"http://industriousone.com/forums/premake">over in the =
+forums</A>. If you=20
+spot any problems, or think something is unclear, feel free to leave a=20
+comment.</P>
+<DIV id=3Dnode-141 class=3Dsection-2>
+<H1 class=3Dbook-heading>What Is Premake?</H1>
+<P>Imagine yourself the owner of an open source software project. Your =
+users are=20
+asking for a Visual Studio 2008 solution, but you don't have Visual =
+Studio! Or=20
+perhaps you are a cross-platform game developer struggling to keep =
+projects,=20
+solutions, and makefiles in sync. Its a common problem for open and=20
+cross-platform projects: restrict yourself to a single, potentially =
+sub-optimal=20
+build tool--driving away potential contributors--or manually maintain =
+two,=20
+three, or more sets of build scripts.</P>
+<P>Not working cross-platform? Have you ever been stuck using an old =
+version of=20
+Visual Studio because it was too difficult to upgrade the entire =
+team?</P>
+<P>Or maybe you just want an easy way to reconfigure your project for =
+different=20
+situations or environments, pulling in different source code or =
+libraries,=20
+switches and options.</P>
+<H2>Enter Premake</H2>
+<P><A name=3Dtools></A>Premake is a build configuration tool. Describe =
+your C,=20
+C++, or C# software project using <A=20
+href=3D"http://industriousone.com/basic-script">a simple, easy to read =
+syntax</A>=20
+and let Premake generate the project files for:</P>
+<UL>
+  <LI>Microsoft Visual Studio 2002, 2003, 2005, and 2008, including the =
+<A=20
+  href=3D"http://www.microsoft.com/express/">Express editions</A></LI>
+  <LI>GNU Make, including <A href=3D"http://www.cygwin.com/">Cygwin</A> =
+and <A=20
+  href=3D"http://www.mingw.org/">MinGW</A></LI>
+  <LI><A href=3D"http://developer.apple.com/tools/xcode/">Apple =
+Xcode</A></LI>
+  <LI><A href=3D"http://www.codeblocks.org/">Code::Blocks</A></LI>
+  <LI><A href=3D"http://codelite.org/">CodeLite</A></LI>
+  <LI>IC#Code <A=20
+  =
+href=3D"http://www.icsharpcode.net/OpenSource/SD/">SharpDevelop</A></LI>
+  <LI><A =
+href=3D"http://www.monodevelop.com/Main_Page">MonoDevelop</A></LI></UL>
+<P>Version 4.1 of Premake added <A=20
+href=3D"http://industriousone.com/platforms">experimental support for=20
+cross-compiling</A>, targeting:</P>
+<UL>
+  <LI>32- and 64-bit builds</LI>
+  <LI>Mac OS X 32- and 64-bit universal binaries</LI>
+  <LI>Playstation 3 (Visual Studio and GNU Make)</LI>
+  <LI>Xbox 360 (Visual Studio only)</LI></UL>
+<P>Premake allows you to manage your project configuration in one place =
+and=20
+still support those pesky IDE-addicted Windows coders and/or cranky =
+Linux=20
+command-line junkies. It allows you to generate project files for tools =
+that you=20
+do not own. It saves the time that would otherwise be spent manually =
+keeping=20
+several different toolsets in sync. And it provides an easy upgrade path =
+as new=20
+versions of your favorite tools are released.</P>
+<P>In addition to these project generation capabilities, Premake also =
+provides a=20
+complete <A href=3D"http://www.lua.org/">Lua scripting environment</A>, =
+enabling=20
+the automation of complex configuration tasks, such as setting up new =
+source=20
+tree checkouts or creating deployment packages. These scripts will run =
+on any=20
+platform, ending batch/shell script duplication.</P>
+<P>Premake is a "plain old C" application, distributed as a single =
+executable=20
+file. It is small, weighing in at around 200K. It does not require any=20
+additional libraries or runtimes to be installed, and should build and =
+run=20
+pretty much anywhere. It is currently being tested and used on Windows, =
+Mac OS=20
+X, Linux, and other POSIX environments. It uses only a handful of =
+platform=20
+dependent routines (directory management, mostly). Adding support for =
+additional=20
+toolsets and languages is straightforward. The source code is available =
+under=20
+the <A href=3D"http://www.opensource.org/licenses/bsd-license.php">BSD=20
+License</A>. The source code is hosted on <A=20
+href=3D"https://bitbucket.org/premake">BitBucket</A>; file downloads are =
+hosted on=20
+<A =
+href=3D"http://sourceforge.net/projects/premake">SourceForge</A>.</P></DI=
+V>
+<DIV id=3Dnode-267 class=3Dsection-2>
+<H1 class=3Dbook-heading>Building Premake</H1>
+<P>Learn how to compile Premake from the source code.If you downloaded a =
+
+prebuilt binary package you can skip this page, which discusses how to =
+build the=20
+Premake source code. <A=20
+href=3D"http://industriousone.com/premake/quick-start">Jump ahead to =
+Quick=20
+Start</A> to begin learning how to use and develop with Premake.</P>
+<H2>Generating the Project Files</H2>
+<P>If you downloaded one of the <A=20
+href=3D"http://sourceforge.net/projects/premake/files/">official source =
+code=20
+release packages</A>, the project files have already been generated for =
+you, and=20
+may be found in the <B>build/</B> directory. Skip ahead to the next =
+section to=20
+learn about the important differences between the build =
+configurations.</P>
+<P>Premake's <A href=3D"http://bitbucket.org/premake">Mercurial =
+repository</A>=20
+does not contain any project files. Instead, use <A=20
+href=3D"https://sourceforge.net/project/showfiles.php?group_id=3D71616">a=
+n existing=20
+copy of Premake</A> to generate the files for your particular toolset =
+and=20
+environment.</P>
+<P>Once you have a working Premake installed, generate the project files =
+by=20
+opening a console or terminal to the source code directory and type a =
+command=20
+like:</P><PRE>premake4 gmake    # for GNU makefiles using GCC
+premake4 vs2005   # for a Visual Studio 2005 solution
+</PRE>
+<P>Use the --help option to see all of the available targets.</P>
+<P>Note that when working against the Mercurial sources it is a good =
+idea to=20
+refresh the embedded scripts after each update.</P><PRE>$ hg pull -u
+$ premake4 embed
+</PRE>
+<P>See <B>Debug vs. Release Modes</B> below for an explanation (and =
+maybe=20
+eventually I'll think of a better way to do this).</P>
+<H2>Building the Source Code</H2>
+<P>Premake can be built in either "release" (the default) or "debug" =
+modes. If=20
+you are using Makefiles (as opposed to an IDE), you can choose which=20
+configuration to build with the <B>config</B> argument:</P><PRE>make     =
+          # build in release mode, both versions
+make config=3Ddebug  # build in debug mode, when generated with Premake =
+4.x
+make CONFIG=3DDebug  # build in debug mode, when generated with Premake =
+3.x
+</PRE>
+<P>If you do not supply a <B>config</B> argument, release mode will be =
+used.=20
+IDEs like Visual Studio provide their own mechanism for switching build=20
+configurations.</P>
+<H2>Debug vs. Release Modes</H2>
+<P>A significant portion of Premake is written in Lua. For release =
+builds (the=20
+default) this has no impact, just build as normal and go.</P>
+<P>When built in Debug mode, Premake will read its Lua scripts from the =
+disk at=20
+startup, enabling compile-less code/test iterations, and therefore =
+faster=20
+development. But it needs a little help finding the scripts. You can use =
+the=20
+<B>/scripts</B> command line argument, like so:</P><PRE>premake4 =
+/scripts=3D~/Code/premake4/src gmake
+</PRE>
+<P>Or set a <B>PREMAKE_PATH</B> environment =
+variable:</P><PRE>PREMAKE_PATH=3D~/Code/premake4/src
+</PRE>
+<P>You need to specify the location of the Premake <B>src/</B> =
+directory, the=20
+one containing <B>_premake_main.lua</B>.</P>
+<H2>Embedding the Scripts</H2>
+<P>In release builds, Premake uses a copy of the scripts embedded into =
+static=20
+strings: see <B>src/host/scripts.c</B>. If you modify any of the core =
+Lua=20
+scripts (anything ending in <B>.lua</B>), you must also update these =
+embedded=20
+strings before your changes will appear in the release mode build.</P>
+<P>You can update these strings by using the <B>embed</B> action, which =
+is part=20
+of Premake's own build script.</P><PRE>premake4 embed
+</PRE>
+<P>This command embeds all of the scripts listed in <B>_manifest.lua</B> =
+into=20
+<B>src/host/scripts.c</B>. The next release build will include the =
+updated=20
+scripts.</P>
+<H3>CONFUSED?</H3>
+<P>The inclusion of the Lua scripts throws a wrench in things, and I =
+certainly=20
+understand if you have questions. I'll be glad to help you out. Leave a =
+note <A=20
+href=3D"http://industriousone.com/forums/premake">in the forums</A> (the =
+preferred=20
+approach), join the mailing list, or <A=20
+href=3D"http://industriousone.com/contact">contact me directly</A>. Your =
+questions=20
+will help me improve these instructions.</P></DIV>
+<DIV id=3Dnode-142 class=3Dsection-2>
+<H1 class=3Dbook-heading>Premake Quick Start</H1>
+<P><EM>A quick introduction for people who arrived here directly: <A=20
+href=3D"http://industriousone.com/premake">Premake</A> is a build =
+configuration=20
+tool. It reads a description of a software project and generates the =
+files for=20
+one of several different toolsets. By using Premake, software developers =
+can=20
+save time and support more tools and users.</EM> <A=20
+href=3D"http://industriousone.com/premake">Learn More</A>.</P>
+<H2>Getting Premake</H2>
+<P>If you don't have Premake already, you can <A=20
+href=3D"http://industriousone.com/premake/download">download it =
+now</A>.</P>
+<P>Premake is a small (around 200K) command line executable, delivered =
+as a=20
+single file. Just unpack the download and place the executable on your =
+system=20
+search path or anywhere else convenient.</P>
+<H2>Using Premake</H2>
+<P>The simplest Premake command is:</P><PRE>premake4 <EM>action</EM>
+</PRE>
+<P>Usually you would like Premake to generate project files for a =
+particular=20
+toolset, in which case <EM>action</EM> is one of these toolset =
+identifiers:</P>
+<TABLE>
+  <TBODY>
+  <TR class=3Dodd>
+    <TH>vs2008</TH>
+    <TD>Visual Studio 2008 (or Express)</TD></TR>
+  <TR class=3Deven>
+    <TH>vs2005</TH>
+    <TD>Visual Studio 2005 (or Express), <A=20
+      href=3D"http://sharpdevelop.net/OpenSource/SD/">SharpDevelop</A>, =
+or <A=20
+      href=3D"http://monodevelop.com/">MonoDevelop</A></TD></TR>
+  <TR class=3Dodd>
+    <TH>vs2003</TH>
+    <TD>Visual Studio 2003</TD></TR>
+  <TR class=3Deven>
+    <TH>vs2002</TH>
+    <TD>Visual Studio 2002</TD></TR>
+  <TR class=3Dodd>
+    <TH>gmake</TH>
+    <TD><A href=3D"http://www.gnu.org/software/make/">GNU Make</A> =
+(including <A=20
+      href=3D"http://www.cygwin.com/">Cygwin</A> and <A=20
+      href=3D"http://www.mingw.org/">MinGW</A>)</TD></TR>
+  <TR class=3Deven>
+    <TH>xcode3</TH>
+    <TD><A href=3D"http://developer.apple.com/tools/xcode/">Apple Xcode=20
+  3</A></TD></TR>
+  <TR class=3Dodd>
+    <TH>codeblocks</TH>
+    <TD><A =
+href=3D"http://www.codeblocks.org/">Code::Blocks</A></TD></TR>
+  <TR class=3Deven>
+    <TH>codelite</TH>
+    <TD><A =
+href=3D"http://codelite.org/">CodeLite</A></TD></TR></TBODY></TABLE>
+<P>You can see a complete list of actions and other options by =
+typing:</P><PRE>premake4 --help
+</PRE>
+<P>Once the files have been generated you can load the solution or =
+workspace=20
+into your IDE and build as you normally would.</P>
+<H2>Using the Generated Makefiles</H2>
+<P>Running <B>make</B> with no options will build all targets using the =
+default=20
+configuration. To build a different configuration supply the =
+<B>config</B>=20
+argument:</P><PRE>make config=3Drelease
+</PRE>
+<P>Most projects provide debug and release configurations; to see the =
+available=20
+targets and configurations, type:</P><PRE>make help
+</PRE>
+<P>Remove all generated binaries and intermediate files =
+with:</P><PRE>make clean
+</PRE>
+<P>Premake generated makefiles do <EM>not</EM> support a <B>make =
+install</B>=20
+step. Instead, project owners are encouraged to <A=20
+href=3D"http://industriousone.com/command-line-arguments">add an install =
+
+action</A> to their Premake scripts, which has the advantage of working =
+with any=20
+toolset on any platform. You can check for the existence of an install =
+action by=20
+viewing the help (run <B>premake4 --help</B> in the project =
+directory).</P>
+<H2>Next Steps</H2>
+<P>If you are having trouble building your project, start by contacting =
+the=20
+project manager. If you are having trouble building or using Premake, <A =
+
+href=3D"http://industriousone.com/premake/help">visit our Support =
+page</A> and=20
+I'll try to help you out.</P>
+<P>To learn how to use Premake for your own software projects see <A=20
+href=3D"http://industriousone.com/scripting-with-premake">Scripting With =
+
+Premake</A>.</P></DIV>
+<DIV id=3Dnode-143 class=3Dsection-2>
+<H1 class=3Dbook-heading>Scripting with Premake</H1>
+<P>In this section, I'll show you how to create project scripts for =
+Premake.</P>
+<DIV id=3Dnode-161 class=3Dsection-3>
+<H1 class=3Dbook-heading>A Sample Script</H1>
+<P>Premake is built on <A =
+href=3D"http://www.lua.org/about.html">Lua</A>, a=20
+powerful, fast, light-weight scripting language. Premake scripts are =
+really Lua=20
+programs, so anything you can do in Lua can also be done in a Premake =
+script. To=20
+this, Premake adds functions for defining solutions, projects, and=20
+configurations as well as support for common build configuration tasks. =
+Premake=20
+also provides conventions for defining and handling command line options =
+and=20
+actions, allowing you to build sophisticated configuration scripts.</P>
+<P>Because of the descriptive nature of the Lua language, your build =
+scripts=20
+will often look more like static configuration files than mini-programs. =
+Here is=20
+an example of a fairly typical Premake script for a C++ executable. <A=20
+href=3D"http://industriousone.com/forums/premake/premake-cookbook">See =
+the Premake=20
+Cookbook</A> for more examples of common configuration tasks.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua"><SPAN class=3Dco1>-- A solution contains =
+projects, and defines the available configurations</SPAN>
+solution <SPAN class=3Dst0>"MyApplication"</SPAN>
+   configurations <SPAN class=3Dbr0>{</SPAN> <SPAN =
+class=3Dst0>"Debug"</SPAN>, <SPAN class=3Dst0>"Release"</SPAN> <SPAN =
+class=3Dbr0>}</SPAN>
+&nbsp;
+   <SPAN class=3Dco1>-- A project defines one build target</SPAN>
+   project <SPAN class=3Dst0>"MyApplication"</SPAN>
+      kind <SPAN class=3Dst0>"ConsoleApp"</SPAN>
+      language <SPAN class=3Dst0>"C++"</SPAN>
+      files <SPAN class=3Dbr0>{</SPAN> <SPAN class=3Dst0>"**.h"</SPAN>, =
+<SPAN class=3Dst0>"**.cpp"</SPAN> <SPAN class=3Dbr0>}</SPAN>
+&nbsp;
+      configuration <SPAN class=3Dst0>"Debug"</SPAN>
+         defines <SPAN class=3Dbr0>{</SPAN> <SPAN =
+class=3Dst0>"DEBUG"</SPAN> <SPAN class=3Dbr0>}</SPAN>
+         flags <SPAN class=3Dbr0>{</SPAN> <SPAN =
+class=3Dst0>"Symbols"</SPAN> <SPAN class=3Dbr0>}</SPAN>
+&nbsp;
+      configuration <SPAN class=3Dst0>"Release"</SPAN>
+         defines <SPAN class=3Dbr0>{</SPAN> <SPAN =
+class=3Dst0>"NDEBUG"</SPAN> <SPAN class=3Dbr0>}</SPAN>
+         flags <SPAN class=3Dbr0>{</SPAN> <SPAN =
+class=3Dst0>"Optimize"</SPAN> <SPAN class=3Dbr0>}</SPAN>    </PRE></DIV>
+<P>The indentation in this sample is arbitrary, this is the way I happen =
+to like=20
+it.</P>
+<P>The following sections of this guide will walk you through all of the =
+
+features of Premake in a somewhat logical fashion. It isn't rocket =
+science, and=20
+you probably already have the gist of it from the example above, so feel =
+free to=20
+skip around. You can also refer to the <A=20
+href=3D"http://industriousone.com/scripting-reference">Reference =
+section</A> or=20
+the <A href=3D"http://www.lua.org/manual/5.1/">Lua Reference Manual</A> =
+for=20
+information on a particular function or variable.</P></DIV>
+<DIV id=3Dnode-144 class=3Dsection-3>
+<H1 class=3Dbook-heading>A Bit of Meta</H1>
+<P>Let me start with a bit of general information that you will need to =
+know to=20
+begin scripting.</P>
+<H2>Files and File Names</H2>
+<P>Premake will look for a file named <B>premake4.lua</B> by default, =
+much like=20
+<B>make</B> looks for a file named <B>Makefile</B>. So that's the name =
+you want=20
+to give your project script files, generally.</P>
+<P>You can specify a different file name using the <B>file</B> argument, =
+like=20
+so:</P><PRE>premake4 --file=3Dmyfilename.lua
+</PRE>
+<P>You can define your entire project in one script file if you want, or =
+you can=20
+split up the projects into their own files, or any other organization =
+you can=20
+dream up. Use the <A =
+href=3D"http://industriousone.com/include">include()</A>=20
+function or Lua's <B>dofile()</B> to link all the files together.</P>
+<P>I personally like to use just one file for simple projects, and=20
+one-file-per-project for more complex builds.</P>
+<H2>Project Functions and Arguments</H2>
+<P>You define your software project by calling a sequence of functions, =
+such as=20
+<A href=3D"http://industriousone.com/solution">solution</A>, <A=20
+href=3D"http://industriousone.com/project">project</A>, and <A=20
+href=3D"http://industriousone.com/defines">defines</A>. These functions =
+set up the=20
+project state and take care of error checking and the like.</P>
+<P>When calling a function with a single string constant for an =
+argument, Lua=20
+allows you to drop the parenthesis that would normally appear around the =
+
+argument list. So these two statements are functionally identical:</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">solution<SPAN class=3Dbr0>(</SPAN><SPAN =
+class=3Dst0>"MySolution"</SPAN><SPAN class=3Dbr0>)</SPAN>
+solution <SPAN class=3Dst0>"MySolution"</SPAN></PRE></DIV>
+<P>I find the latter form a bit more readable. The same goes with a =
+single list=20
+argument:</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">defines<SPAN class=3Dbr0>(</SPAN><SPAN =
+class=3Dbr0>{</SPAN><SPAN class=3Dst0>"DEBUG"</SPAN>, <SPAN =
+class=3Dst0>"TRACE"</SPAN><SPAN class=3Dbr0>}</SPAN><SPAN =
+class=3Dbr0>)</SPAN>
+defines <SPAN class=3Dbr0>{</SPAN><SPAN class=3Dst0>"DEBUG"</SPAN>, =
+<SPAN class=3Dst0>"TRACE"</SPAN><SPAN class=3Dbr0>}</SPAN></PRE></DIV>
+<P>If you want to use a variable as an argument, or the result of a =
+calculation,=20
+then you must use the parenthesis:</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua"><SPAN class=3Dkw1>local</SPAN> lang <SPAN =
+class=3Dsy0>=3D</SPAN> <SPAN class=3Dst0>"C++"</SPAN>
+language <SPAN class=3Dbr0>(</SPAN>lang<SPAN class=3Dbr0>)</SPAN>   =
+<SPAN class=3Dco1>-- need the parenthesis here</SPAN>
+&nbsp;
+location <SPAN class=3Dbr0>(</SPAN><SPAN class=3Dst0>"build/"</SPAN> .. =
+_ACTION<SPAN class=3Dbr0>)</SPAN>  <SPAN class=3Dco1>-- and here =
+too</SPAN></PRE></DIV>
+<H2>Values and Lists</H2>
+<P>Many of Premake's functions accept a list of values as a parameter. =
+For=20
+instance, a list of source code files, or defined symbols, or build =
+flags. When=20
+defining a list of values you need to surround them in curly brackets, =
+Lua's=20
+syntax for a list. If you only want to set a single value, you can leave =
+off the=20
+brackets if you like.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">defines <SPAN class=3Dbr0>{</SPAN> <SPAN =
+class=3Dst0>"DEBUG"</SPAN>, <SPAN class=3Dst0>"TRACE"</SPAN> <SPAN =
+class=3Dbr0>}</SPAN>  <SPAN class=3Dco1>-- defines multiple =
+values</SPAN>
+defines <SPAN class=3Dst0>"NDEBUG"</SPAN>              <SPAN =
+class=3Dco1>-- defines a single value</SPAN></PRE></DIV>
+<P>There are also functions that only accept a single value, such as =
+solution=20
+and project names, the project kind and language, and so on. If you try =
+to pass=20
+a list to these function you'll get an error. These string values may be =
+
+delimited with single (&amp;apos;) or double (") quotes.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">language <SPAN class=3Dst0>"C++"</SPAN>
+kind <SPAN class=3Dst0>'ConsoleApp'</SPAN></PRE></DIV>
+<P>For more information on Lua programming, see <A=20
+href=3D"http://www.lua.org/">the Lua website</A> or <A=20
+href=3D"http://www.lua.org/pil/index.html">Programming in Lua</A>. If =
+you get=20
+stuck, <A href=3D"http://industriousone.com/forums/premake/help">post a =
+question=20
+over in the forums</A> and I will do my best to help you out.</P></DIV>
+<DIV id=3Dnode-170 class=3Dsection-3>
+<H1 class=3Dbook-heading>Solutions and Projects</H1>
+<P>Starting with Premake 4.0 I am following the Visual Studio naming =
+conventions=20
+for build components. For those of you unfamiliar with Visual Studio I =
+will try=20
+to provide to provide the synonyms used by other toolsets; if I miss any =
+let me=20
+know and I'll add them.</P>
+<H2>Solutions</H2>
+<P>At the top level of every build is a <EM>solution</EM>, acting as a =
+container=20
+and meta-project (other tools use the term <EM>workspace</EM>). =
+Solutions define=20
+a common set of <A=20
+href=3D"http://industriousone.com/configurations-0">configurations</A> =
+and=20
+encapsulate one or more projects (see below). You can define build-wide =
+settings=20
+at the solution level; these will apply to all of the projects contained =
+by that=20
+solution.</P>
+<P>Solutions are defined using the <A=20
+href=3D"http://industriousone.com/solution">solution</A> function. Most =
+builds=20
+will need only a single solution, but you are free to create more if =
+needed.=20
+Configurations are specified using the <A=20
+href=3D"http://industriousone.com/configurations">configurations</A> =
+function; see=20
+the next section for more information.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">solution <SPAN =
+class=3Dst0>"MySolution"</SPAN>
+  configurations <SPAN class=3Dbr0>{</SPAN> <SPAN =
+class=3Dst0>"Debug"</SPAN>, <SPAN class=3Dst0>"Release"</SPAN> <SPAN =
+class=3Dbr0>}</SPAN></PRE></DIV>
+<P>The solution name, provided as a parameter to the function, is used =
+as the=20
+file name of the generated solution file. So avoid special characters; =
+spaces=20
+are okay.</P>
+<H2>Projects</H2>
+<P>The primary purpose of a solution is to act as a container for =
+projects. A=20
+<EM>project</EM> lists the settings and source files needed to build one =
+binary=20
+target. Just about every IDE uses the term "project" for this. In the =
+world of=20
+Make, you can think of projects as a makefile for one particular library =
+or=20
+executable; a solution is a meta-makefile that calls each project as =
+needed.</P>
+<P>Projects are defined using the <A=20
+href=3D"http://industriousone.com/project">project</A> function. You =
+must create a=20
+solution and list the available configurations before creating the first =
+
+project.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">solution <SPAN =
+class=3Dst0>"MySolution"</SPAN>
+  configurations <SPAN class=3Dbr0>{</SPAN> <SPAN =
+class=3Dst0>"Debug"</SPAN>, <SPAN class=3Dst0>"Release"</SPAN> <SPAN =
+class=3Dbr0>}</SPAN>
+&nbsp;
+project <SPAN class=3Dst0>"MyProject"</SPAN></PRE></DIV>
+<P>The project name, like the solution name, is used as the file name =
+for the=20
+generated project file so avoid special characters.</P>
+<P>Each project specifies a <EM>kind</EM> which determines what kind of =
+output=20
+is generated, such as a console or windowed executable, or a shared or =
+static=20
+library. The <A href=3D"http://industriousone.com/kind">kind</A> =
+function is used=20
+to specify this value.</P>
+<P>Each project also specifies which programming language it uses, such =
+as C++=20
+or C#. The <A href=3D"http://industriousone.com/language">language</A> =
+function is=20
+used to set this value.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">project <SPAN =
+class=3Dst0>"MyProject"</SPAN>
+  kind <SPAN class=3Dst0>"ConsoleApp"</SPAN>
+  language <SPAN class=3Dst0>"C++"</SPAN></PRE></DIV>
+<H2>Locations</H2>
+<P>By default, Premake will place generated solution and project files =
+in the=20
+same directory as the script which defined them. If your Premake script =
+is in=20
+<B>C:\Code\MyProject</B> then the generated files will also be in=20
+<B>C:\Code\MyProject</B>.</P>
+<P>You can change the output location using the <A=20
+href=3D"http://industriousone.com/location">location</A> function.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">solution <SPAN =
+class=3Dst0>"MySolution"</SPAN>
+  configurations <SPAN class=3Dbr0>{</SPAN> <SPAN =
+class=3Dst0>"Debug"</SPAN>, <SPAN class=3Dst0>"Release"</SPAN> <SPAN =
+class=3Dbr0>}</SPAN>
+  location <SPAN class=3Dst0>"build"</SPAN>
+&nbsp;
+project <SPAN class=3Dst0>"MyProject"</SPAN>
+  location <SPAN class=3Dst0>"build"</SPAN></PRE></DIV>
+<P>The path provided for <B>location</B> should be specified relative to =
+the=20
+script file. Using the example and script above, the generated files =
+will be=20
+placed in <B>C:\Code\MyProject\build</B>.</P></DIV>
+<DIV id=3Dnode-146 class=3Dsection-3>
+<H1 class=3Dbook-heading>Adding Files</H1>
+<P>You add files=E2=80=94source code, resources, and so on=E2=80=94to =
+your project using the <A=20
+href=3D"http://industriousone.com/files">files</A> function.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">files <SPAN class=3Dbr0>{</SPAN>
+   <SPAN class=3Dst0>"hello.h"</SPAN>,  <SPAN class=3Dco1>-- you can =
+specify exact names</SPAN>
+   <SPAN class=3Dst0>"*.c"</SPAN>,      <SPAN class=3Dco1>-- or use a =
+wildcard...</SPAN>
+   <SPAN class=3Dst0>"**.cpp"</SPAN>    <SPAN class=3Dco1>-- ...and =
+recurse into subdirectories</SPAN>
+<SPAN class=3Dbr0>}</SPAN></PRE></DIV>
+<P>You can use wildcards in the file patterns to match a set of files. =
+The=20
+wildcard <B>*</B> will match files in one directory; the wildcard =
+<B>**</B> will=20
+match files in one directory and also recurse down into any =
+subdirectories.</P>
+<P>Files located in other directories should be specified relative to =
+the script=20
+file. For example, if the script is located at <B>myproject/build</B> =
+and the=20
+source files are at <B>myproject/src</B>, the files should be specified =
+as</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">files <SPAN class=3Dbr0>{</SPAN> <SPAN =
+class=3Dst0>"../src/*.cpp"</SPAN> <SPAN class=3Dbr0>}</SPAN></PRE></DIV>
+<P>Paths should always use the forward slash <B>/</B> as a separator; =
+Premake=20
+will translate to the appropriate platform-specific separator as =
+needed.</P>
+<H3>Excluding Files</H3>
+<P>Sometimes you want most, but not all, of the files in a directory. In =
+that=20
+case, use the <A =
+href=3D"http://industriousone.com/excludes">excludes</A> function=20
+to mask out those few exceptions.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">files <SPAN class=3Dbr0>{</SPAN> <SPAN =
+class=3Dst0>"*.c"</SPAN> <SPAN class=3Dbr0>}</SPAN>
+excludes <SPAN class=3Dbr0>{</SPAN> <SPAN class=3Dst0>"a_file.c"</SPAN>, =
+<SPAN class=3Dst0>"another_file.c"</SPAN> <SPAN =
+class=3Dbr0>}</SPAN></PRE></DIV>
+<P>Excludes may also use wildcards.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">files <SPAN class=3Dbr0>{</SPAN> <SPAN =
+class=3Dst0>"**.c"</SPAN> <SPAN class=3Dbr0>}</SPAN>
+excludes <SPAN class=3Dbr0>{</SPAN> <SPAN class=3Dst0>"tests/*.c"</SPAN> =
+<SPAN class=3Dbr0>}</SPAN></PRE></DIV>
+<P>Sometimes you may want to exclude all the files in a particular =
+directory,=20
+but aren't sure where that directory will fall in the source tree.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">files <SPAN class=3Dbr0>{</SPAN> <SPAN =
+class=3Dst0>"**.c"</SPAN> <SPAN class=3Dbr0>}</SPAN>
+excludes <SPAN class=3Dbr0>{</SPAN> <SPAN =
+class=3Dst0>"**/Win32Specific/**"</SPAN> <SPAN =
+class=3Dbr0>}</SPAN></PRE></DIV></DIV>
+<DIV id=3Dnode-431 class=3Dsection-3>
+<H1 class=3Dbook-heading>Linking</H1>
+<P>Linking to external libraries is done with the <A=20
+href=3D"http://industriousone.com/links-0">links</A> function.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">links <SPAN class=3Dbr0>{</SPAN> <SPAN =
+class=3Dst0>"png"</SPAN>, <SPAN class=3Dst0>"zlib"</SPAN> <SPAN =
+class=3Dbr0>}</SPAN></PRE></DIV>
+<P>When specifying libraries, system-specific decorations, such as =
+prefixes or=20
+file extensions, should be omitted. Premake will synthesize the correct =
+format=20
+based on the target platform automatically. The one exception to the =
+rule is Mac=20
+OS X frameworks, where the file extension is required to identify it as=20
+such.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">links <SPAN class=3Dbr0>{</SPAN> <SPAN =
+class=3Dst0>"Cocoa.framework"</SPAN> <SPAN =
+class=3Dbr0>}</SPAN></PRE></DIV>
+<P>To link to a sibling project (a project in the same solution) use the =
+
+<B>project name</B>. Premake will deduce the correct library path and =
+name based=20
+on the current platform and configuration.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">solution <SPAN =
+class=3Dst0>"MySolution"</SPAN>
+&nbsp;
+   project <SPAN class=3Dst0>"MyLibraryProject"</SPAN>
+      <SPAN class=3Dco1>-- ...project settings here...</SPAN>
+&nbsp;
+   project <SPAN class=3Dst0>"MyExecutableProject"</SPAN>
+      <SPAN class=3Dco1>-- ...project settings here...</SPAN>
+      links <SPAN class=3Dbr0>{</SPAN> <SPAN =
+class=3Dst0>"MyLibraryProject"</SPAN> <SPAN =
+class=3Dbr0>}</SPAN></PRE></DIV>
+<H3>Finding Libraries</H3>
+<P>You can tell Premake where to search for libraries with the <A=20
+href=3D"http://industriousone.com/libdirs">libdirs</A> function.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">libdirs <SPAN class=3Dbr0>{</SPAN> <SPAN =
+class=3Dst0>"libs"</SPAN>, <SPAN class=3Dst0>"../mylibs"</SPAN> <SPAN =
+class=3Dbr0>}</SPAN></PRE></DIV>
+<P>If you need to discover the location of a library, use the <A=20
+href=3D"http://industriousone.com/osfindlib">os.findlib</A> =
+function.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">libdirs <SPAN class=3Dbr0>{</SPAN> <SPAN =
+class=3Dkw1>os</SPAN>.findlib<SPAN class=3Dbr0>(</SPAN><SPAN =
+class=3Dst0>"X11"</SPAN><SPAN class=3Dbr0>)</SPAN> <SPAN =
+class=3Dbr0>}</SPAN></PRE></DIV></DIV>
+<DIV id=3Dnode-145 class=3Dsection-3>
+<H1 class=3Dbook-heading>Configurations</H1>
+<P>A <EM>configuration</EM> is a collection of flags and options to =
+apply to a=20
+build, including build flags, header file and library search =
+directories, and=20
+more. Each solution defines its own list of configurations. The most =
+common=20
+configuration set, which is usually provided by default by most IDEs, is =
+"Debug"=20
+and "Release". Visual Studio and other IDEs provide facilities to =
+quickly switch=20
+between configurations; Premake-generated makefiles allow the =
+configuration to=20
+be specified with a command-line parameter.</P>
+<H2>Specifying Configurations</H2>
+<P>At the solution level, specify your list of possible configurations =
+by=20
+calling the <A=20
+href=3D"http://industriousone.com/configurations">configurations</A> =
+function and=20
+passing it a list of names.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">solution <SPAN =
+class=3Dst0>"MySolution"</SPAN>
+  configurations <SPAN class=3Dbr0>{</SPAN> <SPAN =
+class=3Dst0>"Debug"</SPAN>, <SPAN class=3Dst0>"Release"</SPAN> <SPAN =
+class=3Dbr0>}</SPAN></PRE></DIV>
+<P>You are not limited to these two standard names. For instance, if =
+your=20
+project can be built as both as both static or shared libraries, you =
+might use=20
+this instead:</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">  configurations <SPAN =
+class=3Dbr0>{</SPAN> <SPAN class=3Dst0>"DebugLib"</SPAN>, <SPAN =
+class=3Dst0>"DebugDLL"</SPAN>, <SPAN class=3Dst0>"ReleaseLib"</SPAN>, =
+<SPAN class=3Dst0>"ReleaseDLL"</SPAN> <SPAN =
+class=3Dbr0>}</SPAN></PRE></DIV>
+<P>Some features of Premake, such as selecting a configuration from the =
+command=20
+line, are easier if you avoid spaces. However, spaces are allowed in=20
+configuration names.</P>
+<H2>Using Configurations</H2>
+<P>Premake provides a great deal of flexibility when it comes to =
+configuring=20
+your build: you can apply settings across an entire solution, a project, =
+or to a=20
+targeted combination of configuration and toolset. The <A=20
+href=3D"http://industriousone.com/configuration">configuration</A> =
+function is=20
+used to apply settings to a particular build environment.</P>
+<P>For example, you can define a symbol across all configurations of all =
+
+projects by setting it at the solution level, before any filters are=20
+enabled.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">solution <SPAN =
+class=3Dst0>"MySolution"</SPAN>
+  configurations <SPAN class=3Dbr0>{</SPAN> <SPAN =
+class=3Dst0>"Debug"</SPAN>, <SPAN class=3Dst0>"Release"</SPAN> <SPAN =
+class=3Dbr0>}</SPAN>
+&nbsp;
+  defines <SPAN class=3Dbr0>{</SPAN> <SPAN =
+class=3Dst0>"MY_SYMBOL"</SPAN> <SPAN class=3Dbr0>}</SPAN></PRE></DIV>
+<P>Or, using the <A=20
+href=3D"http://industriousone.com/configuration">configuration</A> =
+function, you=20
+can limit it to a particular configuration.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">solution <SPAN =
+class=3Dst0>"MySolution"</SPAN>
+  configurations <SPAN class=3Dbr0>{</SPAN> <SPAN =
+class=3Dst0>"Debug"</SPAN>, <SPAN class=3Dst0>"Release"</SPAN> <SPAN =
+class=3Dbr0>}</SPAN>
+&nbsp;
+  configuration <SPAN class=3Dst0>"Debug"</SPAN>
+    defines <SPAN class=3Dbr0>{</SPAN> <SPAN =
+class=3Dst0>"MY_SYMBOL"</SPAN> <SPAN class=3Dbr0>}</SPAN></PRE></DIV>
+<P>The same rules hold true at the project level.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">project <SPAN =
+class=3Dst0>"MyProject"</SPAN>
+&nbsp;
+   defines <SPAN class=3Dbr0>{</SPAN> <SPAN class=3Dst0>"TRACE"</SPAN> =
+<SPAN class=3Dbr0>}</SPAN>         <SPAN class=3Dco1>-- this will be =
+applied to every configuration</SPAN>
+&nbsp;
+   configuration <SPAN class=3Dst0>"Debug"</SPAN>
+      defines <SPAN class=3Dbr0>{</SPAN> <SPAN =
+class=3Dst0>"DEBUG"</SPAN> <SPAN class=3Dbr0>}</SPAN>      <SPAN =
+class=3Dco1>-- this will only be applied to Debug =
+builds</SPAN></PRE></DIV>
+<P>When values are supplied at multiple levels, list fields (like <A=20
+href=3D"http://industriousone.com/defines">defines</A> above) are=20
+<EM>concatenated</EM> while single-value fields (like <A=20
+href=3D"http://industriousone.com/language">language</A>) are =
+overridden. Project=20
+values take precedence over solution values, and will appear after the =
+solution=20
+values in lists. Values at the same level are evaluated in the order in =
+which=20
+they are encountered in the script.</P>
+<P>This is just an overview of configuration filtering. For more =
+details,=20
+including a list of the available filter keywords, see the documentation =
+for the=20
+<A href=3D"http://industriousone.com/configuration">configuration</A>=20
+function.</P>
+<P><EM>(I can see where this topic might be a bit confusing for =
+newcomers, and I=20
+welcome suggestions for improving this text. Feel free to leave your =
+ideas in=20
+the comments.)</EM></P></DIV>
+<DIV id=3Dnode-289 class=3Dsection-3>
+<H1 class=3Dbook-heading>Platforms</H1>
+<P><EM>Platform support is a new, experimental feature introduced in =
+<B>Premake=20
+4.1</B>. This is a potentially large area of development and it may take =
+a few=20
+releases to get it just right. The syntax and behavior described here =
+might=20
+change along the way.</EM></P>
+<P><EM><B>An important caveat:</B> I don't target multiple platforms in =
+my own=20
+day to day work. I am relying on those of you that do, and the community =
+at=20
+large, to help me shape this feature.</EM></P>
+<P><EM>One more disclaimer: I think this page is confusing. If you've =
+got any=20
+ideas on how I might explain it better please leave a comment. =
+Thanks!</EM></P>
+<P>In addition to <A=20
+href=3D"http://industriousone.com/configurations-0">configurations</A>, =
+you can=20
+also target multiple hardware <EM>platforms</EM>, such as a 32-bit build =
+and a=20
+64-bit build. This is also known as <A=20
+href=3D"http://en.wikipedia.org/wiki/Cross-compiling">cross =
+compiling</A>. These=20
+platforms can be quickly switched between from within your IDE, or with =
+a=20
+command-line parameter on the generated makefile. </P>
+<P>In addition to 32- and 64-bit builds, Premake also supports Mac OS X=20
+universal binaries, the Playstation 3, and the Xbox 360. See the <A=20
+href=3D"http://industriousone.com/platforms-0">platforms function=20
+documentation</A> for a full list of supported platforms.</P>
+<P>Unlike configurations, platforms are optional. If you don't need =
+them, just=20
+don't call the <A =
+href=3D"http://industriousone.com/platforms-0">platforms</A>=20
+function at all, in which case the toolset's default behavior will be =
+used.</P>
+<H2>Specifying Platforms</H2>
+<P>The easiest way to target a particular platform is to supply the=20
+<B>--platform</B> argument to Premake. If you have a solution that =
+builds on=20
+Windows, and you want to a binary for the Xbox 360, you would =
+call:</P><PRE>premake4 --platform=3Dxbox360 vs2005
+</PRE>
+<P>The files generated by this call will include the default Win32 build =
+
+normally present in Visual Studio solutions, plus a new set of =
+configurations=20
+which target the Xbox 360. Assuming that you have the proper development =
+tools=20
+installed and your software is portable enough, you can now build an =
+Xbox 360=20
+binary.</P>
+<P>If you frequently target several different platforms, and want to =
+switch=20
+between them without regenerating your project files, you can add them =
+directly=20
+to your script. Target platforms are part of the solution, just like=20
+configurations:</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">solution <SPAN =
+class=3Dst0>"MySolution"</SPAN>
+   configurations <SPAN class=3Dbr0>{</SPAN> <SPAN =
+class=3Dst0>"Debug"</SPAN>, <SPAN class=3Dst0>"Release"</SPAN> <SPAN =
+class=3Dbr0>}</SPAN>
+   platforms <SPAN class=3Dbr0>{</SPAN> <SPAN =
+class=3Dst0>"Native"</SPAN>, <SPAN class=3Dst0>"Universal"</SPAN> <SPAN =
+class=3Dbr0>}</SPAN></PRE></DIV>
+<P>Not all tools will support all of the possible targets (currently =
+only Visual=20
+Studio supports the Xbox 360 platform). Unsupported platforms are =
+silently=20
+ignored; they simply will not appear in the generated build scripts.</P>
+<P>Most toolsets require extra configuration to target multiple =
+platforms.=20
+Premake will generate a build script with the right instructions for a =
+64-bit or=20
+an Xbox build, but that build will only succeed if the corresponding =
+tools and=20
+libraries have been installed on the developer machine. GCC users may =
+need to=20
+install the <B>GCC multilib</B> packages.</P>
+<H2>The Native Platform</H2>
+<P>In addition to the cross-compiling platform targets listed above, =
+there is a=20
+special target called <B>native</B> which preserves the default compiler =
+
+behavior. Taking GCC as an example, Premake's <B>x32</B> flag adds =
+<B>-m32</B>=20
+to the GCC command line, and the <B>x64</B> flag adds <B>-m64</B>. The =
+native=20
+platform, in contrast, does not add <EM>any</EM> flags to the command =
+line and=20
+lets GCC use its default behavior to target the current platform.</P>
+<P>Normally you would include the native platform, and list it first to =
+make it=20
+the default.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">platforms <SPAN class=3Dbr0>{</SPAN> <SPAN =
+class=3Dst0>"native"</SPAN>, <SPAN class=3Dst0>"x32"</SPAN>, <SPAN =
+class=3Dst0>"x64"</SPAN> <SPAN class=3Dbr0>}</SPAN></PRE></DIV>
+<P>So if you wanted your code to "just build" on Windows or Unix, 32- or =
+64-bit=20
+systems, and you also wanted to allow folks to cross-compile for the =
+Xbox 360 or=20
+Mac OS X universal binaries, you could do:</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">platforms <SPAN class=3Dbr0>{</SPAN> <SPAN =
+class=3Dst0>"native"</SPAN>, <SPAN class=3Dst0>"xbox360"</SPAN>, <SPAN =
+class=3Dst0>"universal"</SPAN> <SPAN class=3Dbr0>}</SPAN></PRE></DIV>
+<P>Sometimes it is important to know which platform you are targeting; =
+you might=20
+need to define specific symbols or link to different libraries. In this =
+case,=20
+the native platform would not be included in the list. </P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">platforms <SPAN class=3Dbr0>{</SPAN> <SPAN =
+class=3Dst0>"x32"</SPAN>, <SPAN class=3Dst0>"x64"</SPAN> <SPAN =
+class=3Dbr0>}</SPAN></PRE></DIV>
+<H2>Platform Settings</H2>
+<P>Like any other configuration-specific value, platform-specific =
+settings are=20
+set with <A =
+href=3D"http://industriousone.com/configurations-0">configuration=20
+filters</A>. If no platform is specified to the filter, the subsequent =
+settings=20
+will apply to all platforms.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">configuration <SPAN class=3Dbr0>{</SPAN> =
+<SPAN class=3Dst0>"debug"</SPAN> <SPAN class=3Dbr0>}</SPAN>
+  defines <SPAN class=3Dst0>"_DEBUG"</SPAN>   <SPAN class=3Dco1>-- this =
+symbol will appear in settings for ALL platforms</SPAN></PRE></DIV>
+<P>If a specific platform identifier is listed, the settings will be =
+applied=20
+only when that platform is specifically selected by the user.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">configuration <SPAN class=3Dbr0>{</SPAN> =
+<SPAN class=3Dst0>"xbox360"</SPAN> <SPAN class=3Dbr0>}</SPAN>
+   defines <SPAN class=3Dst0>"IS_XBOX360_BUILD"</SPAN>  <SPAN =
+class=3Dco1>-- this will only get applied when user chooses the Xbox 360 =
+build</SPAN></PRE></DIV>
+<P>The platform is just another configuration axis, which you can mix =
+and match=20
+with any other selectors. See the <A=20
+href=3D"http://industriousone.com/configuration">configuration =
+function</A> for=20
+more details.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">configuration <SPAN class=3Dbr0>{</SPAN> =
+<SPAN class=3Dst0>"Debug"</SPAN>, <SPAN class=3Dst0>"x64"</SPAN> <SPAN =
+class=3Dbr0>}</SPAN>
+  defines <SPAN class=3Dst0>"USE_64BIT_DEBUG_LIBRARY"</SPAN></PRE></DIV>
+<H2>Platforms and Makefiles</H2>
+<P><I>I am still working out how the target platforms should be =
+represented in=20
+Premake-generated makefiles. Below is my best take so far; feedback and=20
+suggestions for improvement are very much appreciated.</I></P>
+<P>In the generated makefiles, platforms and build configurations are =
+paired up.=20
+If you defined a solution like this:</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">platforms <SPAN class=3Dbr0>{</SPAN> <SPAN =
+class=3Dst0>"native"</SPAN>, <SPAN class=3Dst0>"x64"</SPAN>, <SPAN =
+class=3Dst0>"universal"</SPAN> <SPAN class=3Dbr0>}</SPAN></PRE></DIV>
+<P>There would be six possible configurations: <B>debug</B>, =
+<B>release</B>,=20
+<B>debug64</B>, <B>release64</B>, <B>debuguniv</B>, and =
+<B>releaseuniv</B>. I=20
+tried to truncate the platforms to something easy to type.</P>
+<P>You target a specific configuration using the <B>config</B> =
+argument.</P><PRE>make config=3Ddebug64
+</PRE>
+<P>If the makefile is executed without any arguments, the first build=20
+configuration (in the example above, <B>debug</B>) will be used. For =
+this=20
+reason, it is recommended that you put <B>native</B> first in the=20
+list.</P></DIV>
+<DIV id=3Dnode-173 class=3Dsection-3>
+<H1 class=3Dbook-heading>Build Settings</H1>
+<P>Premake provides an ever-growing list of build settings that you can =
+tweak;=20
+the following table lists some of the most common configuration tasks =
+with a=20
+link to the corresponding function. As you can see, the <A=20
+href=3D"http://industriousone.com/flags">flags</A> function provides =
+most of the=20
+features, and is a good place to start if you aren't sure how to make =
+something=20
+go. For a comprehensive list of available settings and functions, see =
+the <A=20
+href=3D"http://industriousone.com/reference">Scripting Reference =
+page</A>=20
+page.</P>
+<TABLE>
+  <TBODY>
+  <TR class=3Dodd>
+    <TH>Specify source code files</TH>
+    <TD><A href=3D"http://industriousone.com/files">files</A>, <A=20
+      href=3D"http://industriousone.com/excludes">excludes</A></TD></TR>
+  <TR class=3Deven>
+    <TH>Define compiler or preprocessor symbols</TH>
+    <TD><A =
+href=3D"http://industriousone.com/defines">defines</A></TD></TR>
+  <TR class=3Dodd>
+    <TH>Locate include files</TH>
+    <TD><A =
+href=3D"http://industriousone.com/includedirs">includedirs</A></TD></TR>
+  <TR class=3Deven>
+    <TH>Link against libraries, frameworks, or sibling projects</TH>
+    <TD><A href=3D"http://industriousone.com/links-0">links</A>, <A=20
+      href=3D"http://industriousone.com/libdirs">libdirs</A></TD></TR>
+  <TR class=3Dodd>
+    <TH>Enable debugging information</TH>
+    <TD><A href=3D"http://industriousone.com/flags">flags</A></TD></TR>
+  <TR class=3Deven>
+    <TH>Optimize for size or speed</TH>
+    <TD><A href=3D"http://industriousone.com/flags">flags</A></TD></TR>
+  <TR class=3Dodd>
+    <TH>Turn compiler or linker features on or off</TH>
+    <TD><A href=3D"http://industriousone.com/flags">flags</A>, <A=20
+      href=3D"http://industriousone.com/buildoptions">buildoptions</A>, =
+<A=20
+      =
+href=3D"http://industriousone.com/linkoptions">linkoptions</A></TD></TR>
+  <TR class=3Deven>
+    <TH>Set the name or location of the compiled target file</TH>
+    <TD><A href=3D"http://industriousone.com/targetname">targetname</A>, =
+<A=20
+      =
+href=3D"http://industriousone.com/targetextension">targetextension</A>,<B=
+R><A=20
+      href=3D"http://industriousone.com/targetprefix">targetprefix</A>, =
+<A=20
+      =
+href=3D"http://industriousone.com/targetdir">targetdir</A></TD></TR></TBO=
+DY></TABLE>
+<P>For a comprehensive list of available settings and functions, see the =
+<A=20
+href=3D"http://industriousone.com/reference">Scripting Reference =
+page</A>=20
+page.</P>
+<P>If you think something should be possible and you can't figure out =
+how to do=20
+it, feel free to <A =
+href=3D"http://industriousone.com/forums/premake">post a=20
+question in the forums</A> and someone will help you out.</P></DIV>
+<DIV id=3Dnode-224 class=3Dsection-3>
+<H1 class=3Dbook-heading>Command Line Arguments</H1>
+<P>Premake provides the ability to define and handle new command-line =
+arguments=20
+from within your project script using the <A=20
+href=3D"http://industriousone.com/newaction">newaction</A> and <A=20
+href=3D"http://industriousone.com/newoption">newoption</A> =
+functions.</P>
+<H2>Actions and Options</H2>
+<P>Premake recognizes two types of arguments: <EM>actions</EM> and=20
+<EM>options</EM>.</P>
+<P>An <EM>action</EM> indicates what Premake should do on any given run. =
+For=20
+instance, the <B>vs2005</B> action indicates that Visual Studio 2005 =
+project=20
+files should be generated. The <B>clean</B> action causes all generated =
+files to=20
+be deleted. Only one action may be specified at a time (this is =
+different than=20
+Premake 3.x).</P>
+<P>An <EM>option</EM> modifies the behavior of the action. For instance, =
+the=20
+<B>dotnet</B> option is used to change which .NET compiler set is used =
+in the=20
+generated files. Options can accept a value, such as =
+<B>--dotnet=3Dmono</B> or act=20
+as a flag, like <B>--with-opengl</B>.</P>
+<P>From within your script, you can identify the current action with the =
+<A=20
+href=3D"http://industriousone.com/action">_ACTION</A> global variable, a =
+string=20
+value. You can check for an option using the <A=20
+href=3D"http://industriousone.com/options">_OPTIONS</A> table, which =
+contains a=20
+list of key-value pairs. The key is the option identifier ("dotnet"), =
+which=20
+references the command line value ("mono") or an empty string for =
+valueless=20
+options.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua"><SPAN class=3Dco1>-- delete a file if the =
+clean action is running</SPAN>
+<SPAN class=3Dkw1>if</SPAN> _ACTION <SPAN class=3Dsy0>=3D=3D</SPAN> =
+<SPAN class=3Dst0>"clean"</SPAN> <SPAN class=3Dkw1>then</SPAN>
+   <SPAN class=3Dco1>-- do something</SPAN>
+<SPAN class=3Dkw1>end</SPAN>
+&nbsp;
+<SPAN class=3Dco1>-- use an option value in a configuration</SPAN>
+targetdir <SPAN class=3Dbr0>(</SPAN> _OPTIONS<SPAN =
+class=3Dbr0>[</SPAN><SPAN class=3Dst0>"outdir"</SPAN><SPAN =
+class=3Dbr0>]</SPAN> <SPAN class=3Dbr0>)</SPAN></PRE></DIV>
+<H2>Creating New Options</H2>
+<P>New command-line options are created using the <A=20
+href=3D"http://industriousone.com/newoption">newoption</A> function, =
+passing a=20
+table which fully describes the option. This is best illustrated with =
+some=20
+examples.</P>
+<P>Here is an option intended to force the use of OpenGL in a 3D =
+application. It=20
+serves as a simple flag, and does not take any value.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">newoption <SPAN class=3Dbr0>{</SPAN>
+   trigger     <SPAN class=3Dsy0>=3D</SPAN> <SPAN =
+class=3Dst0>"with-opengl"</SPAN>,
+   description <SPAN class=3Dsy0>=3D</SPAN> <SPAN class=3Dst0>"Force the =
+use of OpenGL for rendering, regardless of platform"</SPAN>
+<SPAN class=3Dbr0>}</SPAN></PRE></DIV>
+<P>Note the commas after each key-value pair; this is required Lua =
+syntax for a=20
+table. Once added to your script, the option will appear in the help =
+text, and=20
+you may use the trigger as a keyword in your configuration blocks.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">configuration <SPAN =
+class=3Dst0>"with-opengl"</SPAN>
+   links <SPAN class=3Dbr0>{</SPAN> <SPAN class=3Dst0>"opengldrv"</SPAN> =
+<SPAN class=3Dbr0>}</SPAN>
+&nbsp;
+configuration <SPAN class=3Dst0>"not with-opengl"</SPAN>
+   links <SPAN class=3Dbr0>{</SPAN> <SPAN =
+class=3Dst0>"direct3ddrv"</SPAN> <SPAN class=3Dbr0>}</SPAN></PRE></DIV>
+<P>The next example shows an option with a fixed set of allowed values. =
+Like the=20
+example above, it is intended to allow the user to specify a 3D API.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">newoption <SPAN class=3Dbr0>{</SPAN>
+   trigger     <SPAN class=3Dsy0>=3D</SPAN> <SPAN =
+class=3Dst0>"gfxapi"</SPAN>,
+   value       <SPAN class=3Dsy0>=3D</SPAN> <SPAN =
+class=3Dst0>"API"</SPAN>,
+   description <SPAN class=3Dsy0>=3D</SPAN> <SPAN class=3Dst0>"Choose a =
+particular 3D API for rendering"</SPAN>,
+   allowed <SPAN class=3Dsy0>=3D</SPAN> <SPAN class=3Dbr0>{</SPAN>
+      <SPAN class=3Dbr0>{</SPAN> <SPAN class=3Dst0>"opengl"</SPAN>,    =
+<SPAN class=3Dst0>"OpenGL"</SPAN> <SPAN class=3Dbr0>}</SPAN>,
+      <SPAN class=3Dbr0>{</SPAN> <SPAN class=3Dst0>"direct3d"</SPAN>,  =
+<SPAN class=3Dst0>"Direct3D (Windows only)"</SPAN> <SPAN =
+class=3Dbr0>}</SPAN>,
+      <SPAN class=3Dbr0>{</SPAN> <SPAN class=3Dst0>"software"</SPAN>,  =
+<SPAN class=3Dst0>"Software Renderer"</SPAN> <SPAN class=3Dbr0>}</SPAN>
+   <SPAN class=3Dbr0>}</SPAN>
+<SPAN class=3Dbr0>}</SPAN></PRE></DIV>
+<P>As before, this new option will be integrated into the help text, =
+along with=20
+a description of each of the allowed values. Premake will check the =
+option value=20
+at startup, and raise an error on invalid values. The <B>value</B> field =
+appears=20
+in the help text, and is intended to give the user a clue about the type =
+of=20
+value that is expected. In this case, the help text will appear like =
+this:</P><PRE><CODE>--gfxapi=3DAPI      Choose a particular 3D API for =
+rendering; one of:
+     opengl        OpenGL
+     direct3d      Direct3D (Windows only)
+     software      Software Renderer
+</CODE></PRE>
+<P>Unlike the example above, you now use the <EM>value</EM> as a keyword =
+in your=20
+configuration blocks.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">configuration <SPAN =
+class=3Dst0>"opengl"</SPAN>
+   links <SPAN class=3Dbr0>{</SPAN> <SPAN class=3Dst0>"opengldrv"</SPAN> =
+<SPAN class=3Dbr0>}</SPAN>
+&nbsp;
+configuration <SPAN class=3Dst0>"direct3d"</SPAN>
+    links <SPAN class=3Dbr0>{</SPAN> <SPAN =
+class=3Dst0>"direct3ddrv"</SPAN> <SPAN class=3Dbr0>}</SPAN>
+&nbsp;
+configuration <SPAN class=3Dst0>"software"</SPAN>
+    links <SPAN class=3Dbr0>{</SPAN> <SPAN =
+class=3Dst0>"softwaredrv"</SPAN> <SPAN class=3Dbr0>}</SPAN></PRE></DIV>
+<P>Or you could be more clever.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">links <SPAN class=3Dbr0>{</SPAN> =
+_OPTIONS<SPAN class=3Dbr0>[</SPAN><SPAN class=3Dst0>"gfxapi"</SPAN><SPAN =
+class=3Dbr0>]</SPAN> .. <SPAN class=3Dst0>"drv"</SPAN> <SPAN =
+class=3Dbr0>}</SPAN></PRE></DIV>
+<P>In this example, you would also want to provide a default behavior =
+for the=20
+case where no option is specified. You could place a bit of code like =
+this=20
+anywhere in your script.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua"><SPAN class=3Dkw1>if</SPAN> <SPAN =
+class=3Dkw1>not</SPAN> _OPTIONS<SPAN class=3Dbr0>[</SPAN><SPAN =
+class=3Dst0>"gfxapi"</SPAN><SPAN class=3Dbr0>]</SPAN> <SPAN =
+class=3Dkw1>then</SPAN>
+   _OPTIONS<SPAN class=3Dbr0>[</SPAN><SPAN =
+class=3Dst0>"gfxapi"</SPAN><SPAN class=3Dbr0>]</SPAN> <SPAN =
+class=3Dsy0>=3D</SPAN> <SPAN class=3Dst0>"opengl"</SPAN>
+<SPAN class=3Dkw1>end</SPAN></PRE></DIV>
+<P>As a last example of options, you may want to specify an option that =
+accepts=20
+an unconstrained value, such as an output path. Just leave off the list =
+of=20
+allowed values.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">newoption <SPAN class=3Dbr0>{</SPAN>
+   trigger     <SPAN class=3Dsy0>=3D</SPAN> <SPAN =
+class=3Dst0>"outdir"</SPAN>,
+   value       <SPAN class=3Dsy0>=3D</SPAN> <SPAN =
+class=3Dst0>"path"</SPAN>,
+   description <SPAN class=3Dsy0>=3D</SPAN> <SPAN class=3Dst0>"Output =
+directory for the compiled executable"</SPAN>
+<SPAN class=3Dbr0>}</SPAN></PRE></DIV>
+<H2>Creating New Actions</H2>
+<P>Actions are defined in much the same way as options, and can be as =
+simple as=20
+this:</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">newaction <SPAN class=3Dbr0>{</SPAN>
+   trigger     <SPAN class=3Dsy0>=3D</SPAN> <SPAN =
+class=3Dst0>"install"</SPAN>,
+   description <SPAN class=3Dsy0>=3D</SPAN> <SPAN class=3Dst0>"Install =
+the software"</SPAN>,
+   <SPAN class=3Dkw1>execute</SPAN> <SPAN class=3Dsy0>=3D</SPAN> <SPAN =
+class=3Dkw1>function</SPAN> <SPAN class=3Dbr0>(</SPAN><SPAN =
+class=3Dbr0>)</SPAN>
+      <SPAN class=3Dco1>-- copy files, etc. here</SPAN>
+   <SPAN class=3Dkw1>end</SPAN>
+<SPAN class=3Dbr0>}</SPAN></PRE></DIV>
+<P>The actual code to be executed when the action if fired should be =
+placed in=20
+the <B>execute()</B> function.</P>
+<P>That's the simple version. If you are interested in developing more =
+complex=20
+actions, for instance to add support for a new toolset, see <B><A=20
+href=3D"http://industriousone.com/create-new-action">Create a new =
+action</A></B>=20
+in the <B><A =
+href=3D"http://industriousone.com/extending-premake">Extending=20
+Premake</A></B> section.</P></DIV></DIV>
+<DIV id=3Dnode-185 class=3Dsection-2>
+<H1 class=3Dbook-heading>Help!</H1>
+<P>If you are having trouble using Premake to generate build files for a =
+
+particular project, your best bet is to contact the manager of the =
+project=20
+first. They know their project better than I will, and may have seen the =
+same=20
+problem before.</P>
+<P>If you are having a problem with Premake, or need help with your =
+project=20
+scripts, you have some choices.</P>
+<P>First, check the <A =
+href=3D"http://industriousone.com/premake/faqs">Frequently=20
+Asked Questions</A>. Someone may have asked the same question =
+before.</P>
+<P>If you haven't already, read the <A=20
+href=3D"http://industriousone.com/premake/user-guide">Documentation</A>. =
+If you=20
+find a problem in the documentation, leave a comment describing the =
+problem on=20
+that page. I'll see your comment and fix it up, and the in meantime =
+others can=20
+benefit from your input.</P>
+<P>If you've found a bug in the software, or if you want to request a =
+new=20
+feature please visit the <A=20
+href=3D"http://sourceforge.net/tracker/?group_id=3D71616">Premake =
+Trackers on=20
+SourceForge</A>. It is a good idea to run a quick search first to make =
+sure your=20
+issue hasn't already been reported. If not, go ahead and create a new =
+ticket.=20
+The tracker makes sure your request gets the visibility and attention it =
+
+deserves, with no chance of it slipping through the cracks.</P>
+<P>If you just have a question you want answered, <A=20
+href=3D"http://industriousone.com/forums/premake">stop by the forums</A> =
+and start=20
+a new discussion. I try to check them daily and respond personally to =
+most=20
+posts.</P></DIV>
+<DIV id=3Dnode-64 class=3Dsection-2>
+<H1 class=3Dbook-heading>FAQs</H1>
+<P>Here are answers to some of the most frequently asked questions about =
+
+Premake, taken from <A =
+href=3D"http://industriousone.com/forums/premake">the=20
+forums</A> and the mailing list.</P>
+<P><A href=3D"http://industriousone.com/#build_order">How do I control =
+the build=20
+order of my projects?</A><BR><A =
+href=3D"http://industriousone.com/#universal">How=20
+do I build a Universal/64-bit/Xbox binary?</A><BR><A=20
+href=3D"http://industriousone.com/#external_tools">Is it possible to =
+invoke=20
+external tools?</A><BR><A =
+href=3D"http://industriousone.com/#winmain">Why is my=20
+Windows program trying to call main() instead of WinMain()?</A><BR><A=20
+href=3D"http://industriousone.com/#contrib_howto">How do I get my cool =
+new=20
+feature/bug fix included in Premake?</A></P>
+<P><A name=3Dbuild_order></A></P>
+<H3>Q. How do I control the build order of my projects?</H3>
+<P>There are two ways: re-order the projects in the script, and create =
+link=20
+dependencies.</P>
+<P>The project files generated by Premake will maintain the order of the =
+
+projects as they appear in your script. So you can change the build =
+order by=20
+rearranging the order of the projects in your script.</P>
+<P>However, when people ask this question they are really asking how to =
+link=20
+against a library project. In this case you want to put the library =
+<EM>project=20
+name</EM>, not the library file name, in the list of links for the =
+dependent=20
+project.</P>
+<P>So if I have a library project called "MyLibrary"...</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">project <SPAN =
+class=3Dst0>"MyLibrary"</SPAN>
+   kind <SPAN class=3Dst0>"SharedLib"</SPAN></PRE></DIV>
+<P>...I can link against it like this.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">project <SPAN =
+class=3Dst0>"MyExecutable"</SPAN>
+   kind <SPAN class=3Dst0>"ConsoleApp"</SPAN>
+   links <SPAN class=3Dbr0>{</SPAN> <SPAN class=3Dst0>"MyLibrary"</SPAN> =
+<SPAN class=3Dbr0>}</SPAN></PRE></DIV>
+<P>Premake will automatically figure out the library file name and =
+directory and=20
+create a dependency between the two projects to ensure a proper build =
+order.</P>
+<P>You can also use this method to create a build dependency between=20
+non-libraries. For instance, you may want to build an executable to use =
+in the=20
+prebuild step for another project. As shown above, just put the project =
+name in=20
+the list of links for the dependent project. Premake will recognize it =
+as an=20
+executable and create the build dependency, but skip the link =
+dependency.</P>
+<P>For more information, see the description of the <A=20
+href=3D"http://industriousone.com/links-0">links</A> function.</P>
+<P><A name=3Duniversal></A></P>
+<H3>Q. How do I build a Universal/64-bit/Xbox binary?</H3>
+<P>Supply the <B>--platform</B> option to Premake, and then build using =
+the=20
+corresponding configuration.</P><PRE>premake4 --platform=3Duniversal =
+gmake
+make config=3Dreleaseuniv clean
+make config=3Dreleaseuniv
+</PRE>
+<P>Best practice is to clean before building a new platform. See <A=20
+href=3D"http://industriousone.com/platforms">Platforms</A> for more =
+information.=20
+This feature requires Premake 4.1 or later.</P>
+<P><A name=3Dexternal_tools></A></P>
+<H3>Q. Is it possible to invoke external tools?</H3>
+<P>Yes, using Lua's <B>os.execute()</B> function. See the <A=20
+href=3D"http://www.lua.org/manual/5.1/manual.html#5.8">Lua Reference =
+Manual</A>=20
+for details.</P>
+<P><A name=3Dwinmain></A></P>
+<H3>Q. Why is my Windows program trying to call main() instead of=20
+WinMain()?</H3>
+<P>Premake tries hard to make all build tools on all platforms perform =
+as=20
+similarly as possible. So, by default, it will configure your Windows=20
+applications to call the standard <B>main()</B> entry point instead of =
+the=20
+Windows-specific <B>WinMain()</B>. You can change this behavior by =
+adding the <A=20
+href=3D"http://industriousone.com/flags">WinMain build flag</A> to your =
+package,=20
+like so:</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">flags <SPAN class=3Dbr0>{</SPAN> <SPAN =
+class=3Dst0>"WinMain"</SPAN> <SPAN class=3Dbr0>}</SPAN></PRE></DIV>
+<P><A name=3Dcontrib_howto></A></P>
+<H3>Q. How do I get my cool new feature/bug fix included in =
+Premake?</H3>
+<P>I love code contributions! The best way is to create a patch (see=20
+Subversion's <B>diff</B> command) against the Subversion repository, or =
+if=20
+that's not possible, the most recent source code release. Post it to the =
+<A=20
+href=3D"https://sourceforge.net/tracker2/?group_id=3D71616&amp;atid=3D531=
+880">Patch=20
+Tracker on SourceForge</A>=E2=80=94I get notified via email, and it =
+provides a good=20
+place to discuss and track it.</P>
+<P>If you can't figure out how to make a patch, get it to me however you =
+can. I=20
+will do my best to make sense of it.</P></DIV>
+<DIV id=3Dnode-70 class=3Dsection-2>
+<H1 class=3Dbook-heading>Scripting Reference</H1>
+<P>This section describes the functions and variables available to =
+Premake=20
+scripts.</P>
+<P>Premake is built on Lua, so everything in the <A=20
+href=3D"http://www.lua.org/manual/5.1/">Lua Reference Manual</A> applies =
+to a=20
+Premake script. Premake adds the ability to define solutions, projects, =
+and=20
+configurations, as well as functions useful for build configuration =
+tasks.</P>
+<P>You may also want to check out <A =
+href=3D"http://luaforge.net/">LuaForge</A>=20
+for a wide assortment of Lua add-on modules.</P>
+<DIV id=3Dnode-152 class=3Dsection-3>
+<H1 class=3Dbook-heading>_ACTION</H1>
+<P>The <SPAN class=3Dgeshifilter><CODE=20
+class=3D"text geshifilter-text">_ACTION</CODE></SPAN> global variable =
+stores the=20
+name of the action to be performed on this execution run. As an example, =
+if this=20
+command line was used to launch Premake...</P><PRE>$ premake4 vs2005
+</PRE>
+<P>...then <SPAN class=3Dgeshifilter><CODE=20
+class=3D"text geshifilter-text">_ACTION</CODE></SPAN> will be set to =
+"vs2005". If=20
+there is no action (for instance, if the command was <SPAN=20
+class=3Dgeshifilter><CODE class=3D"text geshifilter-text">premake4=20
+/help</CODE></SPAN>) this variable will be nil.</P></DIV>
+<DIV id=3Dnode-355 class=3Dsection-3>
+<H1 class=3Dbook-heading>_ARGS</H1>
+<P>The <SPAN class=3Dgeshifilter><CODE=20
+class=3D"text geshifilter-text">_ARGS</CODE></SPAN> global variable =
+stores any=20
+arguments to the current action. As an example, if this command line was =
+used to=20
+launch Premake...</P><PRE>$ premake4 vs2005 alpha beta
+</PRE>
+<P>...then <SPAN class=3Dgeshifilter><CODE=20
+class=3D"text geshifilter-text">_ARGS[1]</CODE></SPAN> will be set to =
+"alpha" and=20
+<SPAN class=3Dgeshifilter><CODE=20
+class=3D"text geshifilter-text">_ARGS[2]</CODE></SPAN> to "beta". If =
+there are no=20
+arguments this array will be empty.</P></DIV>
+<DIV id=3Dnode-221 class=3Dsection-3>
+<H1 class=3Dbook-heading>_OPTIONS</H1>
+<P>The <B>_OPTIONS</B> global variable lists the current set of command =
+line=20
+options and their values, if any. For more information, see <A=20
+href=3D"http://industriousone.com/command-line-arguments">Command Line=20
+Arguments</A>.</P></DIV>
+<DIV id=3Dnode-354 class=3Dsection-3>
+<H1 class=3Dbook-heading>_SCRIPT</H1>
+<P>The <SPAN class=3Dgeshifilter><CODE=20
+class=3D"text geshifilter-text">_SCRIPT</CODE></SPAN> global variable =
+stores the=20
+full path of the currently executing script.</P></DIV>
+<DIV id=3Dnode-194 class=3Dsection-3>
+<H1 class=3Dbook-heading>buildaction</H1>
+<P>The <B>buildaction</B> function specifies how a file or set of files =
+should=20
+be treated during the compilation process. It is usually paired with a=20
+configuration filter to select a file set. If no build action is =
+specified for a=20
+file a default action will be used, based on the file's extension.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">buildaction <SPAN =
+class=3Dbr0>(</SPAN><SPAN class=3Dst0>"action"</SPAN><SPAN =
+class=3Dbr0>)</SPAN></PRE></DIV>
+<P>Build actions are currently only supported for .NET projects, and not =
+for C=20
+or C++.</P>
+<H3>Applies To</H3>
+<P>Solutions, projects, and configurations.</P>
+<H3>Parameters</H3>
+<P><I>action</I> is one of:</P>
+<DL>
+  <DT>Compile</DT>
+  <DD>Treat the file as source code; compile and link it.</DD>
+  <DT>Embed</DT>
+  <DD>Embed the file into the target binary as a resource.</DD>
+  <DT>Copy</DT>
+  <DD>Copy the file to the target directory.</DD>
+  <DT>None</DT>
+  <DD>Do nothing with this file.</DD></DL>
+<H3>Examples</H3>
+<P>Embed all PNG image files into the target binary.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">configuration <SPAN =
+class=3Dst0>"**.png"</SPAN>
+   buildaction <SPAN class=3Dst0>"Embed"</SPAN></PRE></DIV></DIV>
+<DIV id=3Dnode-187 class=3Dsection-3>
+<H1 class=3Dbook-heading>buildoptions</H1>
+<P>The <B>buildoptions</B> function passes arguments directly to the =
+compiler=20
+command line without translation.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">buildoptions <SPAN class=3Dbr0>{</SPAN> =
+<SPAN class=3Dst0>"options"</SPAN> <SPAN =
+class=3Dbr0>}</SPAN></PRE></DIV>
+<P>If a project includes multiple calls to <B>buildoptions</B> the lists =
+are=20
+concatenated, in the order in which they appear in the script.</P>
+<H3>Applies To</H3>
+<P>Solutions, projects, and configurations.</P>
+<H3>Parameters</H3>
+<P><I>options</I> is a list of compiler flags and options, specific to a =
+
+particular compiler.</P>
+<H3>Examples</H3>
+<P>Use <CODE>pkg-config</CODE> style configuration when building on =
+Linux with=20
+GCC. Build options are always compiler specific and should be targeted =
+to a=20
+particular toolset.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">configuration <SPAN class=3Dbr0>{</SPAN> =
+<SPAN class=3Dst0>"linux"</SPAN>, <SPAN class=3Dst0>"gmake"</SPAN> <SPAN =
+class=3Dbr0>}</SPAN>
+  buildoptions <SPAN class=3Dbr0>{</SPAN> <SPAN class=3Dst0>"`wx-config =
+--cxxflags`"</SPAN>, <SPAN class=3Dst0>"-ansi"</SPAN>, <SPAN =
+class=3Dst0>"-pedantic"</SPAN> <SPAN =
+class=3Dbr0>}</SPAN></PRE></DIV></DIV>
+<DIV id=3Dnode-159 class=3Dsection-3>
+<H1 class=3Dbook-heading>configuration</H1>
+<P>The <B>configuration</B> function limits the subsequent build =
+settings to a=20
+particular environment.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">configuration <SPAN class=3Dbr0>{</SPAN> =
+<SPAN class=3Dst0>"keywords"</SPAN> <SPAN =
+class=3Dbr0>}</SPAN></PRE></DIV>
+<P>The <B>configuration</B> functions acts as a filter. Any settings =
+that appear=20
+after this function in the script will be applied only in those =
+environments=20
+that match all of the listed keywords. See below for some usage =
+examples.</P>
+<H3>Parameters</H3>
+<P><I>keywords</I> is a list of identifiers (see below). If all of these =
+
+identifiers are present in the current runtime environment, then the =
+settings=20
+following the <B>configuration</B> call will be applied. If any of the=20
+identifiers is not the current environment the settings will be =
+ignored.</P>
+<P>The following table lists the available sources for keywords. =
+Keywords are=20
+not case-sensitive.</P>
+<DL>
+  <DT>Configuration names</DT>
+  <DD>Any of the configuration names supplied to the <A=20
+  href=3D"http://industriousone.com/configurations">configurations</A>=20
+  function.</DD>
+  <DT>Action names</DT>
+  <DD>Any action name, such as <B>vs2005</B> or <B>gmake</B>. See the <A =
+
+  href=3D"http://industriousone.com/premake/quick-start">Quick Start</A> =
+for a=20
+  complete list.</DD>
+  <DT>Operating system names</DT>
+  <DD>Any of the operating system identifiers, such as <B>windows</B> or =
+
+  <B>macosx</B>, as returned by <A=20
+  href=3D"http://industriousone.com/osget">os.get</A>.</DD>
+  <DT>Platform names</DT>
+  <DD>Any of the platform identifiers, such as <B>ps3</B> or =
+<B>xbox360</B>. See=20
+  <A href=3D"http://industriousone.com/platforms-0">platforms</A> for a =
+complete=20
+  list.</DD>
+  <DT>Target kind</DT>
+  <DD>Any of the target kinds, such as <B>ConsoleApp</B> or =
+<B>SharedLib</B>.=20
+  See <A href=3D"http://industriousone.com/kind">kind</A> for a complete =
+
+list.</DD>
+  <DT>Command-line options</DT>
+  <DD>Any of the available command-line options or the option values, =
+whether=20
+  built-in or custom to the project.</DD>
+  <DT>File names</DT>
+  <DD>Although currently very limited, some settings can be applied to =
+specific=20
+  files.</DD></DL>
+<P>In addition to the terms listed above, you may use the <B>*</B> and =
+<B>**</B>=20
+wildcards to match more than one term or file. You may also use the =
+modifiers=20
+<B>not</B> and <B>or</B> to build more complex conditions. See the =
+examples=20
+below for more information.</P>
+<H3>Return Value</H3>
+<P>The function returns the current configuration object; see <A=20
+href=3D"http://industriousone.com/#block">The Configuration Block</A> =
+below for=20
+more information on the structure of this object.</P>
+<H3>Examples</H3>
+<P>Define a new symbol which applies only to debug builds; assumes a=20
+configuration named "Debug" was defined as part of the solution.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">configuration <SPAN =
+class=3Dst0>"Debug"</SPAN>
+  defines <SPAN class=3Dbr0>{</SPAN> <SPAN class=3Dst0>"_DEBUG"</SPAN> =
+<SPAN class=3Dbr0>}</SPAN></PRE></DIV>
+<P>Define a symbol only when targeting Visual Studio 2005.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">configuration <SPAN =
+class=3Dst0>"vs2005"</SPAN>
+  defines <SPAN class=3Dbr0>{</SPAN> <SPAN =
+class=3Dst0>"VISUAL_STUDIO_2005"</SPAN> <SPAN =
+class=3Dbr0>}</SPAN></PRE></DIV>
+<P>Wildcards can be used to match multiple terms. Define a symbol for =
+all=20
+versions of Visual Studio.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">configuration <SPAN =
+class=3Dst0>"vs*"</SPAN>
+  defines <SPAN class=3Dbr0>{</SPAN> <SPAN =
+class=3Dst0>"VISUAL_STUDIO_2005"</SPAN> <SPAN =
+class=3Dbr0>}</SPAN></PRE></DIV>
+<P>Add a suffix to the debug versions of libraries.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">configuration <SPAN class=3Dbr0>{</SPAN> =
+<SPAN class=3Dst0>"Debug"</SPAN>, <SPAN class=3Dst0>"SharedLib or =
+StaticLib"</SPAN> <SPAN class=3Dbr0>}</SPAN>
+  targetsuffix <SPAN class=3Dst0>"_d"</SPAN>
+&nbsp;
+<SPAN class=3Dco1>-- ...or...</SPAN>
+configuration <SPAN class=3Dbr0>{</SPAN> <SPAN =
+class=3Dst0>"Debug"</SPAN>, <SPAN class=3Dst0>"*Lib"</SPAN> <SPAN =
+class=3Dbr0>}</SPAN>
+  targetsuffix <SPAN class=3Dst0>"_d"</SPAN></PRE></DIV>
+<P>Although support is currently quite limited (only <A=20
+href=3D"http://industriousone.com/buildaction">buildaction</A> works so =
+far), you=20
+may also apply settings to a particular file or set of files. This =
+example sets=20
+the build action for all PNG image files.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">configuration <SPAN =
+class=3Dst0>"*.png"</SPAN>
+  buildaction <SPAN class=3Dst0>"Embed"</SPAN></PRE></DIV>
+<P>In the case of files you may also use the <B>**</B> wildcard, which =
+will=20
+recurse into subdirectories.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">configuration <SPAN =
+class=3Dst0>"**.png"</SPAN>
+  buildaction <SPAN class=3Dst0>"Embed"</SPAN></PRE></DIV>
+<P>If multiple keywords are specified, they will be treated as a logical =
+AND.=20
+All terms must be present for the block to be applied. This example will =
+apply=20
+the symbol only for debug builds on Mac OS X.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">configuration <SPAN class=3Dbr0>{</SPAN> =
+<SPAN class=3Dst0>"debug"</SPAN>, <SPAN class=3Dst0>"macosx"</SPAN> =
+<SPAN class=3Dbr0>}</SPAN>
+  defines <SPAN class=3Dbr0>{</SPAN> <SPAN =
+class=3Dst0>"DEBUG_MACOSX"</SPAN> <SPAN class=3Dbr0>}</SPAN></PRE></DIV>
+<P>Multiple terms must use Lua's curly bracket list syntax.</P>
+<P>You can use the <B>or</B> modifier to match against multiple, =
+specific=20
+terms.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">configuration <SPAN class=3Dst0>"linux or =
+macosx"</SPAN>
+  defines <SPAN class=3Dbr0>{</SPAN> <SPAN =
+class=3Dst0>"LINUX_OR_MACOSX"</SPAN> <SPAN =
+class=3Dbr0>}</SPAN></PRE></DIV>
+<P>You can also use <B>not</B> to apply the settings to all environments =
+where=20
+the identifier is not set.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">configuration <SPAN class=3Dst0>"not =
+windows"</SPAN>
+  defines <SPAN class=3Dbr0>{</SPAN> <SPAN =
+class=3Dst0>"NOT_WINDOWS"</SPAN> <SPAN class=3Dbr0>}</SPAN></PRE></DIV>
+<P>Finally, you can reset the configuration filter and remove all active =
+
+keywords by passing the function an empty table.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">configuration <SPAN =
+class=3Dbr0>{</SPAN><SPAN class=3Dbr0>}</SPAN></PRE></DIV>
+<H3>The Configuration Block</H3>
+<P><A name=3Dblock></A>Each call to <B>configuration</B> function =
+creates a new=20
+configuration block object. Unless you really know what you are doing, =
+you=20
+should treat this object as read-only and use the Premake API to make =
+any=20
+changes. The configuration block object contains the following =
+values:</P>
+<DL>
+  <DT>buildaction</DT>
+  <DD>A build action.</DD>
+  <DT>buildoptions</DT>
+  <DD>A list of compiler options.</DD>
+  <DT>defines</DT>
+  <DD>A list of compiler symbols.</DD>
+  <DT>excludes</DT>
+  <DD>A list of excluded files.</DD>
+  <DT>files</DT>
+  <DD>A list of files.</DD>
+  <DT>flags</DT>
+  <DD>A list of build flags.</DD>
+  <DT>implibdir</DT>
+  <DD>The import library directory.</DD>
+  <DT>implibextension</DT>
+  <DD>The import library file extension.</DD>
+  <DT>implibname</DT>
+  <DD>The import library base file name.</DD>
+  <DT>implibprefix</DT>
+  <DD>The import library file name prefix.</DD>
+  <DT>implibsuffix</DT>
+  <DD>The import library file name suffix.</DD>
+  <DT>includedirs</DT>
+  <DD>A list of include file search directories.</DD>
+  <DT>keywords</DT>
+  <DD>A list of keywords associated with the block.</DD>
+  <DT>kind</DT>
+  <DD>The target kind.</DD>
+  <DT>libdirs</DT>
+  <DD>A list of library search directories.</DD>
+  <DT>linkoptions</DT>
+  <DD>A list of linker options.</DD>
+  <DT>links</DT>
+  <DD>A list of libraries or assemblies to link against.</DD>
+  <DT>objdir</DT>
+  <DD>The objects and intermediate files directory.</DD>
+  <DT>pchheader</DT>
+  <DD>The target file name for precompiled header support.</DD>
+  <DT>pchsource</DT>
+  <DD>The target source file name for precompiled header support.</DD>
+  <DT>prebuildcommands</DT>
+  <DD>A list of pre-build commands.</DD>
+  <DT>prelinkcommands</DT>
+  <DD>A list of pre-link commands.</DD>
+  <DT>postbuildcommands</DT>
+  <DD>A list of post-build commands.</DD>
+  <DT>resdefines</DT>
+  <DD>A list of symbols for the resource compiler.</DD>
+  <DT>resincludedirs</DT>
+  <DD>A list of include file search paths for the resource =
+compiler.</DD>
+  <DT>resoptions</DT>
+  <DD>A list of resource compiler options.</DD>
+  <DT>targetdir</DT>
+  <DD>The target output directory.</DD>
+  <DT>targetextension</DT>
+  <DD>The target file extension.</DD>
+  <DT>targetname</DT>
+  <DD>The target base file name.</DD>
+  <DT>targetprefix</DT>
+  <DD>The target file name prefix.</DD>
+  <DT>targetsuffix</DT>
+  <DD>The target file name suffix.</DD>
+  <DT>terms</DT>
+  <DD>The filter terms passed to the configuration function to create =
+the block=20
+  (i.e. "Debug").</DD></DL></DIV>
+<DIV id=3Dnode-149 class=3Dsection-3>
+<H1 class=3Dbook-heading>configurations</H1>
+<P>The <B>configurations</B> function specifies the set of build =
+configurations,=20
+such as "Debug" and "Release", for a solution.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">configurations <SPAN class=3Dbr0>{</SPAN> =
+<SPAN class=3Dst0>"names"</SPAN> <SPAN class=3Dbr0>}</SPAN></PRE></DIV>
+<P>A configuration encapsulates a collection of build settings, allowing =
+the=20
+developer to easily switch between them. "Debug" and "Release" are the =
+most=20
+common configurations, the former providing debugging information, and =
+the=20
+latter providing optimizations.</P>
+<P>The list of configurations must be specified before any projects are =
+defined,=20
+and once a project has been defined the configuration list may no longer =
+be=20
+changed.</P>
+<H3>Applies To</H3>
+<P>Solutions only.</P>
+<H3>Parameters</H3>
+<P><I>names</I> is a list of configuration names. Spaces are allowed, =
+but may=20
+make using certain Premake features, such as a command-line =
+configuration=20
+selection, more difficult.</P>
+<H3>Return Value</H3>
+<P>The function returns the current list of configuration names for the =
+active=20
+solution.</P>
+<H3>Examples</H3>
+<P>Specify debug and release configurations for a solution.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">solution <SPAN =
+class=3Dst0>"MySolution"</SPAN>
+  configurations <SPAN class=3Dbr0>{</SPAN> <SPAN =
+class=3Dst0>"Debug"</SPAN>, <SPAN class=3Dst0>"Release"</SPAN> <SPAN =
+class=3Dbr0>}</SPAN></PRE></DIV>
+<P>Add additional configurations for a dynamic link library version.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">configurations <SPAN class=3Dbr0>{</SPAN> =
+<SPAN class=3Dst0>"Debug"</SPAN>, <SPAN class=3Dst0>"Release"</SPAN>, =
+<SPAN class=3Dst0>"DebugDLL"</SPAN>, <SPAN =
+class=3Dst0>"ReleaseDLL"</SPAN> <SPAN class=3Dbr0>}</SPAN></PRE></DIV>
+<P>You can retrieve the current list of configurations by calling the =
+function=20
+with no parameters.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua"><SPAN class=3Dkw1>local</SPAN> cfgs <SPAN =
+class=3Dsy0>=3D</SPAN> configurations<SPAN class=3Dbr0>(</SPAN><SPAN =
+class=3Dbr0>)</SPAN></PRE></DIV></DIV>
+<DIV id=3Dnode-155 class=3Dsection-3>
+<H1 class=3Dbook-heading>defines</H1>
+<P>The <B>defines</B> function adds preprocessor or compiler symbols to =
+a=20
+project.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">defines <SPAN class=3Dbr0>{</SPAN> <SPAN =
+class=3Dst0>"symbols"</SPAN> <SPAN class=3Dbr0>}</SPAN></PRE></DIV>
+<P>If a project includes multiple calls to <B>defines</B> the lists are=20
+concatenated, in the order in which they appear in the script.</P>
+<H3>Applies To</H3>
+<P>Solutions, projects, and configurations.</P>
+<H3>Parameters</H3>
+<P><I>symbols</I> specifies a list of symbols to be defined.</P>
+<H3>Examples</H3>
+<P>Define two new symbols in the current project.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">defines <SPAN class=3Dbr0>{</SPAN> <SPAN =
+class=3Dst0>"DEBUG"</SPAN>, <SPAN class=3Dst0>"TRACE"</SPAN> <SPAN =
+class=3Dbr0>}</SPAN></PRE></DIV>
+<P>Symbols may also assign values.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">defines <SPAN class=3Dbr0>{</SPAN> <SPAN =
+class=3Dst0>"CALLSPEC=3D__dllexport"</SPAN> <SPAN =
+class=3Dbr0>}</SPAN></PRE></DIV></DIV>
+<DIV id=3Dnode-456 class=3Dsection-3>
+<H1 class=3Dbook-heading>deploymentoptions</H1>
+<P>The <B>deploymentoptions</B> function passes arguments directly to =
+the=20
+deployment tool command line without translation.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">deploymentoptions <SPAN =
+class=3Dbr0>{</SPAN> <SPAN class=3Dst0>"options"</SPAN> <SPAN =
+class=3Dbr0>}</SPAN></PRE></DIV>
+<P>If a project includes multiple calls to <B>deploymentoptions</B> the =
+lists=20
+are concatenated, in the order in which they appear in the script.</P>
+<P>Deployment options are currently only supported for Xbox 360 =
+targets.</P>
+<H3>Applies To</H3>
+<P>Solutions, projects, and configurations.</P>
+<H3>Parameters</H3>
+<P><I>options</I> is a list of deployment tools flags and =
+options.</P></DIV>
+<DIV id=3Dnode-186 class=3Dsection-3>
+<H1 class=3Dbook-heading>excludes</H1>
+<P>The <B>excludes</B> function removes files, added with the <A=20
+href=3D"http://industriousone.com/files">files</A> function, from a =
+project.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">excludes <SPAN class=3Dbr0>{</SPAN> <SPAN =
+class=3Dst0>"file_list"</SPAN> <SPAN class=3Dbr0>}</SPAN></PRE></DIV>
+<P>If a project includes multiple calls to <B>excludes</B> the lists are =
+
+concatenated.</P>
+<H3>Applies To</H3>
+<P>Files may be set on the solution, project, and configuration level. =
+However,=20
+only project-level file lists are currently supported.</P>
+<H3>Parameters</H3>
+<P><I>file_list</I> specifies one or more file patterns, separated by =
+commas.=20
+File paths should be specified relative to the location of the script =
+file. File=20
+patterns may contain the <B>*</B> wildcard to match against files in the =
+current=20
+directory, or the <B>**</B> wildcard to perform a recursive match.</P>
+<H3>Examples</H3>
+<P>Add all C files in a directory, and then exclude a specific file.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">files <SPAN class=3Dbr0>{</SPAN> <SPAN =
+class=3Dst0>"*.c"</SPAN> <SPAN class=3Dbr0>}</SPAN>
+excludes <SPAN class=3Dbr0>{</SPAN> <SPAN class=3Dst0>"a_file.c"</SPAN> =
+<SPAN class=3Dbr0>}</SPAN></PRE></DIV>
+<P>Add an entire directory tree of C files, and then exclude one =
+particular=20
+directory.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">files <SPAN class=3Dbr0>{</SPAN> <SPAN =
+class=3Dst0>"**.c"</SPAN> <SPAN class=3Dbr0>}</SPAN>
+excludes <SPAN class=3Dbr0>{</SPAN> <SPAN class=3Dst0>"tests/*.c"</SPAN> =
+<SPAN class=3Dbr0>}</SPAN></PRE></DIV></DIV>
+<DIV id=3Dnode-150 class=3Dsection-3>
+<H1 class=3Dbook-heading>files</H1>
+<P>The <B>files</B> function adds files to a project.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">files <SPAN class=3Dbr0>{</SPAN> <SPAN =
+class=3Dst0>"file_list"</SPAN> <SPAN class=3Dbr0>}</SPAN></PRE></DIV>
+<P>If a project includes multiple calls to <B>files</B> the lists are=20
+concatenated, in the order in which they appear in the script.</P>
+<H3>Applies To</H3>
+<P>Files may be set on the solution, project, and configuration level. =
+However,=20
+only project-level file lists are currently supported.</P>
+<H3>Parameters</H3>
+<P><I>file_list</I> specifies one or more file patterns, separated by =
+commas.=20
+File paths should be specified relative to the location of the script =
+file. File=20
+patterns may contain the <B>*</B> wildcard to match against files in the =
+current=20
+directory, or the <B>**</B> wildcard to perform a recursive match.</P>
+<P>If a wildcard matches more files than you would like, you may filter =
+the list=20
+using the <A href=3D"http://industriousone.com/excludes">excludes</A>=20
+function.</P>
+<H3>Examples</H3>
+<P>Add two files to the current project.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">files <SPAN class=3Dbr0>{</SPAN> <SPAN =
+class=3Dst0>"hello.cpp"</SPAN>, <SPAN class=3Dst0>"goodbye.cpp"</SPAN> =
+<SPAN class=3Dbr0>}</SPAN></PRE></DIV>
+<P>Add all C++ files from the <B>src/</B> directory to the project.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">files <SPAN class=3Dbr0>{</SPAN> <SPAN =
+class=3Dst0>"src/*.cpp"</SPAN> <SPAN class=3Dbr0>}</SPAN></PRE></DIV>
+<P>Add all C++ files from the <B>src/</B> directory, and any =
+subdirectories.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">files <SPAN class=3Dbr0>{</SPAN> <SPAN =
+class=3Dst0>"src/**.cpp"</SPAN> <SPAN =
+class=3Dbr0>}</SPAN></PRE></DIV></DIV>
+<DIV id=3Dnode-172 class=3Dsection-3>
+<H1 class=3Dbook-heading>flags</H1>
+<P>The <B>flags</B> function specifies build flags to modify the =
+compiling or=20
+linking process.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">flags <SPAN class=3Dbr0>{</SPAN> <SPAN =
+class=3Dst0>"flag_list"</SPAN> <SPAN class=3Dbr0>}</SPAN></PRE></DIV>
+<P>If a project includes multiple calls to <B>flags</B> the lists are=20
+concatenated, in the order in which they appear in the script.</P>
+<H3>Applies To</H3>
+<P>Solutions, projects, and configurations.</P>
+<H3>Parameters</H3>
+<P><I>flags_list</I> is a list of string flag names; see below for a =
+list of=20
+valid flags. The flag values are <B>not</B> case-sensitive. Flags that =
+are not=20
+supported by a particular platform or toolset are ignored.</P>
+<DL>
+  <DT>EnableSSE, EnableSSE2</DT>
+  <DD>Use the SSE instruction sets for floating point math.</DD>
+  <DT>ExtraWarnings</DT>
+  <DD>Sets the compiler's maximum warning level.</DD>
+  <DT>FatalWarnings</DT>
+  <DD>Treat warnings as errors.</DD>
+  <DT>FloatFast</DT>
+  <DD>Enable floating point optimizations at the expense of =
+accuracy.</DD>
+  <DT>FloatStrict</DT>
+  <DD>Improve floating point consistency at the expense of =
+performance.</DD>
+  <DT>Managed</DT>
+  <DD>Enable Managed C++ (.NET).</DD>
+  <DT>MFC</DT>
+  <DD>Enable support for Microsoft Foundation Classes.</DD>
+  <DT>NativeWChar, NoNativeWChar</DT>
+  <DD>Enable or disable support for the <B>wchar</B> data type. If no =
+flag is=20
+  specified, the toolset default will be used.</DD>
+  <DT>No64BitChecks</DT>
+  <DD>Disable 64-bit portability warnings.</DD>
+  <DT>NoEditAndContinue</DT>
+  <DD>Disable support for Visual Studio's Edit-and-Continue =
+feature.</DD>
+  <DT>NoExceptions</DT>
+  <DD>Disable C++ exception support.</DD>
+  <DT>NoFramePointer</DT>
+  <DD>Disable the generation of stack frame pointers.</DD>
+  <DT>NoImportLib</DT>
+  <DD>Prevent the generation of an import library for a Windows =
+DLL.</DD>
+  <DT>NoManifest</DT>
+  <DD>Prevent the generation of a manifest for Windows executables and =
+shared=20
+  libraries.</DD>
+  <DT>NoMinimalRebuild</DT>
+  <DD>Disable Visual Studio's <A=20
+  =
+href=3D"http://msdn.microsoft.com/en-us/library/kfz8ad09(VS.80).aspx">min=
+imal=20
+  rebuild feature</A>.</DD>
+  <DT>NoPCH</DT>
+  <DD>Disable precompiled header support. If not specified, the toolset =
+default=20
+  behavior will be used. Also see <A=20
+  href=3D"http://industriousone.com/pchheader">pchheader</A> and <A=20
+  href=3D"http://industriousone.com/pchsource">pchsource</A>.</DD>
+  <DT>NoRTTI</DT>
+  <DD>Disable C++ runtime type information.</DD>
+  <DT>Optimize</DT>
+  <DD>Perform a balanced set of optimizations.</DD>
+  <DT>OptimizeSize</DT>
+  <DD>Optimize for the smallest file size.</DD>
+  <DT>OptimizeSpeed</DT>
+  <DD>Optimize for the best performance.</DD>
+  <DT>SEH</DT>
+  <DD>Enable <A=20
+  =
+href=3D"http://www.microsoft.com/msj/0197/exception/exception.aspx">struc=
+tured=20
+  exception handling</A>.</DD>
+  <DT>StaticRuntime</DT>
+  <DD>Perform a static link against the standard runtime libraries.</DD>
+  <DT>Symbols</DT>
+  <DD>Generate debugging information.</DD>
+  <DT>Unicode</DT>
+  <DD>Enable Unicode strings. If not specified, the default toolset =
+behavior is=20
+  used.</DD>
+  <DT>Unsafe</DT>
+  <DD>Enable the use of unsafe code in .NET applications.</DD>
+  <DT>WinMain</DT>
+  <DD>Use <B>WinMain()</B> as the program entry point for Windows =
+applications,=20
+  rather than the default <B>main()</B>.</DD></DL>
+<P>If the existing flags are not sufficient, you can also pass =
+tool-specific=20
+arguments directly to the compiler or linker using <A=20
+href=3D"http://industriousone.com/buildoptions">buildoptions</A> and <A=20
+href=3D"http://industriousone.com/linkoptions">linkoptions</A>.</P>
+<H3>Examples</H3>
+<P>A common configuration: enable debugging symbols in the Debug =
+configuration,=20
+and optimize the Release configuration.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">configuration <SPAN =
+class=3Dst0>"Debug"</SPAN>
+  flags <SPAN class=3Dbr0>{</SPAN> <SPAN class=3Dst0>"Symbols"</SPAN> =
+<SPAN class=3Dbr0>}</SPAN>
+&nbsp;
+configuration <SPAN class=3Dst0>"Release"</SPAN>
+  flags <SPAN class=3Dbr0>{</SPAN> <SPAN class=3Dst0>"Optimize"</SPAN> =
+<SPAN class=3Dbr0>}</SPAN></PRE></DIV>
+<P>You can specify multiple flags.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">flags <SPAN class=3Dbr0>{</SPAN> <SPAN =
+class=3Dst0>"Symbols"</SPAN>, <SPAN class=3Dst0>"ExtraWarnings"</SPAN>, =
+<SPAN class=3Dst0>"FatalWarnings"</SPAN> <SPAN =
+class=3Dbr0>}</SPAN></PRE></DIV></DIV>
+<DIV id=3Dnode-398 class=3Dsection-3>
+<H1 class=3Dbook-heading>framework</H1>
+<P>The <B>framework</B> function selects a .NET framework version.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">framework <SPAN class=3Dbr0>(</SPAN><SPAN =
+class=3Dst0>"version"</SPAN><SPAN class=3Dbr0>)</SPAN></PRE></DIV>
+<P>This value currently is only applied to Visual Studio 2005 or later, =
+and GNU=20
+makefiles using Mono. If no framework is specified the toolset default =
+is=20
+used.</P>
+<H3>Applies To</H3>
+<P>Solutions and projects.</P>
+<H3>Parameters</H3>
+<P><I>version</I> is one of:</P>
+<UL>
+  <LI>1.0</LI>
+  <LI>1.1</LI>
+  <LI>2.0</LI>
+  <LI>3.0</LI>
+  <LI>3.5</LI>
+  <LI>4.0</LI></UL>
+<H3>Examples</H3>
+<P>Use the .NET 3.0 Framework.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">framework <SPAN =
+class=3Dst0>"3.0"</SPAN></PRE></DIV></DIV>
+<DIV id=3Dnode-239 class=3Dsection-3>
+<H1 class=3Dbook-heading>iif</H1>
+<P>The <B>iif</B> function implements an immediate "if" clause, =
+returning one of=20
+two possible values.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">result <SPAN class=3Dsy0>=3D</SPAN> =
+iif<SPAN class=3Dbr0>(</SPAN>condition, trueval, falseval<SPAN =
+class=3Dbr0>)</SPAN></PRE></DIV>
+<H3>Parameters</H3>
+<P><I>condition</I> is the logical condition to test. <I>trueval</I> is =
+the=20
+value to return if the condition evaluates to true, <I>falseval</I> if =
+the=20
+condition evaluates false.</P>
+<H3>Return Value</H3>
+<P><I>trueval</I> is the condition evaluates true, <I>falseval</I>=20
+otherwise.</P>
+<H3>Examples</H3>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">result <SPAN class=3Dsy0>=3D</SPAN> =
+iif<SPAN class=3Dbr0>(</SPAN><SPAN class=3Dkw1>os</SPAN>.is<SPAN =
+class=3Dbr0>(</SPAN><SPAN class=3Dst0>"windows"</SPAN><SPAN =
+class=3Dbr0>)</SPAN>, <SPAN class=3Dst0>"is windows"</SPAN>, <SPAN =
+class=3Dst0>"is not windows"</SPAN><SPAN =
+class=3Dbr0>)</SPAN></PRE></DIV>
+<P>Note that all expressions are evaluated before the condition is =
+checked; the=20
+following expression can not be implemented with an immediate if because =
+it may=20
+try to concatenate a string value.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">result <SPAN class=3Dsy0>=3D</SPAN> =
+iif<SPAN class=3Dbr0>(</SPAN>x ~<SPAN class=3Dsy0>=3D</SPAN> <SPAN =
+class=3Dkw1>nil</SPAN>, <SPAN class=3Dst0>"x is "</SPAN> .. x, <SPAN =
+class=3Dst0>"x is nil"</SPAN><SPAN =
+class=3Dbr0>)</SPAN></PRE></DIV></DIV>
+<DIV id=3Dnode-457 class=3Dsection-3>
+<H1 class=3Dbook-heading>imageoptions</H1>
+<P>The <B>imageoptions</B> function passes arguments directly to the =
+image tool=20
+command line without translation.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">imageoptions <SPAN class=3Dbr0>{</SPAN> =
+<SPAN class=3Dst0>"options"</SPAN> <SPAN =
+class=3Dbr0>}</SPAN></PRE></DIV>
+<P>If a project includes multiple calls to <B>imageoptions</B> the lists =
+are=20
+concatenated, in the order in which they appear in the script.</P>
+<P>Image options are currently only supported for Xbox 360 targets.</P>
+<H3>Applies To</H3>
+<P>Solutions, projects, and configurations.</P>
+<H3>Parameters</H3>
+<P><I>options</I> is a list of image tools flags and options.</P></DIV>
+<DIV id=3Dnode-462 class=3Dsection-3>
+<H1 class=3Dbook-heading>imagepath</H1>
+<P>The <B>imagepath</B> function sets the file name of the deployment =
+image=20
+produced by the build.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">imagepath <SPAN class=3Dbr0>(</SPAN><SPAN =
+class=3Dst0>"path"</SPAN><SPAN class=3Dbr0>)</SPAN></PRE></DIV>
+<P>This value is currently only used by the Xbox 360.</P>
+<H3>Applies To</H3>
+<P>Solutions, projects, and configurations.</P>
+<H3>Parameters</H3>
+<P><I>path</I> is the full path for the image file, relative to the =
+currently=20
+executing script file.</P>
+<H3>See Also</H3>
+<P><A =
+href=3D"http://industriousone.com/imageoptions">imageoptions</A></P></DIV=
+>
+<DIV id=3Dnode-196 class=3Dsection-3>
+<H1 class=3Dbook-heading>implibdir</H1>
+<P>The <B>implibdir</B> function specifies the import library output =
+directory.=20
+Import libraries are generated for Windows DLL projects.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">implibdir <SPAN class=3Dbr0>(</SPAN><SPAN =
+class=3Dst0>"path"</SPAN><SPAN class=3Dbr0>)</SPAN></PRE></DIV>
+<P>By default, the generated project files will place the import library =
+in the=20
+same directory as the compiled binary. The <B>implibdir</B> function =
+allows you=20
+to change this location.</P>
+<H3>Applies To</H3>
+<P>Solutions, projects, and configurations.</P>
+<H3>Parameters</H3>
+<P><I>path</I> is the output directory for the library, relative to the=20
+currently executing script file.</P>
+<H3>See Also</H3>
+<P><A href=3D"http://industriousone.com/implibname">implibname</A><BR><A =
+
+href=3D"http://industriousone.com/implibextension">implibextension</A><BR=
+><A=20
+href=3D"http://industriousone.com/implibprefix">implibprefix</A><BR><A=20
+href=3D"http://industriousone.com/implibsuffix">implibsuffix</A></P>
+<H3>Examples</H3>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">implibdir <SPAN =
+class=3Dst0>"../Libraries"</SPAN></PRE></DIV></DIV>
+<DIV id=3Dnode-197 class=3Dsection-3>
+<H1 class=3Dbook-heading>implibextension</H1>
+<P>The <B>implibextension</B> function specifies the import library file =
+
+extension. Import libraries are generated for Windows DLL projects.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">implibextension <SPAN =
+class=3Dbr0>(</SPAN><SPAN class=3Dst0>"ext"</SPAN><SPAN =
+class=3Dbr0>)</SPAN></PRE></DIV>
+<P>By default, the toolset static library file extension will be used=20
+(<B>.lib</B> with Windows tools, <B>.a</B> with GNU tools). The=20
+<B>implibextension</B> function allows you to change this default.</P>
+<H3>Applies To</H3>
+<P>Solutions, projects, and configurations.</P>
+<H3>Parameters</H3>
+<P><I>ext</I> is the new file extension, including the leading dot.</P>
+<H3>See Also</H3>
+<P><A href=3D"http://industriousone.com/implibname">implibname</A><BR><A =
+
+href=3D"http://industriousone.com/implibdir">implibdir</A><BR><A=20
+href=3D"http://industriousone.com/implibprefix">implibprefix</A><BR><A=20
+href=3D"http://industriousone.com/implibsuffix">implibsuffix</A></P>
+<H3>Examples</H3>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">implibextension <SPAN =
+class=3Dst0>".mpi"</SPAN></PRE></DIV></DIV>
+<DIV id=3Dnode-200 class=3Dsection-3>
+<H1 class=3Dbook-heading>implibname</H1>
+<P>The <B>implibname</B> function specifies the import library base file =
+name.=20
+Import libraries are generated for Windows DLL projects.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">implibname <SPAN class=3Dbr0>(</SPAN><SPAN =
+class=3Dst0>"name"</SPAN><SPAN class=3Dbr0>)</SPAN></PRE></DIV>
+<P>By default, the <A =
+href=3D"http://industriousone.com/targetname">target=20
+name</A> will be used as the import library file name. The =
+<B>implibname</B>=20
+function allows you to change this default.</P>
+<H3>Applies To</H3>
+<P>Solutions, projects, and configurations.</P>
+<H3>Parameters</H3>
+<P><I>name</I> is the new base file name.</P>
+<H3>See Also</H3>
+<P><A href=3D"http://industriousone.com/implibdir">implibdir</A><BR><A=20
+href=3D"http://industriousone.com/implibextension">implibextension</A><BR=
+><A=20
+href=3D"http://industriousone.com/implibprefix">implibprefix</A><BR><A=20
+href=3D"http://industriousone.com/implibsuffix">implibsuffix</A></P>
+<H3>Examples</H3>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">implibname <SPAN =
+class=3Dst0>"mytarget"</SPAN></PRE></DIV></DIV>
+<DIV id=3Dnode-201 class=3Dsection-3>
+<H1 class=3Dbook-heading>implibprefix</H1>
+<P>The <B>implibprefix</B> function specifies the import library file =
+name=20
+prefix. Import libraries are generated for Windows DLL projects.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">implibprefix <SPAN =
+class=3Dbr0>(</SPAN><SPAN class=3Dst0>"prefix"</SPAN><SPAN =
+class=3Dbr0>)</SPAN></PRE></DIV>
+<P>By default, the system naming convention will be used: no prefix on =
+Windows,=20
+a prefix of "lib" (as in <B>libMyProject.a</B>) on other systems. The=20
+<B>implibprefix</B> function allows you to change this default.</P>
+<H3>Applies To</H3>
+<P>Solutions, projects, and configurations.</P>
+<H3>Parameters</H3>
+<P><I>prefix</I> is the new file name prefix.</P>
+<H3>See Also</H3>
+<P><A href=3D"http://industriousone.com/implibname">implibname</A><BR><A =
+
+href=3D"http://industriousone.com/implibdir">implibdir</A><BR><A=20
+href=3D"http://industriousone.com/implibextension">implibextension</A><BR=
+><A=20
+href=3D"http://industriousone.com/implibsuffix">implibsuffix</A></P>
+<H3>Examples</H3>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">implibprefix <SPAN =
+class=3Dst0>"plugin"</SPAN></PRE></DIV>
+<P>The prefix may also be set to an empty string for no prefix.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">implibprefix <SPAN =
+class=3Dst0>""</SPAN></PRE></DIV></DIV>
+<DIV id=3Dnode-353 class=3Dsection-3>
+<H1 class=3Dbook-heading>implibsuffix</H1>
+<P>The <B>implibsuffix</B> function specifies a file name suffix for the =
+import=20
+library base file name. Import libraries are generated for Windows DLL=20
+projects.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">implibsuffix <SPAN =
+class=3Dbr0>(</SPAN><SPAN class=3Dst0>"suffix"</SPAN><SPAN =
+class=3Dbr0>)</SPAN></PRE></DIV>
+<H3>Applies To</H3>
+<P>Solutions, projects, and configurations.</P>
+<H3>Parameters</H3>
+<P><I>suffix</I> is the new filename suffix.</P>
+<H3>See Also</H3>
+<P><A href=3D"http://industriousone.com/implibname">implibname</A><BR><A =
+
+href=3D"http://industriousone.com/implibdir">implibdir</A><BR><A=20
+href=3D"http://industriousone.com/implibprefix">implibprefix</A><BR><A=20
+href=3D"http://industriousone.com/implibextension">implibextension</A></P=
+>
+<H3>Examples</H3>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua"><SPAN class=3Dco1>-- Add "-d" to debug =
+versions of files</SPAN>
+configuration <SPAN class=3Dst0>"Debug"</SPAN>
+   implibsuffix <SPAN class=3Dst0>"-d"</SPAN></PRE></DIV></DIV>
+<DIV id=3Dnode-151 class=3Dsection-3>
+<H1 class=3Dbook-heading>include</H1>
+<P>The <B>include</B> function looks for a file named =
+<B>premake4.lua</B> in a=20
+specified directory, and includes it in the current script.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">include <SPAN =
+class=3Dst0>"directory"</SPAN></PRE></DIV>
+<P>This is equivalent to:</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua"><SPAN class=3Dkw1>dofile</SPAN> <SPAN =
+class=3Dst0>"directory/premake4.lua"</SPAN></PRE></DIV>
+<P>This allows you to specify each project in its own =
+<B>premake4.lua</B> file,=20
+and then easily include them into a solution, or multiple solutions.</P>
+<H3>Parameters</H3>
+<P><I>directory</I> is the path to the included directory, relative to =
+the=20
+currently executing script file. The directory must contain a=20
+<B>premake4.lua</B> file, or an error will occur. If you wish to call a =
+file=20
+other than <B>premake4.lua</B>, use the <A=20
+href=3D"http://www.lua.org/manual/5.1/manual.html#pdf-dofile">dofile</A> =
+function=20
+instead.</P>
+<H3>Return Value</H3>
+<P>Any values returned by the included script are passed through to the=20
+caller.</P>
+<H3>Examples</H3>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua"><SPAN class=3Dco1>-- runs =
+"src/MyApplication/premake4.lua"</SPAN>
+include <SPAN class=3Dst0>"src/MyApplication"</SPAN>
+&nbsp;
+<SPAN class=3Dco1>-- runs "src/MyLibrary/premake4.lua"</SPAN>
+include <SPAN class=3Dst0>"src/MyLibrary"</SPAN></PRE></DIV></DIV>
+<DIV id=3Dnode-203 class=3Dsection-3>
+<H1 class=3Dbook-heading>includedirs</H1>
+<P>The <B>includedirs</B> function specifies the include file search =
+paths.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">includedirs <SPAN class=3Dbr0>{</SPAN> =
+<SPAN class=3Dst0>"paths"</SPAN> <SPAN class=3Dbr0>}</SPAN></PRE></DIV>
+<P>If a project includes multiple calls to <B>includedirs</B> the lists =
+are=20
+concatenated, in the order in which they appear in the script.</P>
+<H3>Applies To</H3>
+<P>Solutions, projects, and configurations.</P>
+<H3>Parameters</H3>
+<P><I>paths</I> specifies a list of include file search directories. =
+Paths=20
+should be specified relative to the currently running script file.</P>
+<H3>Examples</H3>
+<P>Define two include file search paths.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">includedirs <SPAN class=3Dbr0>{</SPAN> =
+<SPAN class=3Dst0>"../lua/include"</SPAN>, <SPAN =
+class=3Dst0>"../zlib"</SPAN> <SPAN class=3Dbr0>}</SPAN></PRE></DIV>
+<P>You can also use wildcards to match multiple directories. The =
+<B>*</B> will=20
+match against a single directory, <B>**</B> will recurse into =
+subdirectories as=20
+well.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">includedirs <SPAN class=3Dbr0>{</SPAN> =
+<SPAN class=3Dst0>"../includes/**"</SPAN> <SPAN =
+class=3Dbr0>}</SPAN></PRE></DIV></DIV>
+<DIV id=3Dnode-171 class=3Dsection-3>
+<H1 class=3Dbook-heading>kind</H1>
+<P>The <B>kind</B> function sets the kind of binary object being created =
+by the=20
+project, such as a console or windowed application, or a shared or =
+static=20
+library.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">kind <SPAN class=3Dbr0>(</SPAN><SPAN =
+class=3Dst0>"kind"</SPAN><SPAN class=3Dbr0>)</SPAN></PRE></DIV>
+<H3>Applies To</H3>
+<P>Solutions, projects, and configurations.</P>
+<H3>Parameters</H3>
+<P><I>kind</I> is the project kind identifier, and must be one of:</P>
+<DL>
+  <DT>ConsoleApp</DT>
+  <DD>A console, or command-line, executable.</DD>
+  <DT>WindowedApp</DT>
+  <DD>An application that runs in a desktop window. This distinction =
+does not=20
+  apply on Linux, but is important on Windows and Mac OS X.</DD>
+  <DT>SharedLib</DT>
+  <DD>A shared library, or DLL.</DD>
+  <DT>StaticLib</DT>
+  <DD>A static library.</DD></DL>
+<H3>Examples</H3>
+<P>Set the project to generate a console executable.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">kind <SPAN =
+class=3Dst0>"ConsoleApp"</SPAN></PRE></DIV>
+<P>Set the project to generate a shared library (DLL).</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">kind <SPAN =
+class=3Dst0>"SharedLib"</SPAN></PRE></DIV>
+<P>You can also set different kinds for each configuration. <B>This is =
+not=20
+supported by Xcode.</B></P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">solution <SPAN =
+class=3Dst0>"MySolution"</SPAN>
+   configurations <SPAN class=3Dbr0>{</SPAN> <SPAN =
+class=3Dst0>"DebugLib"</SPAN>, <SPAN class=3Dst0>"ReleaseLib"</SPAN>, =
+<SPAN class=3Dst0>"DebugDLL"</SPAN>, <SPAN =
+class=3Dst0>"ReleaseDLL"</SPAN> <SPAN class=3Dbr0>}</SPAN>
+&nbsp;
+project <SPAN class=3Dst0>"MyProject"</SPAN>
+   configuration <SPAN class=3Dst0>"*Lib"</SPAN>
+      kind <SPAN class=3Dst0>"StaticLib"</SPAN>
+&nbsp;
+   configuration <SPAN class=3Dst0>"*DLL"</SPAN>
+      kind <SPAN class=3Dst0>"SharedLib"</SPAN></PRE></DIV></DIV>
+<DIV id=3Dnode-72 class=3Dsection-3>
+<H1 class=3Dbook-heading>language</H1>
+<P>The <B>language</B> function sets the programming language used by a=20
+project.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">language <SPAN class=3Dbr0>(</SPAN><SPAN =
+class=3Dst0>"lang"</SPAN><SPAN class=3Dbr0>)</SPAN></PRE></DIV>
+<P>Premake currently supports <B>C</B>, <B>C++</B>, and <B>C#</B>. Not =
+all=20
+languages are supported by all of the generators; for instance, =
+SharpDevelop=20
+does not (currently) support C or C++ development, and Code::Blocks does =
+not=20
+support the .NET languages (C#, Managed C++).</P>
+<H3>Applies To</H3>
+<P>Solutions and projects.</P>
+<H3>Parameters</H3>
+<P><I>lang</I> is the language identifier. This is a string value, set =
+to one of=20
+<B>C</B>, <B>C++</B>, or <B>C#</B>. The value is not case sensitive.</P>
+<H3>Examples</H3>
+<P>Set the project language to C++.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">language <SPAN =
+class=3Dst0>"C++"</SPAN></PRE></DIV>
+<P>Set the project language to C#</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">language <SPAN =
+class=3Dst0>"C#"</SPAN></PRE></DIV></DIV>
+<DIV id=3Dnode-204 class=3Dsection-3>
+<H1 class=3Dbook-heading>libdirs</H1>
+<P>The <B>libdirs</B> function specifies the library search paths.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">libdirs <SPAN class=3Dbr0>{</SPAN> <SPAN =
+class=3Dst0>"paths"</SPAN> <SPAN class=3Dbr0>}</SPAN></PRE></DIV>
+<P>Library search directories are not well supported by the .NET tools. =
+Visual=20
+Studio will change relative paths to absolute, making it difficult to =
+share the=20
+generated project. MonoDevelop and SharpDevelop do not support search=20
+directories at all, using only the GAC. In general, it is better to =
+include the=20
+full (relative) path to the assembly in <A=20
+href=3D"http://industriousone.com/links">links</A> instead. C/C++ =
+projects do not=20
+have this limitation.</P>
+<P>If a project includes multiple calls to <B>libdirs</B> the lists are=20
+concatenated, in the order in which they appear in the script.</P>
+<H3>Applies To</H3>
+<P>Solutions, projects, and configurations.</P>
+<H3>Parameters</H3>
+<P><I>paths</I> specifies a list of library search directories. Paths =
+should be=20
+specified relative to the currently running script file.</P>
+<H3>Examples</H3>
+<P>Define two library file search paths.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">libdirs <SPAN class=3Dbr0>{</SPAN> <SPAN =
+class=3Dst0>"../lua/libs"</SPAN>, <SPAN class=3Dst0>"../zlib"</SPAN> =
+<SPAN class=3Dbr0>}</SPAN></PRE></DIV>
+<P>You can also use wildcards to match multiple directories. The =
+<B>*</B> will=20
+match against a single directory, <B>**</B> will recurse into =
+subdirectories as=20
+well.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">libdirs <SPAN class=3Dbr0>{</SPAN> <SPAN =
+class=3Dst0>"../libs/**"</SPAN> <SPAN =
+class=3Dbr0>}</SPAN></PRE></DIV></DIV>
+<DIV id=3Dnode-188 class=3Dsection-3>
+<H1 class=3Dbook-heading>linkoptions</H1>
+<P>The <B>linkoptions</B> function passes arguments directly to the =
+linker=20
+command line without translation.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">linkoptions <SPAN class=3Dbr0>{</SPAN> =
+<SPAN class=3Dst0>"options"</SPAN> <SPAN =
+class=3Dbr0>}</SPAN></PRE></DIV>
+<P>If a project includes multiple calls to <B>linkoptions</B> the lists =
+are=20
+concatenated, in the order in which they appear in the script.</P>
+<H3>Applies To</H3>
+<P>Solutions, projects, and configurations.</P>
+<H3>Parameters</H3>
+<P><I>options</I> is a list of linker flags and options, specific to a=20
+particular linker.</P>
+<H3>Examples</H3>
+<P>Use <CODE>pkg-config</CODE> style configuration when building on =
+Linux with=20
+GCC. Build options are always linker specific and should be targeted to =
+a=20
+particular toolset.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">configuration <SPAN class=3Dbr0>{</SPAN> =
+<SPAN class=3Dst0>"linux"</SPAN>, <SPAN class=3Dst0>"gmake"</SPAN> <SPAN =
+class=3Dbr0>}</SPAN>
+  linkoptions <SPAN class=3Dbr0>{</SPAN> <SPAN class=3Dst0>"`wx-config =
+--libs`"</SPAN> <SPAN class=3Dbr0>}</SPAN></PRE></DIV></DIV>
+<DIV id=3Dnode-205 class=3Dsection-3>
+<H1 class=3Dbook-heading>links</H1>
+<P>The <B>links</B> function specifies a list of libraries and projects =
+to link=20
+against.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">links <SPAN class=3Dbr0>{</SPAN> <SPAN =
+class=3Dst0>"references"</SPAN> <SPAN class=3Dbr0>}</SPAN></PRE></DIV>
+<P>If a project includes multiple calls to <B>links</B> the lists are=20
+concatenated, in the order in which they appear in the script.</P>
+<H3>Applies To</H3>
+<P>Solutions, projects, and configurations.</P>
+<H3>Parameters</H3>
+<P><I>references</I> is a list of library and project names.</P>
+<P>When linking against another project in the same solution, specify =
+the=20
+project name here, rather than the library name. Premake will figure out =
+the=20
+correct library to link against for the current configuration, and will =
+also=20
+create a dependency between the projects to ensure a proper build =
+order.</P>
+<P>When linking against system libraries, do not include any prefix or =
+file=20
+extension. Premake will use the appropriate naming conventions for the =
+current=20
+platform.</P>
+<H3>Examples</H3>
+<P>Link against some system libraries.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">configuration <SPAN =
+class=3Dst0>"windows"</SPAN>
+   links <SPAN class=3Dbr0>{</SPAN> <SPAN class=3Dst0>"user32"</SPAN>, =
+<SPAN class=3Dst0>"gdi32"</SPAN> <SPAN class=3Dbr0>}</SPAN>
+&nbsp;
+configuration <SPAN class=3Dst0>"linux"</SPAN>
+   links <SPAN class=3Dbr0>{</SPAN> <SPAN class=3Dst0>"m"</SPAN>, <SPAN =
+class=3Dst0>"png"</SPAN> <SPAN class=3Dbr0>}</SPAN>
+&nbsp;
+configuration <SPAN class=3Dst0>"macosx"</SPAN>
+   <SPAN class=3Dco1>-- OS X frameworks need the extension to be handled =
+properly</SPAN>
+   links <SPAN class=3Dbr0>{</SPAN> <SPAN =
+class=3Dst0>"Cocoa.framework"</SPAN>, <SPAN class=3Dst0>"png"</SPAN> =
+<SPAN class=3Dbr0>}</SPAN></PRE></DIV>
+<P>In a solution with two project, link the library into the executable. =
+Note=20
+that the project name is used to specify the link; Premake will =
+automatically=20
+figure out the correct library file name and directory and create a =
+project=20
+dependency.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">solution <SPAN =
+class=3Dst0>"MySolution"</SPAN>
+   configurations <SPAN class=3Dbr0>{</SPAN> <SPAN =
+class=3Dst0>"Debug"</SPAN>, <SPAN class=3Dst0>"Release"</SPAN> <SPAN =
+class=3Dbr0>}</SPAN>
+   language <SPAN class=3Dst0>"C++"</SPAN>
+&nbsp;
+   project <SPAN class=3Dst0>"MyExecutable"</SPAN>
+      kind <SPAN class=3Dst0>"ConsoleApp"</SPAN>
+      files <SPAN class=3Dst0>"**.cpp"</SPAN>
+      links <SPAN class=3Dbr0>{</SPAN> <SPAN =
+class=3Dst0>"MyLibrary"</SPAN> <SPAN class=3Dbr0>}</SPAN>
+&nbsp;
+   project <SPAN class=3Dst0>"MyLibrary"</SPAN>
+      kind <SPAN class=3Dst0>"SharedLib"</SPAN>
+      files <SPAN class=3Dst0>"**.cpp"</SPAN></PRE></DIV>
+<P>You may also create links between non-library projects. In this case, =
+Premake=20
+will generate a build dependency (the linked project will build first), =
+but not=20
+an actual link. In this example, MyProject uses a build dependency to =
+ensure=20
+that MyTool gets built first. It then uses MyTool as part of its build=20
+process.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">solution <SPAN =
+class=3Dst0>"MySolution"</SPAN>
+   configurations <SPAN class=3Dbr0>{</SPAN> <SPAN =
+class=3Dst0>"Debug"</SPAN>, <SPAN class=3Dst0>"Release"</SPAN> <SPAN =
+class=3Dbr0>}</SPAN>
+   language <SPAN class=3Dst0>"C++"</SPAN>
+&nbsp;
+   project <SPAN class=3Dst0>"MyProject"</SPAN>
+      kind <SPAN class=3Dst0>"ConsoleApp"</SPAN>
+      files <SPAN class=3Dst0>"**.cpp"</SPAN>
+      links <SPAN class=3Dbr0>{</SPAN> <SPAN class=3Dst0>"MyTool"</SPAN> =
+<SPAN class=3Dbr0>}</SPAN>
+      prebuildcommands <SPAN class=3Dbr0>{</SPAN> <SPAN =
+class=3Dst0>"MyTool --dosomething"</SPAN> <SPAN class=3Dbr0>}</SPAN>
+&nbsp;
+   project <SPAN class=3Dst0>"MyTool"</SPAN>
+      kind <SPAN class=3Dst0>"ConsoleApp"</SPAN>
+      files <SPAN class=3Dst0>"**.cpp"</SPAN></PRE></DIV></DIV>
+<DIV id=3Dnode-73 class=3Dsection-3>
+<H1 class=3Dbook-heading>location</H1>
+<P>The <B>location</B> function sets the destination directory for a =
+generated=20
+solution or project file.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">location <SPAN class=3Dbr0>(</SPAN><SPAN =
+class=3Dst0>"path"</SPAN><SPAN class=3Dbr0>)</SPAN></PRE></DIV>
+<P>By default, solution and project files are generated into the same =
+directory=20
+as the script that defines them. The <B>location</B> function allows you =
+to=20
+change this location.</P>
+<H3>Applies To</H3>
+<P>Solutions and projects.</P>
+<H3>Parameters</H3>
+<P><I>path</I> is the directory where the generated files should be =
+stored,=20
+specified relative to the currently executing script file.</P>
+<H3>Examples</H3>
+<P>Set the destination directory for a solution. Setting the location =
+for a=20
+project works the same way.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">solution <SPAN =
+class=3Dst0>"MySolution"</SPAN>
+  location <SPAN class=3Dst0>"../build"</SPAN></PRE></DIV>
+<P>If you plan to build with multiple tools from the same source tree =
+you might=20
+want to split up the project files by toolset. The <A=20
+href=3D"http://industriousone.com/action">_ACTION</A> global variable =
+contains the=20
+current toolset identifier, as specified on the command line. Note that =
+Lua=20
+syntax requires parenthesis around the function parameters in this =
+case.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">location <SPAN class=3Dbr0>(</SPAN><SPAN =
+class=3Dst0>"../build/"</SPAN> .. _ACTION<SPAN =
+class=3Dbr0>)</SPAN></PRE></DIV></DIV>
+<DIV id=3Dnode-222 class=3Dsection-3>
+<H1 class=3Dbook-heading>newaction</H1>
+<P>The <B>newaction</B> function registers a new command-line action =
+argument.=20
+For more information, see <A=20
+href=3D"http://industriousone.com/command-line-arguments">Command Line=20
+Arguments</A>.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">newaction <SPAN =
+class=3Dbr0>(</SPAN>description<SPAN class=3Dbr0>)</SPAN></PRE></DIV>
+<H3>Parameters</H3>
+<P><I>description</I> is a table describing the new action. It may =
+contain the=20
+following fields:</P>
+<DL>
+  <DT>trigger</DT>
+  <DD>The string identifier of the action; what the user would type on =
+the=20
+  command line.</DD>
+  <DT>description</DT>
+  <DD>A short description of the action, to be displayed in the help =
+text.</DD>
+  <DT>execute</DT>
+  <DD>A function to be executed when the action is fired.</DD></DL>
+<H3>See Also</H3>
+<P><A href=3D"http://industriousone.com/command-line-arguments">Command =
+Line=20
+Arguments</A></P>
+<H3>Examples</H3>
+<P>Register a new action to install the software project.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">newaction <SPAN class=3Dbr0>{</SPAN>
+   trigger     <SPAN class=3Dsy0>=3D</SPAN> <SPAN =
+class=3Dst0>"install"</SPAN>,
+   description <SPAN class=3Dsy0>=3D</SPAN> <SPAN class=3Dst0>"Install =
+the software"</SPAN>,
+   <SPAN class=3Dkw1>execute</SPAN>     <SPAN class=3Dsy0>=3D</SPAN> =
+<SPAN class=3Dkw1>function</SPAN> <SPAN class=3Dbr0>(</SPAN><SPAN =
+class=3Dbr0>)</SPAN>
+      <SPAN class=3Dkw1>os</SPAN>.copyfile<SPAN =
+class=3Dbr0>(</SPAN><SPAN class=3Dst0>"bin/debug/myprogram"</SPAN>, =
+<SPAN class=3Dst0>"/usr/local/bin/myprogram"</SPAN><SPAN =
+class=3Dbr0>)</SPAN>
+   <SPAN class=3Dkw1>end</SPAN>
+<SPAN class=3Dbr0>}</SPAN></PRE></DIV></DIV>
+<DIV id=3Dnode-223 class=3Dsection-3>
+<H1 class=3Dbook-heading>newoption</H1>
+<P>The <B>newoption</B> function registers a new command-line option =
+argument.=20
+For more information, see <A=20
+href=3D"http://industriousone.com/command-line-arguments">Command Line=20
+Arguments</A>.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">newoption <SPAN =
+class=3Dbr0>(</SPAN>description<SPAN class=3Dbr0>)</SPAN></PRE></DIV>
+<H3>Parameters</H3>
+<P><I>description</I> is a table describing the new option. It may =
+contain the=20
+following fields:</P>
+<DL>
+  <DT>trigger</DT>
+  <DD>The string identifier of the option; what the user would type on =
+the=20
+  command line.</DD>
+  <DT>description</DT>
+  <DD>A short description of the option, to be displayed in the help =
+text.</DD>
+  <DT>value</DT>
+  <DD>Optional. If the option needs a value, provides a hint to the user =
+what=20
+  type of data is expected.</DD>
+  <DT>allowed</DT>
+  <DD>Optional. A list of key-value pairs listing the allowed values for =
+the=20
+  option.</DD></DL>
+<H3>See Also</H3>
+<P><A href=3D"http://industriousone.com/command-line-arguments">Command =
+Line=20
+Arguments</A></P>
+<H3>Examples</H3>
+<P>Register a new option to select a rendering API for a 3D =
+application.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">newoption <SPAN class=3Dbr0>{</SPAN>
+   trigger     <SPAN class=3Dsy0>=3D</SPAN> <SPAN =
+class=3Dst0>"gfxapi"</SPAN>,
+   value       <SPAN class=3Dsy0>=3D</SPAN> <SPAN =
+class=3Dst0>"API"</SPAN>,
+   description <SPAN class=3Dsy0>=3D</SPAN> <SPAN class=3Dst0>"Choose a =
+particular 3D API for rendering"</SPAN>,
+   allowed <SPAN class=3Dsy0>=3D</SPAN> <SPAN class=3Dbr0>{</SPAN>
+      <SPAN class=3Dbr0>{</SPAN> <SPAN class=3Dst0>"opengl"</SPAN>,    =
+<SPAN class=3Dst0>"OpenGL"</SPAN> <SPAN class=3Dbr0>}</SPAN>,
+      <SPAN class=3Dbr0>{</SPAN> <SPAN class=3Dst0>"direct3d"</SPAN>,  =
+<SPAN class=3Dst0>"Direct3D (Windows only)"</SPAN> <SPAN =
+class=3Dbr0>}</SPAN>,
+      <SPAN class=3Dbr0>{</SPAN> <SPAN class=3Dst0>"software"</SPAN>,  =
+<SPAN class=3Dst0>"Software Renderer"</SPAN> <SPAN class=3Dbr0>}</SPAN>
+   <SPAN class=3Dbr0>}</SPAN>
+<SPAN class=3Dbr0>}</SPAN></PRE></DIV></DIV>
+<DIV id=3Dnode-206 class=3Dsection-3>
+<H1 class=3Dbook-heading>objdir</H1>
+<P>The <B>objdir</B> function sets object and intermediate file =
+directory for a=20
+project.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">objdir <SPAN class=3Dbr0>(</SPAN><SPAN =
+class=3Dst0>"path"</SPAN><SPAN class=3Dbr0>)</SPAN></PRE></DIV>
+<P>By default, object and intermediate files are stored in a directory =
+named=20
+"obj" in the same directory as the project. The <B>objdir</B> function =
+allows=20
+you to change this location.</P>
+<H3>Applies To</H3>
+<P>Solutions, projects, and configurations.</P>
+<H3>Parameters</H3>
+<P><I>path</I> is the directory where the object and intermediate files =
+should=20
+be stored, specified relative to the currently executing script =
+file.</P>
+<H3>Examples</H3>
+<P>Set an object directory for a project.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">project <SPAN =
+class=3Dst0>"MyProject"</SPAN>
+   objdir <SPAN class=3Dst0>"objects"</SPAN></PRE></DIV>
+<P>Set object directories per configuration.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">configuration <SPAN =
+class=3Dst0>"Debug"</SPAN>
+  objdir <SPAN class=3Dst0>"../obj_debug"</SPAN>
+&nbsp;
+configuration <SPAN class=3Dst0>"Release"</SPAN>
+  objdir <SPAN class=3Dst0>"../obj_release"</SPAN></PRE></DIV></DIV>
+<DIV id=3Dnode-227 class=3Dsection-3>
+<H1 class=3Dbook-heading>os.chdir</H1>
+<P>The <B>os.chdir</B> function changes the current working =
+directory.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua"><SPAN class=3Dkw1>os</SPAN>.chdir<SPAN =
+class=3Dbr0>(</SPAN><SPAN class=3Dst0>"path"</SPAN><SPAN =
+class=3Dbr0>)</SPAN></PRE></DIV>
+<H3>Parameters</H3>
+<P><I>path</I> is the file system path to the new working directory.</P>
+<H3>Return Value</H3>
+<P><B>True</B> if successful, otherwise <B>nil</B> and an error=20
+message.</P></DIV>
+<DIV id=3Dnode-228 class=3Dsection-3>
+<H1 class=3Dbook-heading>os.copyfile</H1>
+<P>The <B>os.copyfile</B> function copies a file from one location to=20
+another.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua"><SPAN class=3Dkw1>os</SPAN>.copyfile<SPAN =
+class=3Dbr0>(</SPAN><SPAN class=3Dst0>"source"</SPAN>, <SPAN =
+class=3Dst0>"destination"</SPAN><SPAN class=3Dbr0>)</SPAN></PRE></DIV>
+<H3>Parameters</H3>
+<P><I>Source</I> is the file system path to the file to be copied.=20
+<I>Destination</I> is the path to the copy location.</P>
+<H3>Return Value</H3>
+<P><B>True</B> if successful, otherwise <B>nil</B> and an error=20
+message.</P></DIV>
+<DIV id=3Dnode-234 class=3Dsection-3>
+<H1 class=3Dbook-heading>os.findlib</H1>
+<P>The <B>os.findlib</B> function scans the well-known system locations =
+looking=20
+for a library file.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">p <SPAN class=3Dsy0>=3D</SPAN> <SPAN =
+class=3Dkw1>os</SPAN>.findlib<SPAN class=3Dbr0>(</SPAN><SPAN =
+class=3Dst0>"libname"</SPAN><SPAN class=3Dbr0>)</SPAN></PRE></DIV>
+<H3>Parameters</H3>
+<P><I>libname</I> is name of the library to locate. It may be specified =
+with=20
+(libX11.so) or without (X11) system-specific decorations.</P>
+<H3>Return Value</H3>
+<P>The path containing the library file, if found. Otherwise, =
+nil.</P></DIV>
+<DIV id=3Dnode-195 class=3Dsection-3>
+<H1 class=3Dbook-heading>os.get</H1>
+<P>The <B>os.get</B> function identifies the currently targeted =
+operating=20
+system.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">id <SPAN class=3Dsy0>=3D</SPAN> <SPAN =
+class=3Dkw1>os</SPAN>.get<SPAN class=3Dbr0>(</SPAN><SPAN =
+class=3Dbr0>)</SPAN></PRE></DIV>
+<H3>Parameters</H3>
+<P>None.</P>
+<H3>Return Value</H3>
+<P>An operating system identifier, one of <B>bsd</B>, <B>linux</B>,=20
+<B>macosx</B>, <B>solaris</B>, or <B>windows</B>.</P>
+<H3>Example</H3>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua"><SPAN class=3Dkw1>if</SPAN> <SPAN =
+class=3Dkw1>os</SPAN>.get<SPAN class=3Dbr0>(</SPAN><SPAN =
+class=3Dbr0>)</SPAN> <SPAN class=3Dsy0>=3D=3D</SPAN> <SPAN =
+class=3Dst0>"windows"</SPAN> <SPAN class=3Dkw1>then</SPAN>
+   <SPAN class=3Dco1>-- do something Windows-specific</SPAN>
+<SPAN class=3Dkw1>end</SPAN></PRE></DIV></DIV>
+<DIV id=3Dnode-105 class=3Dsection-3>
+<H1 class=3Dbook-heading>os.getcwd</H1>
+<P>The <B>os.getcwd</B> function gets the current working directory.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">cwd <SPAN class=3Dsy0>=3D</SPAN> <SPAN =
+class=3Dkw1>os</SPAN>.getcwd<SPAN class=3Dbr0>(</SPAN><SPAN =
+class=3Dbr0>)</SPAN></PRE></DIV>
+<H3>Parameters</H3>
+<P>None.</P>
+<H3>Return Value</H3>
+<P>The current working directory.</P></DIV>
+<DIV id=3Dnode-235 class=3Dsection-3>
+<H1 class=3Dbook-heading>os.is</H1>
+<P>The <B>os.is</B> function checks the current operating system =
+identifier=20
+against a particular value.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua"><SPAN class=3Dkw1>os</SPAN>.is<SPAN =
+class=3Dbr0>(</SPAN><SPAN class=3Dst0>"id"</SPAN><SPAN =
+class=3Dbr0>)</SPAN></PRE></DIV>
+<H3>Parameters</H3>
+<P><I>id</I> is one of the operating system identifiers <B>bsd</B>,=20
+<B>linux</B>, <B>macosx</B>, <B>solaris</B>, or <B>windows</B>.</P>
+<H3>Return Value</H3>
+<P>True if the supplied ID matches the current operating system =
+identifier,=20
+false otherwise.</P></DIV>
+<DIV id=3Dnode-229 class=3Dsection-3>
+<H1 class=3Dbook-heading>os.isdir</H1>
+<P>The <B>os.isdir</B> function checks for the existence of =
+directory.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua"><SPAN class=3Dkw1>os</SPAN>.isdir<SPAN =
+class=3Dbr0>(</SPAN><SPAN class=3Dst0>"path"</SPAN><SPAN =
+class=3Dbr0>)</SPAN></PRE></DIV>
+<H3>Parameters</H3>
+<P><I>Path</I> is the file system path to check.</P>
+<H3>Return Value</H3>
+<P><B>True</B> if a matching directory is found; <B>false</B> is there =
+is no=20
+such file system path, or if the path points to a file instead of a=20
+directory.</P></DIV>
+<DIV id=3Dnode-230 class=3Dsection-3>
+<H1 class=3Dbook-heading>os.isfile</H1>
+<P>The <B>os.isfile</B> function checks for the existence of file.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua"><SPAN class=3Dkw1>os</SPAN>.isfile<SPAN =
+class=3Dbr0>(</SPAN><SPAN class=3Dst0>"path"</SPAN><SPAN =
+class=3Dbr0>)</SPAN></PRE></DIV>
+<H3>Parameters</H3>
+<P><I>Path</I> is the file system path to check.</P>
+<H3>Return Value</H3>
+<P><B>True</B> if a matching file is found; <B>false</B> is there is no =
+such=20
+file system path, or if the path points to a directory instead of a=20
+file.</P></DIV>
+<DIV id=3Dnode-236 class=3Dsection-3>
+<H1 class=3Dbook-heading>os.matchdirs</H1>
+<P>The <B>os.matchdirs</B> function performs a wildcard match to locate =
+one or=20
+more directories.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">matches <SPAN class=3Dsy0>=3D</SPAN> <SPAN =
+class=3Dkw1>os</SPAN>.matchdirs<SPAN class=3Dbr0>(</SPAN><SPAN =
+class=3Dst0>"pattern"</SPAN><SPAN class=3Dbr0>)</SPAN></PRE></DIV>
+<H3>Parameters</H3>
+<P><I>patterm</I> is the file system path to search. It may contain =
+single=20
+(non-recursive) or double (recursive) asterisk wildcard patterns.</P>
+<H3>Return Value</H3>
+<P>A list of directories which match the specified pattern. May be =
+empty.</P>
+<H3>Example</H3>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">matches <SPAN class=3Dsy0>=3D</SPAN> <SPAN =
+class=3Dkw1>os</SPAN>.matchdirs<SPAN class=3Dbr0>(</SPAN><SPAN =
+class=3Dst0>"src/*"</SPAN><SPAN class=3Dbr0>)</SPAN>      <SPAN =
+class=3Dco1>-- non-recursive match</SPAN>
+matches <SPAN class=3Dsy0>=3D</SPAN> <SPAN =
+class=3Dkw1>os</SPAN>.matchdirs<SPAN class=3Dbr0>(</SPAN><SPAN =
+class=3Dst0>"src/**"</SPAN><SPAN class=3Dbr0>)</SPAN>     <SPAN =
+class=3Dco1>-- recursive match</SPAN>
+&nbsp;
+matches <SPAN class=3Dsy0>=3D</SPAN> <SPAN =
+class=3Dkw1>os</SPAN>.matchdirs<SPAN class=3Dbr0>(</SPAN><SPAN =
+class=3Dst0>"src/test*"</SPAN><SPAN class=3Dbr0>)</SPAN>  <SPAN =
+class=3Dco1>-- may also match partial names</SPAN></PRE></DIV></DIV>
+<DIV id=3Dnode-237 class=3Dsection-3>
+<H1 class=3Dbook-heading>os.matchfiles</H1>
+<P>The <B>os.matchdirs</B> function performs a wildcard match to locate =
+one or=20
+more directories.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">matches <SPAN class=3Dsy0>=3D</SPAN> <SPAN =
+class=3Dkw1>os</SPAN>.matchfiles<SPAN class=3Dbr0>(</SPAN><SPAN =
+class=3Dst0>"pattern"</SPAN><SPAN class=3Dbr0>)</SPAN></PRE></DIV>
+<H3>Parameters</H3>
+<P><I>patterm</I> is the file system path to search. It may contain =
+single=20
+(non-recursive) or double (recursive) asterisk wildcard patterns.</P>
+<H3>Return Value</H3>
+<P>A list of files which match the specified pattern. May be empty.</P>
+<H3>Example</H3>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">matches <SPAN class=3Dsy0>=3D</SPAN> <SPAN =
+class=3Dkw1>os</SPAN>.matchfiles<SPAN class=3Dbr0>(</SPAN><SPAN =
+class=3Dst0>"src/*.c"</SPAN><SPAN class=3Dbr0>)</SPAN>   <SPAN =
+class=3Dco1>-- non-recursive match</SPAN>
+matches <SPAN class=3Dsy0>=3D</SPAN> <SPAN =
+class=3Dkw1>os</SPAN>.matchfiles<SPAN class=3Dbr0>(</SPAN><SPAN =
+class=3Dst0>"src/**.c"</SPAN><SPAN class=3Dbr0>)</SPAN>  <SPAN =
+class=3Dco1>-- recursive match</SPAN></PRE></DIV></DIV>
+<DIV id=3Dnode-231 class=3Dsection-3>
+<H1 class=3Dbook-heading>os.mkdir</H1>
+<P>The <B>os.mkdir</B> function creates a new directory.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua"><SPAN class=3Dkw1>os</SPAN>.mkdir<SPAN =
+class=3Dbr0>(</SPAN><SPAN class=3Dst0>"path"</SPAN><SPAN =
+class=3Dbr0>)</SPAN></PRE></DIV>
+<H3>Parameters</H3>
+<P><I>Path</I> is the file system path to be created.</P>
+<H3>Return Value</H3>
+<P><B>True</B> if successful, otherwise <B>nil</B> and an error=20
+message.</P></DIV>
+<DIV id=3Dnode-232 class=3Dsection-3>
+<H1 class=3Dbook-heading>os.pathsearch</H1>
+<P>The <B>os.pathsearch</B> function searches a collection of paths for =
+a=20
+particular file.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">p <SPAN class=3Dsy0>=3D</SPAN> <SPAN =
+class=3Dkw1>os</SPAN>.pathsearch<SPAN class=3Dbr0>(</SPAN><SPAN =
+class=3Dst0>"fname"</SPAN>, <SPAN class=3Dst0>"path1"</SPAN>, ...<SPAN =
+class=3Dbr0>)</SPAN></PRE></DIV>
+<H3>Parameters</H3>
+<P><I>fname</I> is the name of the file being searched. This is followed =
+by one=20
+or more path sets to be searched.</P>
+<P>Path sets match the format of the PATH environment variable: a=20
+colon-delimited list of paths. On Windows, you may use a =
+semicolon-delimited=20
+list if drive letters might be included.</P>
+<H3>Return Value</H3>
+<P>The path to the directory which contains the file, if found. =
+Otherwise,=20
+nil.</P>
+<H3>Examples</H3>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua"><SPAN class=3Dkw1>local</SPAN> p <SPAN =
+class=3Dsy0>=3D</SPAN> <SPAN class=3Dkw1>os</SPAN>.pathsearch<SPAN =
+class=3Dbr0>(</SPAN><SPAN class=3Dst0>"mysystem.config"</SPAN>, <SPAN =
+class=3Dst0>"./config:/usr/local/etc:/etc"</SPAN><SPAN =
+class=3Dbr0>)</SPAN></PRE></DIV></DIV>
+<DIV id=3Dnode-238 class=3Dsection-3>
+<H1 class=3Dbook-heading>os.rmdir</H1>
+<P>The <B>os.rmdir</B> function removes an existing directory as well as =
+any=20
+files or subdirectories it contains.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua"><SPAN class=3Dkw1>os</SPAN>.rmdir<SPAN =
+class=3Dbr0>(</SPAN><SPAN class=3Dst0>"path"</SPAN><SPAN =
+class=3Dbr0>)</SPAN></PRE></DIV>
+<H3>Parameters</H3>
+<P><I>path</I> is the file system path to be removed.</P>
+<H3>Return Value</H3>
+<P><B>True</B> if successful, otherwise <B>nil</B> and an error=20
+message.</P></DIV>
+<DIV id=3Dnode-233 class=3Dsection-3>
+<H1 class=3Dbook-heading>os.uuid</H1>
+<P>The <B>os.uuid</B> function returns a <A=20
+href=3D"http://en.wikipedia.org/wiki/UUID">Universally Unique =
+Identifier</A>.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">id <SPAN class=3Dsy0>=3D</SPAN> <SPAN =
+class=3Dkw1>os</SPAN>.uuid<SPAN class=3Dbr0>(</SPAN><SPAN =
+class=3Dbr0>)</SPAN></PRE></DIV>
+<H3>Parameters</H3>
+<P>None.</P>
+<H3>Return Value</H3>
+<P>A new UUID, a string value with the format=20
+<B>74CFC033-FA4D-4B1E-A871-7DC48FA36769</B>.</P></DIV>
+<DIV id=3Dnode-241 class=3Dsection-3>
+<H1 class=3Dbook-heading>path.getabsolute</H1>
+<P>The <B>path.getabsolute</B> function converts a relative path an =
+absolute=20
+path.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">p <SPAN class=3Dsy0>=3D</SPAN> =
+path.getabsolute<SPAN class=3Dbr0>(</SPAN><SPAN =
+class=3Dst0>"path"</SPAN><SPAN class=3Dbr0>)</SPAN></PRE></DIV>
+<H3>Parameters</H3>
+<P><I>path</I> is the relative path to be converted. It does need to =
+actually=20
+exist on the file system.</P>
+<H3>Return Value</H3>
+<P>A new absolute path, calculated from the current working =
+directory.</P></DIV>
+<DIV id=3Dnode-243 class=3Dsection-3>
+<H1 class=3Dbook-heading>path.getbasename</H1>
+<P>The <B>path.getbasename</B> function returns the base file portion of =
+a path,=20
+with the directory and file extension removed.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">p <SPAN class=3Dsy0>=3D</SPAN> =
+path.getbasename<SPAN class=3Dbr0>(</SPAN><SPAN =
+class=3Dst0>"path"</SPAN><SPAN class=3Dbr0>)</SPAN></PRE></DIV>
+<H3>Parameters</H3>
+<P><I>path</I> is the file system path to be split.</P>
+<H3>Return Value</H3>
+<P>The base name portion of the supplied path, with any directory and =
+file=20
+extension removed.</P></DIV>
+<DIV id=3Dnode-244 class=3Dsection-3>
+<H1 class=3Dbook-heading>path.getdirectory</H1>
+<P>The <B>path.getdirectory</B> function returns the directory portion =
+of a=20
+path, with any file name removed.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">p <SPAN class=3Dsy0>=3D</SPAN> =
+path.getdirectory<SPAN class=3Dbr0>(</SPAN><SPAN =
+class=3Dst0>"path"</SPAN><SPAN class=3Dbr0>)</SPAN></PRE></DIV>
+<H3>Parameters</H3>
+<P><I>path</I> is the file system path to be split.</P>
+<H3>Return Value</H3>
+<P>The directory portion of the path, with any file name removed. If the =
+path=20
+does not include any directory information, the "." (single dot) current =
+
+directory is returned.</P></DIV>
+<DIV id=3Dnode-245 class=3Dsection-3>
+<H1 class=3Dbook-heading>path.getdrive</H1>
+<P>The <B>path.getdrive</B> function returns the drive letter portion of =
+a path,=20
+if present.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">p <SPAN class=3Dsy0>=3D</SPAN> =
+path.getdrive<SPAN class=3Dbr0>(</SPAN><SPAN =
+class=3Dst0>"path"</SPAN><SPAN class=3Dbr0>)</SPAN></PRE></DIV>
+<H3>Parameters</H3>
+<P><I>path</I> is the file system path to be split.</P>
+<H3>Return Value</H3>
+<P>The drive letter portion of the path, if one is specified. Otherwise, =
+
+nil.</P></DIV>
+<DIV id=3Dnode-246 class=3Dsection-3>
+<H1 class=3Dbook-heading>path.getextension</H1>
+<P>The <B>path.getextension</B> function returns the file extension =
+portion of a=20
+path.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">p <SPAN class=3Dsy0>=3D</SPAN> =
+path.getextension<SPAN class=3Dbr0>(</SPAN><SPAN =
+class=3Dst0>"path"</SPAN><SPAN class=3Dbr0>)</SPAN></PRE></DIV>
+<H3>Parameters</H3>
+<P><I>path</I> is the file system path to be split.</P>
+<H3>Return Value</H3>
+<P>The file extension portion of the path, or an empty string if no =
+extension is=20
+present.</P></DIV>
+<DIV id=3Dnode-247 class=3Dsection-3>
+<H1 class=3Dbook-heading>path.getname</H1>
+<P>The <B>path.getname</B> function returns the file name and extension, =
+with=20
+any directory information removed.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">p <SPAN class=3Dsy0>=3D</SPAN> =
+path.getname<SPAN class=3Dbr0>(</SPAN><SPAN =
+class=3Dst0>"path"</SPAN><SPAN class=3Dbr0>)</SPAN></PRE></DIV>
+<H3>Parameters</H3>
+<P><I>path</I> is the file system path to be split.</P>
+<H3>Return Value</H3>
+<P>The file name and extension, with no directory information.</P></DIV>
+<DIV id=3Dnode-242 class=3Dsection-3>
+<H1 class=3Dbook-heading>path.getrelative</H1>
+<P>The <B>path.getrelative</B> function computes a relative path from =
+one=20
+directory to another.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">p <SPAN class=3Dsy0>=3D</SPAN> =
+path.getrelative<SPAN class=3Dbr0>(</SPAN><SPAN =
+class=3Dst0>"src"</SPAN>, <SPAN class=3Dst0>"dest"</SPAN><SPAN =
+class=3Dbr0>)</SPAN></PRE></DIV>
+<H3>Parameters</H3>
+<P><I>src</I> is the originating directory, <I>dest</I> is the target =
+directory.=20
+Both may be specified as absolute or relative.</P>
+<H3>Return Value</H3>
+<P>A relative path from <I>src</I> to <I>dest</I>.</P></DIV>
+<DIV id=3Dnode-248 class=3Dsection-3>
+<H1 class=3Dbook-heading>path.isabsolute</H1>
+<P>The <B>path.isabsolute</B> function returns true if the specified =
+path is an=20
+absolute path.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">path.isabsolute<SPAN =
+class=3Dbr0>(</SPAN><SPAN class=3Dst0>"path"</SPAN><SPAN =
+class=3Dbr0>)</SPAN></PRE></DIV>
+<H3>Parameters</H3>
+<P><I>path</I> is the file system path to check.</P>
+<H3>Return Value</H3>
+<P><B>True</B> if the specified path is absolute, <B>false</B>=20
+otherwise.</P></DIV>
+<DIV id=3Dnode-249 class=3Dsection-3>
+<H1 class=3Dbook-heading>path.iscfile</H1>
+<P>The <B>path.iscfile</B> function returns true if the specified path=20
+represents a C source code file, based on its file extension.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">path.iscfile<SPAN =
+class=3Dbr0>(</SPAN><SPAN class=3Dst0>"path"</SPAN><SPAN =
+class=3Dbr0>)</SPAN></PRE></DIV>
+<H3>Parameters</H3>
+<P><I>path</I> is the file system path to check.</P>
+<H3>Return Value</H3>
+<P><B>True</B> if the path matches a well-known C file extension, =
+<B>false</B>=20
+otherwise.</P></DIV>
+<DIV id=3Dnode-250 class=3Dsection-3>
+<H1 class=3Dbook-heading>path.iscppfile</H1>
+<P>The <B>path.iscppfile</B> function returns true if the specified path =
+
+represents a C++ source code file, based on its file extension.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">path.iscppfile<SPAN =
+class=3Dbr0>(</SPAN><SPAN class=3Dst0>"path"</SPAN><SPAN =
+class=3Dbr0>)</SPAN></PRE></DIV>
+<H3>Parameters</H3>
+<P><I>path</I> is the file system path to check.</P>
+<H3>Return Value</H3>
+<P><B>True</B> if the path matches a well-known C++ file extension, =
+<B>false</B>=20
+otherwise.</P></DIV>
+<DIV id=3Dnode-251 class=3Dsection-3>
+<H1 class=3Dbook-heading>path.isresourcefile</H1>
+<P>The <B>path.isresourcefile</B> function returns true if the specified =
+path=20
+represents a Windows resource file, based on its file extension.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">path.isresourcefile<SPAN =
+class=3Dbr0>(</SPAN><SPAN class=3Dst0>"path"</SPAN><SPAN =
+class=3Dbr0>)</SPAN></PRE></DIV>
+<H3>Parameters</H3>
+<P><I>path</I> is the file system path to check.</P>
+<H3>Return Value</H3>
+<P><B>True</B> if the path matches a well-known Windows resource file =
+extension,=20
+<B>false</B> otherwise.</P></DIV>
+<DIV id=3Dnode-252 class=3Dsection-3>
+<H1 class=3Dbook-heading>path.join</H1>
+<P>The <B>path.join</B> function joins two path portions together into a =
+single=20
+path.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">path.join<SPAN class=3Dbr0>(</SPAN><SPAN =
+class=3Dst0>"leading"</SPAN>, <SPAN class=3Dst0>"trailing"</SPAN><SPAN =
+class=3Dbr0>)</SPAN></PRE></DIV>
+<P>If <I>trailing</I> is an absolute path, then the leading portion is =
+ignored,=20
+and the absolute path is returned instead (see below for examples).</P>
+<H3>Parameters</H3>
+<P><I>leading</I> is the beginning portion of the path; <I>trailing</I> =
+is the=20
+ending portion.</P>
+<H3>Return Value</H3>
+<P>A merged path.</P>
+<H3>Examples</H3>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua"><SPAN class=3Dco1>-- returns =
+"MySolution/MyProject"</SPAN>
+p <SPAN class=3Dsy0>=3D</SPAN> path.join<SPAN class=3Dbr0>(</SPAN><SPAN =
+class=3Dst0>"MySolution"</SPAN>, <SPAN =
+class=3Dst0>"MyProject"</SPAN><SPAN class=3Dbr0>)</SPAN>
+&nbsp;
+<SPAN class=3Dco1>-- returns "/usr/bin", because the trailing path is =
+absolute</SPAN>
+p <SPAN class=3Dsy0>=3D</SPAN> path.join<SPAN class=3Dbr0>(</SPAN><SPAN =
+class=3Dst0>"MySolution"</SPAN>, <SPAN =
+class=3Dst0>"/usr/bin"</SPAN><SPAN class=3Dbr0>)</SPAN>
+&nbsp;
+<SPAN class=3Dco1>-- tokens are assumed to be absolute; this returns =
+"$(ProjectDir)"</SPAN>
+p <SPAN class=3Dsy0>=3D</SPAN> path.join<SPAN class=3Dbr0>(</SPAN><SPAN =
+class=3Dst0>"MySolution"</SPAN>, <SPAN =
+class=3Dst0>"$(ProjectDir)"</SPAN><SPAN =
+class=3Dbr0>)</SPAN></PRE></DIV></DIV>
+<DIV id=3Dnode-253 class=3Dsection-3>
+<H1 class=3Dbook-heading>path.rebase</H1>
+<P>The <B>path.rebase</B> function takes a relative path and makes it =
+relative=20
+to a different location.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">path.rebase<SPAN class=3Dbr0>(</SPAN><SPAN =
+class=3Dst0>"path"</SPAN>, <SPAN class=3Dst0>"oldbase"</SPAN>, <SPAN =
+class=3Dst0>"newbase"</SPAN><SPAN class=3Dbr0>)</SPAN></PRE></DIV>
+<H3>Parameters</H3>
+<P><I>path</I> is the relative path to conver. <I>oldbase</I> is the =
+original=20
+base directory, from with <I>path</I> is relative. <I>newbase</I> is the =
+new=20
+base directory, from where the resulting path should be relative.</P>
+<H3>Return Value</H3>
+<P>The rebased path.</P></DIV>
+<DIV id=3Dnode-254 class=3Dsection-3>
+<H1 class=3Dbook-heading>path.translate</H1>
+<P>The <B>path.translate</B> function converts the file separators in a=20
+path.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">path.translate<SPAN =
+class=3Dbr0>(</SPAN><SPAN class=3Dst0>"path"</SPAN>, <SPAN =
+class=3Dst0>"newsep"</SPAN><SPAN class=3Dbr0>)</SPAN></PRE></DIV>
+<H3>Parameters</H3>
+<P><I>path</I> is the file system path to translate. <I>newsep</I> is =
+the new=20
+path separator.</P>
+<P>If <I>newsep</I> is nil, the native path separator for the current=20
+environment will be used.</P>
+<H3>Return Value</H3>
+<P>The translated path.</P></DIV>
+<DIV id=3Dnode-207 class=3Dsection-3>
+<H1 class=3Dbook-heading>pchheader</H1>
+<P>The <B>pchheader</B> function sets the main header file for =
+precompiled=20
+header support.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">pchheader <SPAN =
+class=3Dst0>"file"</SPAN></PRE></DIV>
+<P>If no header file is set, the toolset default settings will be used.=20
+Precompiled headers are currently supported only by the Visual Studio =
+and=20
+Code::Blocks generators; they are ignored by the other generators.</P>
+<H3>Applies To</H3>
+<P>Projects only.</P>
+<H3>Parameters</H3>
+<P><I>file</I> is the name of the header file, as it is specified in =
+your source=20
+file <B>#include</B> statements.</P>
+<H3>See Also</H3>
+<P><A href=3D"http://industriousone.com/pchsource">pchsource</A></P>
+<H3>Examples</H3>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">pchheader <SPAN =
+class=3Dst0>"afxwin.h"</SPAN>
+pchsource <SPAN class=3Dst0>"afxwin.cpp"</SPAN></PRE></DIV></DIV>
+<DIV id=3Dnode-208 class=3Dsection-3>
+<H1 class=3Dbook-heading>pchsource</H1>
+<P>The <B>pchsource</B> function sets the main source file for =
+precompiled=20
+header support.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">pchsource <SPAN =
+class=3Dst0>"file"</SPAN></PRE></DIV>
+<P>If no source file is set, the toolset default settings will be used.=20
+Precompiled headers are currently supported only by the Visual Studio =
+and=20
+Code::Blocks generators; they are ignored by the other generators.</P>
+<H3>Applies To</H3>
+<P>Projects only.</P>
+<H3>Parameters</H3>
+<P><I>file</I> is the name of the source file, specified relative to the =
+
+currently executing script file.</P>
+<H3>See Also</H3>
+<P><A href=3D"http://industriousone.com/pchheader">pchheader</A></P>
+<H3>Examples</H3>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">pchheader <SPAN =
+class=3Dst0>"afxwin.h"</SPAN>
+pchsource <SPAN class=3Dst0>"afxwin.cpp"</SPAN></PRE></DIV></DIV>
+<DIV id=3Dnode-291 class=3Dsection-3>
+<H1 class=3Dbook-heading>platforms</H1>
+<P><EM>Platform support is a new, experimental feature which will be =
+introduced=20
+in <B>Premake 4.1</B>. The syntax and behavior described here might =
+change as we=20
+sort out the details.</EM></P>
+<P>The <B>platforms</B> function specifies a set of target hardware =
+platforms=20
+for a solution. This is an optional setting; if it is not provided the =
+toolset's=20
+default behavior will be used.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">platforms <SPAN class=3Dbr0>{</SPAN> <SPAN =
+class=3Dst0>"identifiers"</SPAN> <SPAN class=3Dbr0>}</SPAN></PRE></DIV>
+<P>Please see the <A =
+href=3D"http://industriousone.com/platforms">Platforms=20
+section of the user guide</A> for a lot more information on platforms =
+and how=20
+they are used by Premake.</P>
+<H3>Applies To</H3>
+<P>Solutions only.</P>
+<H3>Parameters</H3>
+<P><I>identifiers</I> is a list of hardware platform identifiers, and =
+may=20
+include any of the following.</P>
+<DL>
+  <DT>Native</DT>
+  <DD>A general build not targeting any particular platform; uses the =
+default=20
+  build behavior of the compiler. If your project can be built in a =
+generic=20
+  fashion, you should include this as the first platform option.</DD>
+  <DT>x32</DT>
+  <DD>Target a 32-bit environment.</DD>
+  <DT>x64</DT>
+  <DD>Target a 64-bit environment</DD>
+  <DT>Universal</DT>
+  <DD>Create a Mac OS X universal binary, targeting both 32- and 64-bit =
+versions=20
+  of x86 and PPC. Note that in order to target multiple architectures, =
+automated=20
+  dependency generation must be turned off. You should always do a clean =
+build=20
+  when creating a universal target. Universal builds are not supported =
+by Visual=20
+  Studio.</DD>
+  <DT>Universal32</DT>
+  <DD>Like Universal above, but targeting only 32-bit platforms.</DD>
+  <DT>Universal64</DT>
+  <DD>Like Universal above, but targeting only 64-bit platforms.</DD>
+  <DT>PS3</DT>
+  <DD>Target the Playstation 3.</DD>
+  <DT>Xbox360</DT>
+  <DD>Target the Xbox 360 compiler and linker under Visual Studio; =
+ignored=20
+  elsewhere.</DD></DL>
+<P>Not all platforms are supported on all systems, unsupported platforms =
+will be=20
+silently ignored. Some targets require extra configuration of the build =
+tools on=20
+the client machine in order to support cross-compilation.</P>
+<H3>Return Value</H3>
+<P>The function returns the current list of target platforms for the =
+active=20
+solution.</P>
+<H3>Examples</H3>
+<P>Provide a generic build that will work anywhere, as well as a Mac OS =
+X=20
+Universal build.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">solution <SPAN =
+class=3Dst0>"MySolution"</SPAN>
+  configurations <SPAN class=3Dbr0>{</SPAN> <SPAN =
+class=3Dst0>"Debug"</SPAN>, <SPAN class=3Dst0>"Release"</SPAN> <SPAN =
+class=3Dbr0>}</SPAN>
+  platforms <SPAN class=3Dbr0>{</SPAN> <SPAN =
+class=3Dst0>"native"</SPAN>, <SPAN class=3Dst0>"universal"</SPAN> <SPAN =
+class=3Dbr0>}</SPAN></PRE></DIV>
+<P>Provide 32- and 64-bit specific build targets. No generic build is =
+provided,=20
+so one of these two platforms must always be used. Do this only if your =
+software=20
+requires knowledge of the underlying architecture at build time, =
+otherwise=20
+include "native" to provide a generic build.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">solution <SPAN =
+class=3Dst0>"MySolution"</SPAN>
+  configurations <SPAN class=3Dbr0>{</SPAN> <SPAN =
+class=3Dst0>"Debug"</SPAN>, <SPAN class=3Dst0>"Release"</SPAN> <SPAN =
+class=3Dbr0>}</SPAN>
+  platforms <SPAN class=3Dbr0>{</SPAN> <SPAN class=3Dst0>"x32"</SPAN>, =
+<SPAN class=3Dst0>"x64"</SPAN> <SPAN class=3Dbr0>}</SPAN></PRE></DIV>
+<P>You can retrieve the current list of platforms by calling the =
+function with=20
+no parameters.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua"><SPAN class=3Dkw1>local</SPAN> p <SPAN =
+class=3Dsy0>=3D</SPAN> platforms<SPAN class=3Dbr0>(</SPAN><SPAN =
+class=3Dbr0>)</SPAN></PRE></DIV>
+<P>Once you have defined a list of platforms, you may use those =
+identifiers to=20
+set up <A href=3D"http://industriousone.com/configuration">configuration =
+
+filters</A> and apply platform-specific settings.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">configuration <SPAN =
+class=3Dst0>"x64"</SPAN>
+  defines <SPAN class=3Dst0>"IS_64BIT"</SPAN>
+&nbsp;
+<SPAN class=3Dco1>-- You can also mix platforms with other configuration =
+selectors</SPAN>
+configuration <SPAN class=3Dbr0>{</SPAN> <SPAN =
+class=3Dst0>"Debug"</SPAN>, <SPAN class=3Dst0>"x64"</SPAN> <SPAN =
+class=3Dbr0>}</SPAN>
+  defines <SPAN class=3Dst0>"IS_64BIT_DEBUG"</SPAN></PRE></DIV></DIV>
+<DIV id=3Dnode-211 class=3Dsection-3>
+<H1 class=3Dbook-heading>postbuildcommands</H1>
+<P>The <B>postbuildcommands</B> function specifies shell commands to run =
+after=20
+build is finished.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">postbuildcommands <SPAN =
+class=3Dbr0>{</SPAN> <SPAN class=3Dst0>"commands"</SPAN> <SPAN =
+class=3Dbr0>}</SPAN></PRE></DIV>
+<H3>Applies To</H3>
+<P>Solutions, projects, and configurations.</P>
+<H3>Parameters</H3>
+<P><I>commands</I> is one or more shell commands. These commands will be =
+passed=20
+to the shell exactly as entered, including path separators and the =
+like.</P>
+<H3>See Also</H3>
+<P><A=20
+href=3D"http://industriousone.com/prebuildcommands">prebuildcommands</A><=
+BR><A=20
+href=3D"http://industriousone.com/prelinkcommands">prelinkcommands</A></P=
+>
+<H3>Examples</H3>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">configuration <SPAN =
+class=3Dst0>"windows"</SPAN>
+   postbuildcommands <SPAN class=3Dbr0>{</SPAN> <SPAN class=3Dst0>"copy =
+default.config bin<SPAN class=3Des0>\\</SPAN>project.config"</SPAN> =
+<SPAN class=3Dbr0>}</SPAN>
+&nbsp;
+configuration <SPAN class=3Dst0>"not windows"</SPAN>
+   postbuildcommands <SPAN class=3Dbr0>{</SPAN> <SPAN class=3Dst0>"cp =
+default.config bin/project.config"</SPAN> <SPAN =
+class=3Dbr0>}</SPAN></PRE></DIV></DIV>
+<DIV id=3Dnode-209 class=3Dsection-3>
+<H1 class=3Dbook-heading>prebuildcommands</H1>
+<P>The <B>prebuildcommands</B> function specifies shell commands to run =
+before=20
+each build.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">prebuildcommands <SPAN =
+class=3Dbr0>{</SPAN> <SPAN class=3Dst0>"commands"</SPAN> <SPAN =
+class=3Dbr0>}</SPAN></PRE></DIV>
+<H3>Applies To</H3>
+<P>Solutions, projects, and configurations.</P>
+<H3>Parameters</H3>
+<P><I>commands</I> is one or more shell commands. These commands will be =
+passed=20
+to the shell exactly as entered, including path separators and the =
+like.</P>
+<H3>See Also</H3>
+<P><A =
+href=3D"http://industriousone.com/prelinkcommands">prelinkcommands</A><BR=
+><A=20
+href=3D"http://industriousone.com/postbuildcommands">postbuildcommands</A=
+></P>
+<H3>Examples</H3>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">configuration <SPAN =
+class=3Dst0>"windows"</SPAN>
+   prebuildcommands <SPAN class=3Dbr0>{</SPAN> <SPAN class=3Dst0>"copy =
+default.config bin<SPAN class=3Des0>\\</SPAN>project.config"</SPAN> =
+<SPAN class=3Dbr0>}</SPAN>
+&nbsp;
+configuration <SPAN class=3Dst0>"not windows"</SPAN>
+   prebuildcommands <SPAN class=3Dbr0>{</SPAN> <SPAN class=3Dst0>"cp =
+default.config bin/project.config"</SPAN> <SPAN =
+class=3Dbr0>}</SPAN></PRE></DIV></DIV>
+<DIV id=3Dnode-210 class=3Dsection-3>
+<H1 class=3Dbook-heading>prelinkcommands</H1>
+<P>The <B>prelinkcommands</B> function specifies shell commands to run =
+after the=20
+source files have been compiled, but before the link step.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">prelinkcommands <SPAN class=3Dbr0>{</SPAN> =
+<SPAN class=3Dst0>"commands"</SPAN> <SPAN =
+class=3Dbr0>}</SPAN></PRE></DIV>
+<H3>Applies To</H3>
+<P>Solutions, projects, and configurations.</P>
+<H3>Parameters</H3>
+<P><I>commands</I> is one or more shell commands. These commands will be =
+passed=20
+to the shell exactly as entered, including path separators and the =
+like.</P>
+<H3>See Also</H3>
+<P><A=20
+href=3D"http://industriousone.com/prebuildcommands">prebuildcommands</A><=
+BR><A=20
+href=3D"http://industriousone.com/postbuildcommands">postbuildcommands</A=
+></P>
+<H3>Examples</H3>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">configuration <SPAN =
+class=3Dst0>"windows"</SPAN>
+   prelinkcommands <SPAN class=3Dbr0>{</SPAN> <SPAN class=3Dst0>"copy =
+default.config bin<SPAN class=3Des0>\\</SPAN>project.config"</SPAN> =
+<SPAN class=3Dbr0>}</SPAN>
+&nbsp;
+configuration <SPAN class=3Dst0>"not windows"</SPAN>
+   prelinkcommands <SPAN class=3Dbr0>{</SPAN> <SPAN class=3Dst0>"cp =
+default.config bin/project.config"</SPAN> <SPAN =
+class=3Dbr0>}</SPAN></PRE></DIV></DIV>
+<DIV id=3Dnode-240 class=3Dsection-3>
+<H1 class=3Dbook-heading>printf</H1>
+<P>The <B>printf</B> performs like its C counterpart, printing a =
+formatted=20
+string.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">printf<SPAN class=3Dbr0>(</SPAN><SPAN =
+class=3Dst0>"format"</SPAN>, ...<SPAN class=3Dbr0>)</SPAN></PRE></DIV>
+<P>It is equivalent to this Lua code:</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua"><SPAN class=3Dkw1>print</SPAN><SPAN =
+class=3Dbr0>(</SPAN><SPAN class=3Dkw1>string.format</SPAN><SPAN =
+class=3Dbr0>(</SPAN><SPAN class=3Dkw1>format</SPAN>, <SPAN =
+class=3Dkw1>unpack</SPAN><SPAN class=3Dbr0>(</SPAN>arg<SPAN =
+class=3Dbr0>)</SPAN><SPAN class=3Dbr0>)</SPAN></PRE></DIV>
+<H3>Parameters</H3>
+<P><I>format</I> is a formatting string containing C <B>printf()</B> =
+style=20
+formatting codes. It is followed by a list of arguments to be =
+substituted into=20
+the format string.</P>
+<H3>Return Value</H3>
+<P>None.</P></DIV>
+<DIV id=3Dnode-74 class=3Dsection-3>
+<H1 class=3Dbook-heading>project</H1>
+<P>The <B>project</B> function creates a new project and makes it =
+active.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">project <SPAN class=3Dbr0>(</SPAN><SPAN =
+class=3Dst0>"name"</SPAN><SPAN class=3Dbr0>)</SPAN></PRE></DIV>
+<P>Projects contain all of the settings necessary to build a single =
+binary=20
+target, and are synonymous with a Visual Studio project. These settings =
+include=20
+the list of source code files, the programming language used by those =
+files,=20
+compiler flags, include directories, and which libraries to link =
+against.</P>
+<P>Every project belongs to a solution. </P>
+<H3>Parameters</H3>
+<P><I>name</I> is a unique name for the project. If a project with the =
+given=20
+name already exists, it is made active and returned. The project name =
+will be=20
+used as the file name of the generated solution file.</P>
+<H3>Return Value</H3>
+<P>The function returns the active project object; see <A=20
+href=3D"http://industriousone.com/#object">The Project Object</A> below =
+for more=20
+information on the structure of this object.</P>
+<H3>See Also</H3>
+<P><A href=3D"http://industriousone.com/solution">solution</A></P>
+<H3>Examples</H3>
+<P>Create a new project named "MyProject". Note that a solution must =
+exist to=20
+contain the project. The indentation is for readability and is =
+optional.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">solution <SPAN =
+class=3Dst0>"MySolution"</SPAN>
+   configuration <SPAN class=3Dbr0>{</SPAN> <SPAN =
+class=3Dst0>"Debug"</SPAN>, <SPAN class=3Dst0>"Release"</SPAN> <SPAN =
+class=3Dbr0>}</SPAN>
+&nbsp;
+   project <SPAN class=3Dst0>"MyProject"</SPAN></PRE></DIV>
+<P>You can retrieve the currently active project object by calling=20
+<B>project</B> with no parameters.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua"><SPAN class=3Dkw1>local</SPAN> prj <SPAN =
+class=3Dsy0>=3D</SPAN> project<SPAN class=3Dbr0>(</SPAN><SPAN =
+class=3Dbr0>)</SPAN></PRE></DIV>
+<P>You can retrieve the list of projects associated with a solution =
+using the=20
+<B>projects</B> field on the solution object, which may then be iterated =
+
+over.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua"><SPAN class=3Dkw1>local</SPAN> prjs <SPAN =
+class=3Dsy0>=3D</SPAN> solution<SPAN class=3Dbr0>(</SPAN><SPAN =
+class=3Dbr0>)</SPAN>.projects
+<SPAN class=3Dkw1>for</SPAN> i, prj <SPAN class=3Dkw1>in</SPAN> <SPAN =
+class=3Dkw1>ipairs</SPAN><SPAN class=3Dbr0>(</SPAN>prjs<SPAN =
+class=3Dbr0>)</SPAN> <SPAN class=3Dkw1>do</SPAN>
+   <SPAN class=3Dkw1>print</SPAN><SPAN class=3Dbr0>(</SPAN>prj.name<SPAN =
+class=3Dbr0>)</SPAN>
+<SPAN class=3Dkw1>end</SPAN></PRE></DIV>
+<H3>The Project Object</H3>
+<P><A name=3Dobject></A>Each project is represented in Lua as a table of =
+key-value=20
+pairs. Unless you really know what you are doing, you should treat this =
+object=20
+as read-only, and use the Premake API to make any changes.</P>
+<P>The project object contains the following values.</P>
+<DL>
+  <DT>basedir</DT>
+  <DD>The directory where the project was original defined; acts as a =
+root for=20
+  relative paths.</DD>
+  <DT>blocks</DT>
+  <DD>A list of configuration blocks.</DD>
+  <DT>language</DT>
+  <DD>The project language, if set.</DD>
+  <DT>location</DT>
+  <DD>The output directory for the generated project file.</DD>
+  <DT>name</DT>
+  <DD>The name of the project.</DD>
+  <DT>solution</DT>
+  <DD>The solution which contains the project.</DD>
+  <DT>uuid</DT>
+  <DD>The project's unique identifier.</DD></DL></DIV>
+<DIV id=3Dnode-212 class=3Dsection-3>
+<H1 class=3Dbook-heading>resdefines</H1>
+<P>The <B>resdefines</B> function specifies preprocessor symbols for the =
+
+resource compiler.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">resdefines <SPAN class=3Dbr0>{</SPAN> =
+<SPAN class=3Dst0>"symbols"</SPAN> <SPAN =
+class=3Dbr0>}</SPAN></PRE></DIV>
+<P>If a project includes multiple calls to <B>resdefines</B> the lists =
+are=20
+concatenated, in the order in which they appear in the script.</P>
+<H3>Applies To</H3>
+<P>Solutions, projects, and configurations.</P>
+<H3>Parameters</H3>
+<P><I>symbols</I> specifies a list of symbols to be defined.</P>
+<H3>Examples</H3>
+<P>Define two new symbols in the current project.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">resdefines <SPAN class=3Dbr0>{</SPAN> =
+<SPAN class=3Dst0>"DEBUG"</SPAN>, <SPAN class=3Dst0>"TRACE"</SPAN> <SPAN =
+class=3Dbr0>}</SPAN></PRE></DIV>
+<P>Symbols may also assign values.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">resdefines <SPAN class=3Dbr0>{</SPAN> =
+<SPAN class=3Dst0>"CALLSPEC=3D__dllexport"</SPAN> <SPAN =
+class=3Dbr0>}</SPAN></PRE></DIV></DIV>
+<DIV id=3Dnode-213 class=3Dsection-3>
+<H1 class=3Dbook-heading>resincludedirs</H1>
+<P>The <B>resincludedirs</B> function specifies the include file search =
+paths=20
+for the resource compiler.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">resincludedirs <SPAN class=3Dbr0>{</SPAN> =
+<SPAN class=3Dst0>"paths"</SPAN> <SPAN class=3Dbr0>}</SPAN></PRE></DIV>
+<P>If a project includes multiple calls to <B>resincludedirs</B> the =
+lists are=20
+concatenated, in the order in which they appear in the script.</P>
+<H3>Applies To</H3>
+<P>Solutions, projects, and configurations.</P>
+<H3>Parameters</H3>
+<P><I>paths</I> specifies a list of include file search directories. =
+Paths=20
+should be specified relative to the currently running script file.</P>
+<H3>Examples</H3>
+<P>Define two include file search paths.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">resincludedirs <SPAN class=3Dbr0>{</SPAN> =
+<SPAN class=3Dst0>"../lua/include"</SPAN>, <SPAN =
+class=3Dst0>"../zlib"</SPAN> <SPAN class=3Dbr0>}</SPAN></PRE></DIV>
+<P>You can also use wildcards to match multiple directories. The =
+<B>*</B> will=20
+match against a single directory, <B>**</B> will recurse into =
+subdirectories as=20
+well.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">resincludedirs <SPAN class=3Dbr0>{</SPAN> =
+<SPAN class=3Dst0>"../includes/**"</SPAN> <SPAN =
+class=3Dbr0>}</SPAN></PRE></DIV></DIV>
+<DIV id=3Dnode-214 class=3Dsection-3>
+<H1 class=3Dbook-heading>resoptions</H1>
+<P>The <B>resoptions</B> function passes arguments directly to the =
+resource=20
+compiler command line without translation.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">resoptions <SPAN class=3Dbr0>{</SPAN> =
+<SPAN class=3Dst0>"options"</SPAN> <SPAN =
+class=3Dbr0>}</SPAN></PRE></DIV>
+<P>If a project includes multiple calls to <B>resoptions</B> the lists =
+are=20
+concatenated, in the order in which they appear in the script.</P>
+<H3>Applies To</H3>
+<P>Solutions, projects, configurations</P>
+<H3>Parameters</H3>
+<P><I>options</I> is a list of resource compiler flags and options, =
+specific to=20
+a particular compiler.</P>
+<H3>Examples</H3>
+<P>Use <CODE>pkg-config</CODE> style configuration when building on =
+Linux with=20
+GCC. Build options are always compiler specific and should be targeted =
+to a=20
+particular toolset.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">configuration <SPAN class=3Dbr0>{</SPAN> =
+<SPAN class=3Dst0>"linux"</SPAN>, <SPAN class=3Dst0>"gmake"</SPAN> <SPAN =
+class=3Dbr0>}</SPAN>
+  resoptions <SPAN class=3Dbr0>{</SPAN> <SPAN class=3Dst0>"`wx-config =
+--cxxflags`"</SPAN>, <SPAN class=3Dst0>"-ansi"</SPAN>, <SPAN =
+class=3Dst0>"-pedantic"</SPAN> <SPAN =
+class=3Dbr0>}</SPAN></PRE></DIV></DIV>
+<DIV id=3Dnode-76 class=3Dsection-3>
+<H1 class=3Dbook-heading>solution</H1>
+<P>The <B>solution</B> function creates a new solution and makes it =
+active.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">solution <SPAN class=3Dbr0>(</SPAN><SPAN =
+class=3Dst0>"name"</SPAN><SPAN class=3Dbr0>)</SPAN></PRE></DIV>
+<P>Solutions are the top-level objects in a Premake build script, and =
+are=20
+synonymous with a Visual Studio solution. Each solution contains one or =
+more=20
+projects, which it turn contain the settings to generate a single binary =
+
+target.</P>
+<H3>Parameters</H3>
+<P><I>name</I> is a unique name for the solution. If a solution with the =
+given=20
+name already exists, it is made active and returned. The solution name =
+will be=20
+used as the file name of the generated solution file.</P>
+<H3>Return Value</H3>
+<P>The function returns the active solution object; see <A=20
+href=3D"http://industriousone.com/#object">The Solution Object</A> below =
+for more=20
+information on the structure of this object.</P>
+<H3>Examples</H3>
+<P>Create a new solution named "MySolution".</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">solution <SPAN =
+class=3Dst0>"MySolution"</SPAN></PRE></DIV>
+<P>You can retrieve the currently active solution object by calling=20
+<B>solution</B> with no parameters.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua"><SPAN class=3Dkw1>local</SPAN> sln <SPAN =
+class=3Dsy0>=3D</SPAN> solution<SPAN class=3Dbr0>(</SPAN><SPAN =
+class=3Dbr0>)</SPAN></PRE></DIV>
+<P>You can the global variable <B>_SOLUTIONS</B> to list out all of the=20
+currently defined solutions.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua"><SPAN class=3Dkw1>for</SPAN> i, sln <SPAN =
+class=3Dkw1>in</SPAN> <SPAN class=3Dkw1>ipairs</SPAN><SPAN =
+class=3Dbr0>(</SPAN>_SOLUTIONS<SPAN class=3Dbr0>)</SPAN> <SPAN =
+class=3Dkw1>do</SPAN>
+   <SPAN class=3Dkw1>print</SPAN><SPAN class=3Dbr0>(</SPAN>sln.name<SPAN =
+class=3Dbr0>)</SPAN>
+<SPAN class=3Dkw1>end</SPAN></PRE></DIV>
+<H3>The Solution Object</H3>
+<P><A name=3Dobject></A>Each solution is represented in Lua as a table =
+of=20
+key-value pairs. Unless you really know what you are doing, you should =
+treat=20
+this object as read-only, and use the Premake API to make any =
+changes.</P>
+<P>The solution object contains the following values.</P>
+<DL>
+  <DT>basedir</DT>
+  <DD>The directory where the project was original defined; acts as a =
+root for=20
+  relative paths.</DD>
+  <DT>configurations</DT>
+  <DD>The list of valid configuration names.</DD>
+  <DT>blocks</DT>
+  <DD>A list of configuration blocks.</DD>
+  <DT>language</DT>
+  <DD>The solution language, if set.</DD>
+  <DT>location</DT>
+  <DD>The output directory for the generated solution file.</DD>
+  <DT>name</DT>
+  <DD>The name of the solution.</DD>
+  <DT>platforms</DT>
+  <DD>A list of target platforms.</DD>
+  <DT>projects</DT>
+  <DD>A list of projects contained by the solution.</DD></DL></DIV>
+<DIV id=3Dnode-255 class=3Dsection-3>
+<H1 class=3Dbook-heading>string.endswith</H1>
+<P>The <B>string.endswith</B> function returns true if the given string =
+ends=20
+with the provided sequence.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua"><SPAN =
+class=3Dkw1>string</SPAN>.endswith<SPAN class=3Dbr0>(</SPAN><SPAN =
+class=3Dst0>"haystack"</SPAN>, <SPAN class=3Dst0>"needle"</SPAN><SPAN =
+class=3Dbr0>)</SPAN></PRE></DIV>
+<H3>Parameters</H3>
+<P><I>haystack</I> is the string to check. <I>needle</I> is the ending =
+sequence=20
+to check against.</P>
+<H3>Return Value</H3>
+<P><B>True</B> if <I>haystack</I> ends with <I>needle</I>.</P></DIV>
+<DIV id=3Dnode-258 class=3Dsection-3>
+<H1 class=3Dbook-heading>string.explode</H1>
+<P>The <B>string.explode</B> function returns an array of strings, each =
+of which=20
+is a substring of <I>s</I> formed by splitting on boundaries formed by=20
+<I>pattern</I>.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua"><SPAN =
+class=3Dkw1>string</SPAN>.explode<SPAN class=3Dbr0>(</SPAN><SPAN =
+class=3Dst0>"str"</SPAN>, <SPAN class=3Dst0>"pattern"</SPAN><SPAN =
+class=3Dbr0>)</SPAN></PRE></DIV>
+<H3>Parameters</H3>
+<P><I>str</I> is the string to be split. <I>pattern</I> is the separator =
+pattern=20
+at which to split; it may use Lua's pattern matching syntax.</P>
+<H3>Return Value</H3>
+<P>A list of substrings.</P></DIV>
+<DIV id=3Dnode-257 class=3Dsection-3>
+<H1 class=3Dbook-heading>string.findlast</H1>
+<P>The <B>string.findlast</B> function finds the last instance of a =
+pattern=20
+within a string.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua"><SPAN =
+class=3Dkw1>string</SPAN>.endswith<SPAN class=3Dbr0>(</SPAN><SPAN =
+class=3Dst0>"str"</SPAN>, <SPAN class=3Dst0>"pattern"</SPAN>, plain<SPAN =
+class=3Dbr0>)</SPAN></PRE></DIV>
+<H3>Parameters</H3>
+<P><I>str</I> is the string to be searched. <I>pattern</I> is the =
+pattern to=20
+search for; it may use Lua's pattern matching syntax. If <I>plain</I> is =
+true,=20
+no pattern matching will be performed (faster).</P>
+<H3>Return Value</H3>
+<P>The matching pattern, if found, or nil if there were no =
+matches.</P></DIV>
+<DIV id=3Dnode-256 class=3Dsection-3>
+<H1 class=3Dbook-heading>string.startswith</H1>
+<P>The <B>string.startswith</B> function returns true if the given =
+string starts=20
+with the provided sequence.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua"><SPAN =
+class=3Dkw1>string</SPAN>.startswith<SPAN class=3Dbr0>(</SPAN><SPAN =
+class=3Dst0>"haystack"</SPAN>, <SPAN class=3Dst0>"needle"</SPAN><SPAN =
+class=3Dbr0>)</SPAN></PRE></DIV>
+<H3>Parameters</H3>
+<P><I>haystack</I> is the string to check. <I>needle</I> is the starting =
+
+sequence to check against.</P>
+<H3>Return Value</H3>
+<P><B>True</B> if <I>haystack</I> starts with <I>needle</I>.</P></DIV>
+<DIV id=3Dnode-260 class=3Dsection-3>
+<H1 class=3Dbook-heading>table.contains</H1>
+<P>The <B>table.contains</B> function determines if an array contains a=20
+particular value.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua"><SPAN =
+class=3Dkw1>table</SPAN>.contains<SPAN class=3Dbr0>(</SPAN>arr, =
+value<SPAN class=3Dbr0>)</SPAN></PRE></DIV>
+<H3>Parameters</H3>
+<P><I>arr</I> is the array to test; <I>value</I> is the value being =
+tested=20
+for.</P>
+<H3>Return Value</H3>
+<P>True if the array contains the value, false otherwise.</P></DIV>
+<DIV id=3Dnode-259 class=3Dsection-3>
+<H1 class=3Dbook-heading>table.implode</H1>
+<P>The <B>table.implode</B> function merges an array of items into a =
+single,=20
+formatted string.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua"><SPAN =
+class=3Dkw1>table</SPAN>.implode<SPAN class=3Dbr0>(</SPAN>arr, <SPAN =
+class=3Dst0>"before"</SPAN>, <SPAN class=3Dst0>"after"</SPAN>, <SPAN =
+class=3Dst0>"between"</SPAN><SPAN class=3Dbr0>)</SPAN></PRE></DIV>
+<H3>Parameters</H3>
+<P><I>arr</I> is the array to be converted into a string. <I>before</I> =
+is a=20
+string to be inserted before each item. <I>after</I> is a string to be =
+inserted=20
+after each item. <I>between</I> is a string to be inserted between =
+items.</P>
+<H3>Return Value</H3>
+<P>The formatted string.</P></DIV>
+<DIV id=3Dnode-190 class=3Dsection-3>
+<H1 class=3Dbook-heading>targetdir</H1>
+<P>The <B>targetdir</B> function sets the destination directory for the =
+compiled=20
+binary target.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">targetdir <SPAN class=3Dbr0>(</SPAN><SPAN =
+class=3Dst0>"path"</SPAN><SPAN class=3Dbr0>)</SPAN></PRE></DIV>
+<P>By default, the generated project files will place their compiled =
+output in=20
+the same directory as the script. The <B>targetdir</B> function allows =
+you to=20
+change this location.</P>
+<H3>Parameters</H3>
+<P><I>path</I> is the file system path to the directory where the =
+compiled=20
+target file should be stored. It is specified relative to the currently=20
+executing script file.</P>
+<H3>See Also</H3>
+<P><A href=3D"http://industriousone.com/targetname">targetname</A><BR><A =
+
+href=3D"http://industriousone.com/targetextension">targetextension</A><BR=
+><A=20
+href=3D"http://industriousone.com/targetprefix">targetprefix</A></P>
+<H3>Examples</H3>
+<P>This project separates its compiled output by configuration type.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">project <SPAN =
+class=3Dst0>"MyProject"</SPAN>
+&nbsp;
+  configuration <SPAN class=3Dst0>"Debug"</SPAN>
+    targetdir <SPAN class=3Dst0>"bin/debug"</SPAN>
+&nbsp;
+  configuration <SPAN class=3Dst0>"Release"</SPAN>
+    targetdir <SPAN class=3Dst0>"bin/release"</SPAN></PRE></DIV></DIV>
+<DIV id=3Dnode-198 class=3Dsection-3>
+<H1 class=3Dbook-heading>targetextension</H1>
+<P>The <B>targetextension</B> function specifies the file extension for =
+the=20
+compiled binary target.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">targetextension <SPAN =
+class=3Dbr0>(</SPAN><SPAN class=3Dst0>"ext"</SPAN><SPAN =
+class=3Dbr0>)</SPAN></PRE></DIV>
+<P>By default, the project will use the system's normal naming =
+conventions:=20
+<B>.exe</B> for Windows executables, <B>.so</B> for Linux shared =
+libraries, and=20
+so on. The <B>targetextension</B> function allows you to change this=20
+default.</P>
+<H3>Applies To</H3>
+<P>Solutions, projects, and configurations.</P>
+<H3>Parameters</H3>
+<P><I>ext</I> is the new file extension, including the leading dot.</P>
+<H3>See Also</H3>
+<P><A href=3D"http://industriousone.com/targetname">targetname</A><BR><A =
+
+href=3D"http://industriousone.com/targetdir">targetdir</A><BR><A=20
+href=3D"http://industriousone.com/targetprefix">targetprefix</A><BR><A=20
+href=3D"http://industriousone.com/targetsuffix">targetsuffix</A></P>
+<H3>Examples</H3>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">targetextension <SPAN =
+class=3Dst0>".zmf"</SPAN></PRE></DIV></DIV>
+<DIV id=3Dnode-199 class=3Dsection-3>
+<H1 class=3Dbook-heading>targetname</H1>
+<P>The <B>targetname</B> function specifies the base file name for the =
+compiled=20
+binary target.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">targetname <SPAN class=3Dbr0>(</SPAN><SPAN =
+class=3Dst0>"name"</SPAN><SPAN class=3Dbr0>)</SPAN></PRE></DIV>
+<P>By default, the project name will be used as the file name of the =
+compiled=20
+binary target. A Windows executable project named "MyProject" will =
+produce a=20
+binary named <B>MyProject.exe</B>. The <B>targetname</B> function allows =
+you to=20
+change this default.</P>
+<H3>Applies To</H3>
+<P>Solutions, projects, and configurations.</P>
+<H3>Parameters</H3>
+<P><I>name</I> is the new base file name.</P>
+<H3>See Also</H3>
+<P><A href=3D"http://industriousone.com/targetdir">targetdir</A><BR><A=20
+href=3D"http://industriousone.com/targetextension">targetextension</A><BR=
+><A=20
+href=3D"http://industriousone.com/targetprefix">targetprefix</A><BR><A=20
+href=3D"http://industriousone.com/targetsuffix">targetsuffix</A></P>
+<H3>Examples</H3>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">targetname <SPAN =
+class=3Dst0>"mytarget"</SPAN></PRE></DIV></DIV>
+<DIV id=3Dnode-202 class=3Dsection-3>
+<H1 class=3Dbook-heading>targetprefix</H1>
+<P>The <B>targetprefix</B> function specifies the file name prefix for =
+the=20
+compiled binary target.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">targetprefix <SPAN =
+class=3Dbr0>(</SPAN><SPAN class=3Dst0>"prefix"</SPAN><SPAN =
+class=3Dbr0>)</SPAN></PRE></DIV>
+<P>By default, the system naming convention will be used: a "lib" prefix =
+for=20
+POSIX libraries (as in <B>libMyProject.so</B>), and no prefix elsewhere. =
+The=20
+<B>targetprefix</B> function allows you to change this default.</P>
+<H3>Applies To</H3>
+<P>Solutions, projects, and configurations.</P>
+<H3>Parameters</H3>
+<P><I>prefix</I> is the new file name prefix.</P>
+<H3>See Also</H3>
+<P><A href=3D"http://industriousone.com/targetname">targetname</A><BR><A =
+
+href=3D"http://industriousone.com/targetdir">targetdir</A><BR><A=20
+href=3D"http://industriousone.com/targetextension">targetextension</A><BR=
+><A=20
+href=3D"http://industriousone.com/targetsuffix">targetsuffix</A></P>
+<H3>Examples</H3>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">targetprefix <SPAN =
+class=3Dst0>"plugin"</SPAN></PRE></DIV>
+<P>The prefix may also be set to an empty string for no prefix.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">targetprefix <SPAN =
+class=3Dst0>""</SPAN></PRE></DIV></DIV>
+<DIV id=3Dnode-352 class=3Dsection-3>
+<H1 class=3Dbook-heading>targetsuffix</H1>
+<P>The <B>targetsuffix</B> function specifies a file name suffix for the =
+
+compiled binary target.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">targetsuffix <SPAN =
+class=3Dbr0>(</SPAN><SPAN class=3Dst0>"suffix"</SPAN><SPAN =
+class=3Dbr0>)</SPAN></PRE></DIV>
+<H3>Applies To</H3>
+<P>Solutions, projects, and configurations.</P>
+<H3>Parameters</H3>
+<P><I>suffix</I> is the new filename suffix.</P>
+<H3>See Also</H3>
+<P><A href=3D"http://industriousone.com/targetname">targetname</A><BR><A =
+
+href=3D"http://industriousone.com/targetdir">targetdir</A><BR><A=20
+href=3D"http://industriousone.com/targetprefix">targetprefix</A><BR><A=20
+href=3D"http://industriousone.com/targetextension">targetextension</A></P=
+>
+<H3>Examples</H3>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua"><SPAN class=3Dco1>-- Add "-d" to debug =
+versions of files</SPAN>
+configuration <SPAN class=3Dst0>"Debug"</SPAN>
+   targetsuffix <SPAN class=3Dst0>"-d"</SPAN></PRE></DIV></DIV>
+<DIV id=3Dnode-71 class=3Dsection-3>
+<H1 class=3Dbook-heading>uuid</H1>
+<P>The <B>uuid</B> function sets the <A=20
+href=3D"http://en.wikipedia.org/wiki/UUID">Universally Unique =
+Identifier</A>=20
+(UUID) for a project.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">uuid <SPAN class=3Dbr0>(</SPAN><SPAN =
+class=3Dst0>"project_uuid"</SPAN><SPAN class=3Dbr0>)</SPAN></PRE></DIV>
+<P>UUIDs are synonymous (for Premake's purposes) with <A=20
+href=3D"http://en.wikipedia.org/wiki/Globally_Unique_Identifier">Globally=
+ Unique=20
+Identifiers</A> (GUID).</P>
+<P>Premake automatically assigns a UUID to each project, which is used =
+by the=20
+Visual Studio generators to identify the project within a solution. This =
+UUID is=20
+essentially random and will change each time the project file is =
+generated. If=20
+you are storing the generated Visual Studio project files in a version =
+control=20
+system, this will create a lot of unnecessary deltas. Using the =
+<B>uuid</B>=20
+function, you can assign a fixed UUID to each project which never =
+changes,=20
+removing the randomness from the generated projects.</P>
+<H3>Applies To</H3>
+<P>Projects only.</P>
+<H3>Parameters</H3>
+<P><I>project_uuid</I> is the UUID for the current project. It should =
+take the=20
+form "01234567-ABCD-ABCD-ABCD-0123456789AB" (see the examples below for =
+some=20
+real UUID values). You can use the Visual Studio <A=20
+href=3D"http://msdn2.microsoft.com/en-us/library/ms241442(VS.80).aspx">gu=
+idgen</A>=20
+tool to create new UUIDs, or <A=20
+href=3D"http://www.famkruithof.net/uuid/uuidgen">this website</A>, or =
+run Premake=20
+once to generate Visual Studio files and copy the assigned UUIDs.</P>
+<H3>Returns</H3>
+<P>The current project UUID, or <B>nil</B> if no UUID has been set.</P>
+<H3>Examples</H3>
+<P>Set the UUID for a current project.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">uuid <SPAN =
+class=3Dst0>"BE2461B7-236F-4278-81D3-F0D476F9A4C0"</SPAN></PRE></DIV></DI=
+V></DIV>
+<DIV id=3Dnode-374 class=3Dsection-2>
+<H1 class=3Dbook-heading>Extending Premake</H1>
+<P>A collection of how-to articles on extending and improving Premake. =
+These are=20
+intended for folks who want to add new actions or API functions to =
+Premake. If=20
+you just want to script your projects, have a look at <A=20
+href=3D"http://industriousone.com/scripting-with-premake">Scripting with =
+
+Premake</A> instead.</P>
+<P>This section is very much a work in progress, which I hope to =
+gradually build=20
+up over time.</P>
+<DIV id=3Dnode-375 class=3Dsection-3>
+<H1 class=3Dbook-heading>The Basics</H1>
+<P><B>Some things you should know before you digging into the Premake =
+internals,=20
+in no particular order:</B></P>
+<H3>Managing script files</H3>
+<P>Before you begin, you should be able to <A=20
+href=3D"http://industriousone.com/premake/build">build and run the debug =
+
+configuration of Premake</A>. This will save you the trouble of =
+embedding the=20
+scripts and recompiling with each change, and will greatly speed up=20
+development.</P>
+<P>When you have completed your changes and are ready to roll them out, =
+note=20
+that you must run <B>premake4 embed</B> and recompile in order to see =
+your=20
+changes in the release build of Premake. Debug builds load the scripts=20
+dynamically at startup and so can skip this step.</P>
+<P>Premake knows which scripts to load and run by reading the file=20
+<B>src/_manifest.lua</B>. Any new script file you create <EM>must</EM> =
+be listed=20
+in the manifest if you want it to run. This is a common mistake; I still =
+make it=20
+myself every once in a while.</P>
+<P>The command <B>premake4 embed</B> copies all of the scripts listed in =
+the=20
+manifest into static C buffers in the file <B>src/host/scripts.c</B>, =
+which then=20
+gets compiled into the final executable. This is how I can ship a single =
+binary,=20
+rather than the whole source tree.</P>
+<H3>Testing</H3>
+<P>There is a fairly comprehensive set of automated tests in the =
+<B>tests/</B>=20
+folder. Create a debug build of Premake and then, in this tests =
+directory, run=20
+the command:</P><PRE>../bin/debug/premake4 test
+</PRE>
+<P>Or, if you're in a POSIX environment, run the <B>./test</B> shell =
+script. I=20
+am using my own homegrown testing framework, which is defined in=20
+<B>tests/testfx.lua</B>. You can add new test files in=20
+<B>tests/premake4.lua</B>.</P>
+<H3>Namespaces</H3>
+<P>Lua allows the creation of namespaces (of a sort) by putting your =
+functions=20
+into a table. This example creates a function <B>bar</B> in the =
+namespace=20
+<B>premake.foo</B>.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua">premake.foo <SPAN class=3Dsy0>=3D</SPAN> =
+<SPAN class=3Dbr0>{</SPAN> <SPAN class=3Dbr0>}</SPAN>
+&nbsp;
+<SPAN class=3Dkw1>function</SPAN> premake.foo.bar<SPAN =
+class=3Dbr0>(</SPAN><SPAN class=3Dbr0>)</SPAN>=20
+  <SPAN class=3Dco1>-- do something useful</SPAN>
+<SPAN class=3Dkw1>end</SPAN></PRE></DIV>
+<P>I have begun moving all of Premake's internals into the =
+<B>premake</B>=20
+namespace, but it is a work in progress.</P>
+<H3>And finally...</H3>
+<P>Finally, <A href=3D"http://industriousone.com/forums/premake">post =
+any=20
+questions you might have over in the forums</A> and I will be delighted =
+(yes,=20
+delighted) to help you out. Your questions will help me improve this=20
+documentation and Premake itself and are very much =
+appreciated.</P></DIV>
+<DIV id=3Dnode-376 class=3Dsection-3>
+<H1 class=3Dbook-heading>Create a new action</H1>
+<P>An <EM>action</EM> is what gets triggered when you run Premake; the =
+command=20
+<B>premake4 vs2008</B> triggers the Visual Studio 2008 action, while =
+<B>premake4=20
+clean</B> triggers the clean action.</P>
+<P>I created an example action, available in the source code packages at =
+
+<B>src/actions/example</B>, to help you get started. This example writes =
+out=20
+simple "solution" and "project" files, showing how to get out the =
+project=20
+information using the Premake APIs. The tutorial below will show you how =
+to use=20
+these example files to get started on your own actions.</P>
+<P>If you have any questions, ask them <A=20
+href=3D"http://industriousone.com/forums/premake">over in the forums</A> =
+and I'll=20
+try to help you out.</P>
+<H2>Setting Up</H2>
+<P>I keep all of the actions in <B>src/actions</B>, so create a new =
+folder there=20
+with an appropriate name. Look at the other folders at that location, =
+you'll get=20
+the idea.</P>
+<P>Copy the files from <B>src/actions/example</B> to your new folder and =
+rename=20
+them appropriately. The leading underscore on <B>_example.lua</B> is =
+optional;=20
+it is a convention I use to indicate which file contains the action =
+description=20
+(more on that below). The underscore sorts this file to the top of the =
+list=20
+making it easy to locate. Files without the leading underscore contain =
+the=20
+actual implementation of the action.</P>
+<P>I'll continue to use the original file names (like =
+<B>_example.lua</B>)=20
+through this explanation. Substitute in your new names.</P>
+<P>Add your new files (and any others you create later) to the script =
+manifest=20
+at <B>src/_manifest.lua</B>.</P>
+<DIV class=3Dgeshifilter><PRE style=3D"FONT-FAMILY: monospace" =
+class=3D"lua geshifilter-lua"><SPAN class=3Dco1>-- The master list of =
+built-in scripts. Order is important! If you want to</SPAN>
+<SPAN class=3Dco1>-- build a new script into Premake, add it to this =
+list.</SPAN>
+&nbsp;
+    <SPAN class=3Dkw1>return</SPAN>
+    <SPAN class=3Dbr0>{</SPAN>
+        <SPAN class=3Dco1>-- core files</SPAN>
+        <SPAN class=3Dst0>"base/os.lua"</SPAN>,
+        <SPAN class=3Dst0>"base/path.lua"</SPAN>,
+&nbsp;
+        <SPAN class=3Dst0>"...and so on..."</SPAN>,
+&nbsp;
+        <SPAN class=3Dco1>-- Clean action</SPAN>
+        <SPAN class=3Dst0>"actions/clean/_clean.lua"</SPAN>,
+&nbsp;
+        <SPAN class=3Dco1>-- Your new action goes here</SPAN>
+        <SPAN class=3Dst0>"actions/example/_example.lua"</SPAN>,
+        <SPAN class=3Dst0>"actions/example/example_solution.lua"</SPAN>,
+        <SPAN class=3Dst0>"actions/example/example_project.lua"</SPAN>,
+    <SPAN class=3Dbr0>}</SPAN></PRE></DIV>
+<P>Order matters a little here: <B>_example.lua</B> defines the =
+namespace for=20
+the action and must appear first. See the comments in that file for more =
+
+information.</P>
+<H2>Start coding</H2>
+<P>I've loaded up the example files, particularly the action =
+description, to=20
+help you make sense of them. Rather than repeating all of that here, =
+I'll just=20
+let you go browse through the files and start plugging in the code for =
+your own=20
+actions.</P>
+<P>If you get stuck, if something isn't clear, or you want to see a=20
+demonstration of something that isn't covered by the example <A=20
+href=3D"http://industriousone.com/forums/premake">drop a note in the =
+forums</A>=20
+and I'll try to help you out.</P></DIV></DIV></DIV></BODY></HTML>
+
+------=_NextPart_000_0000_01CB9B2A.48F86080
+Content-Type: text/css;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+Content-Location: http://industriousone.com/misc/print.css
+
+BODY {
+	BACKGROUND-COLOR: #fff; MARGIN: 1em
+}
+TH {
+	BORDER-BOTTOM: #ccc 1px solid; TEXT-ALIGN: left; COLOR: #006
+}
+TR.odd {
+	BACKGROUND-COLOR: #ddd
+}
+TR.even {
+	BACKGROUND-COLOR: #fff
+}
+TD {
+	PADDING-BOTTOM: 5px; PADDING-LEFT: 5px; PADDING-RIGHT: 5px; =
+PADDING-TOP: 5px
+}
+#menu {
+	VISIBILITY: hidden
+}
+#main {
+	MARGIN: 1em
+}
+
+------=_NextPart_000_0000_01CB9B2A.48F86080--
