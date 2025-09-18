@@ -29,10 +29,8 @@ test: $(TEST)
 
 # build and run the test program; exits if any tests fail
 $(TEST): $(TESTSRC)
-	@echo -n creating target directory ...
-	@mkdir -p target && echo done!
-	@echo -n compiling tests: $^ $@ ...
-	@$(CC) $(CFLAGS) -o $@ $^ && echo done!
+	@echo -n compiling: $@ [$^] ...
+	@$(CC) $(CFLAGS) -o $@ $^ -I $(LIBSRCDIR) && echo done!
 	@$(TEST)
 
 # build object files
