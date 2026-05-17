@@ -23,11 +23,11 @@ int main(int argc, char **argv)
 {
     /* windows garbage */
     #ifdef _WIN32
-    WSADATA wsaData;
-    int iResult = WSAStartup(MAKEWORD(2, 2), &wsaData);
-    if (iResult != 0)
+    WSADATA wsa_data;
+    int i_wsa_result = WSAStartup(MAKEWORD(2, 2), &wsa_data);
+    if (i_wsa_result != 0)
     {
-        printf("WSAStartup failed with error: %i", iResult);
+        printf("WSAStartup failed with error: %i", i_wsa_result);
         return 1;
     }
     #endif
