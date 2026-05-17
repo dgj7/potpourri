@@ -33,8 +33,8 @@ int main(int argc, char **argv)
     #endif
 
     /* variables */
-    int server_sock;                            /* server socket descriptor */
-    int client_sock;                            /* client socket descriptor */
+    int server_socket;                          /* server socket descriptor */
+    int client_socket;                          /* client socket descriptor */
     struct sockaddr_in echo_server_addr;        /* server address */
     struct sockaddr_in echo_client_addr;        /* client address */
     unsigned short echo_serv_port;              /* server port */
@@ -51,7 +51,7 @@ int main(int argc, char **argv)
     echo_serv_port = atoi(argv[1]);
 
     /* socket for incoming connections */
-    if ((server_sock = socket(PF_INET, SOCK_STREAM, IPPROTO_TCP)) < 0)
+    if ((server_socket = socket(PF_INET, SOCK_STREAM, IPPROTO_TCP)) < 0)
     {
         die_with_error("socket() failed");
     }
@@ -63,13 +63,13 @@ int main(int argc, char **argv)
     echo_server_addr.sin_port = htons(echo_serv_port);
 
     /* bind to the local address */
-    if (bind(server_sock, (struct sockaddr *) &echo_server_addr, sizeof(echo_server_addr)) < 0)
+    if (bind(server_socket, (struct sockaddr *) &echo_server_addr, sizeof(echo_server_addr)) < 0)
     {
         die_with_error("bind() failed");
     }
 
     /* mark the socket so it will listen for incoming connections */
-    if (listen(server_sock, MAXPENDING) < 0)
+    if (listen(server_socket, MAXPENDING) < 0)
     {
         die_with_error("listen() failed");
     }
@@ -84,14 +84,14 @@ int main(int argc, char **argv)
         client_len = sizeof(echo_client_addr);
 
         /* wait for client */
-        if ((client_sock = accept(server_sock, (struct sockaddr *) &echo_client_addr, &client_len)) < 0)
+        if ((client_socket = accept(server_socket, (struct sockaddr *) &echo_client_addr, &client_len)) < 0)
         {
             die_with_error("accept() failed");
         }
 
         /* handle the client */
         printf("handling client %s\n", inet_ntoa(echo_client_addr.sin_addr));
-        handle_tcp_client(client_sock);
+        handle_tcp_client(client_socket);
     }
 }
 
